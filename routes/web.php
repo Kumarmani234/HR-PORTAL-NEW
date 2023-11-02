@@ -96,6 +96,10 @@ use App\Livewire\ViewPendingDetails;
 use App\Livewire\LeaveCalender;
 
 use App\Livewire\LeavePending;
+Use App\Livewire\EmployeesReview;
+Use App\Livewire\ReviewLeave;
+use App\Livewire\ViewDetails1;
+use App\Livewire\ReviewRegularizations;
 
 use Illuminate\Support\Facades\Route;
 
@@ -284,6 +288,10 @@ Route::middleware(['auth:emp'])->group(function () {
 
 
     Route::get('/salary-revision', SalaryRevisions::class)->name('salary-revision');
+    Route::get('/employees-review', EmployeesReview::class)->name('employees-review');
+    Route::get('/review-leave', ReviewLeave::class)->name('ReviewLeave');
+    Route::get('/view-details1', ViewDetails1::class)->name('view-details1');
+    Route::get('/review-regularizations', ReviewRegularizations::class)->name('review-regularizations');
 });
 
 
