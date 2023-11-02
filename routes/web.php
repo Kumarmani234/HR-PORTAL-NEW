@@ -95,6 +95,7 @@ use App\Livewire\ViewDetails;
 
 
 use App\Livewire\LeaveCalender;
+use App\Livewire\SalaryCalculator;
 
 
 
@@ -289,6 +290,7 @@ Route::middleware(['auth:emp'])->group(function () {
 
 
 
+Route::get('/calculate-salary/{empId}', SalaryCalculator::class)->name('calculateSalaryFromDatabase');
 
 
 
