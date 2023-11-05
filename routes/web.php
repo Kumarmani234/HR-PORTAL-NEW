@@ -101,6 +101,8 @@ Use App\Livewire\ReviewLeave;
 use App\Livewire\ViewDetails1;
 use App\Livewire\ReviewRegularizations;
 
+
+
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'checkAuth'], function () {
@@ -292,6 +294,9 @@ Route::middleware(['auth:emp'])->group(function () {
     Route::get('/review-leave', ReviewLeave::class)->name('ReviewLeave');
     Route::get('/view-details1', ViewDetails1::class)->name('view-details1');
     Route::get('/review-regularizations', ReviewRegularizations::class)->name('review-regularizations');
+    
+
+    
 });
 
 

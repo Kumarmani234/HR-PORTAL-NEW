@@ -28,7 +28,7 @@
 
     <body>
     <div class="body">
-        <h4>Review</h4>
+        <h5>Review</h5>
         <div>
             <p>ATTENDANCE</p>
             <a onclick="toggleDetails('restricted-content')" class="links">Attendance Regular...</a><br><br>
@@ -86,7 +86,7 @@
                             alt="Sample Image" style="height: 50px; width: 50px; margin: 0 auto; margin-left:30px; margin-top:23px">
                         <div class="details" style="margin-left:92px; margin-top: -45px;">
                             <p>Renuka Chinthala</p>
-                            <p class="id" style="margin-top:-18px">XSS-0007</p>
+                            <p class="id" style="margin-top:-18px">AGS-0007</p>
                         </div>
 
                         <div class="details" style="margin-left:250px; margin-top:-58px;">
@@ -139,7 +139,7 @@
 
                         <div class ="details" style="margin-left:92px; margin-top: -45px;font-size:14px;">
                             <p>Renuka Chinthala</p>
-                            <p class="id" style="margin-top:-18px">XSS-0007</p>
+                            <p class="id" style="margin-top:-18px">AGS-0007</p>
                         </div>
 
                         <div class="details" style="margin-left:250px; margin-top:-58px;font-size:14px;">
@@ -150,7 +150,11 @@
                         <div class="details" style="margin-left:414px; margin-top:-58px;font-size:14px;">
                             <p>Recommended Status</p>
                             <p class="id" style="margin-top:-18px">CONFIRMED</p>
+                            
                         </div>
+                        <div style="margin-left:36rem;">CLOSED</div>
+                        
+                        
 
                         <hr class="line" style="border:none;margin:4px 0; height: 1px; background-color: black; ">
                         <p class="date" style="margin-top:20px;font-size:13px;margin-left:21px;">Designation: Software
@@ -270,7 +274,7 @@
 
                         <div class ="details" style="margin-left:92px; margin-top: -45px;font-size:12px;">
                             <p>Renuka Chinthala</p>
-                            <p class="id" style="margin-top:-18px">XSS-0007</p>
+                            <p class="id" style="margin-top:-18px">AGS-0007</p>
                         </div>
                         <div class="details" style="margin-left:250px; margin-top:-52px;font-size:12px;">
                         <p>Leave Type</p>
@@ -330,10 +334,39 @@
             </div>
             <div class="container">
                 <div class="container" id="leavecancelClosedCard" style="display: none;">
-                    <div class="card" style="height: 330px; width: 650px; margin-left: 200px; margin-top: 20px;">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP2fBGQf4GHJcIn2SxSKmUPPStVmd22w5uig&usqp=CAU"
-                            alt="Sample Image" style="height: 300px; width: 300px; margin: 0 auto;">
-                        <p style="text-align: center;">No Review Items for Leave Cancel</p>
+                <div class="card" style="height:295px; width: 650px; margin-left: 200px; margin-top: 20px;">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMT5TgvjUm4x4YpmWdvAG8dvbNzJ67RzvX7j0fbJd2znsBYuhYkAJX4jXMFedU-ueYYZI&usqp=CAU"
+                            alt="Sample Image" style="height: 50px; width: 50px; margin: 0 auto; margin-left:30px; margin-top:23px">
+
+                        <div class ="details" style="margin-left:92px; margin-top: -45px;font-size:12px;">
+                            <p>Renuka Chinthala</p>
+                            <p class="id" style="margin-top:-18px">AGS-0007</p>
+                        </div>
+                        <div class="details" style="margin-left:250px; margin-top:-52px;font-size:12px;">
+                        <p>Leave Type</p>
+                            <p style="margin-top:-16px">Casual Leave Probation</p>
+
+                        </div>
+                       
+                    <div class="details" style="margin-left:431px; margin-top:-50px;font-size:12px;">
+                      <p>Period</p>
+                       <p class="id" style="margin-top:-18px">01 Aug 2023</p>
+                       <p style="font-size:10px;margin-top:-15px">Full Day</p>
+                    </div>
+                    <hr class="line" style="border:none;margin:4px 0; height: 1px; background-color: black;marging-top:8px; ">
+                  <p class="date" style="margin-top:20px;font-size:13px;margin-left:21px;">No. of days : 1
+                             </p>
+                             <p class="date" style="margin-top:-16px;font-size:13px;margin-left:21px;">Reason:
+                             Due to personal Emergency
+                             </p>
+                        <hr class="line" style="border:none;margin:4px 0; height: 1px; background-color: black; "> 
+                        <div class="details" style="margin-left:31px; margin-top:25px;">
+                            <p>Applied On</p>
+                            <p class="id" style="margin-top:-18px;font-size:13px;">07 Aug, 2023
+                            </p><br>
+                            <p class="view-details" style="margin-left: 20rem;;margin-top:-74px;"><a href="/leave-cancel">View Details</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
