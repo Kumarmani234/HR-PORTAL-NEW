@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class View extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'location',
         'department',
@@ -22,5 +23,4 @@ class View extends Model
         'confirmation_due_date1',
         'join_date', // You have 'join_date' listed twice, you may want to remove one of them
     ];
-    use HasFactory;
 }

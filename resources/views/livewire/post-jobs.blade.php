@@ -70,7 +70,17 @@
             color: green;
         }
     </style>
-    <button style="width: 80px; border-radius: 5px; background-color: rgb(2, 17, 79); color: white;margin-left:90%" wire:click="logout">Logout</button>
+    <div class="container" style="background-color: #02134F; color: white;margin:0%;max-width:100%;padding:2px">
+        <div style="display: flex; align-items: start; justify-content: start;">
+            <img src="{{$hrDetails->company_logo}}" alt="Logo" style="width: 200px; height: 50px; margin-right: 10px;">
+            <h1 style="font-size: 20px; margin-left:25%;margin-top:10px">HR - {{$hrDetails->hr_name}}</h1>
+        </div>
+    </div>
+    <div style="margin-top:5px;margin-bottom:5px">
+        <button style="width: 200px; border-radius: 5px; background-color: rgb(2, 17, 79); color: white;margin-left:60%"><a href="/JobSeekersAppliedJobs" style="text-decoration: none;color:white">Job Seekers Applied Jobs</a></button>
+        <button style="width:200px; border-radius: 5px; background-color: rgb(2, 17, 79); color: white;"><a href="/VendorsSubmittedCVs" style="text-decoration: none;color:white">Vendors Submitted CVs</a></button>
+        <button style="width: 80px; border-radius: 5px; background-color: rgb(2, 17, 79); color: white;" wire:click="logout">Logout</button>
+    </div>
     @if(Session::has('success'))
     <div id="success-alert" class="alert alert-success alert-dismissible fade show" style="
             height: 30px;
@@ -183,7 +193,7 @@
                 @error('is_active') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
 
-           
+
             <div class="form-group">
                 <label for="application_link">Application Link (optional):</label>
                 <input wire:model="application_link" type="url" class="form-control">

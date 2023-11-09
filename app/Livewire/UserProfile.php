@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -195,6 +196,11 @@ class UserProfile extends Component
 
         $this->technicalEntries = $this->userDetails->technical_skills ?? [];
     }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/emplogin');
+    }
 
     public function editTechnical($index)
     {
@@ -358,8 +364,11 @@ class UserProfile extends Component
 
         $this->editingLanguage = false;
     }
+    public $user;
     public function render()
     {
+        $this->user = auth()->user();
+
         $this->loadEducationData();
         $this->loadLanguagesData();
         $this->loadTechnicalData();

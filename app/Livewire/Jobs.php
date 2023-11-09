@@ -83,7 +83,10 @@ class Jobs extends Component
     {
         return redirect()->route('full-job-view', ['jobId' => $jobId]);
     }
+    public $selectOrNot;
+    public $user;
 
+    public $list;
     public function render()
     {
         $this->jobs = Job::where('created_at', '<=', now())
@@ -93,9 +96,17 @@ class Jobs extends Component
             })
             ->orderBy('created_at', 'desc')
             ->get();
-        $user = auth()->user();
-        
-        $this->appliedJobs = AppliedJob::where('user_id', $user->user_id)->get();
+        $this->user = auth()->user();
+
+
+        $this->appliedJobs = AppliedJob::where('user_id', $this->user->user_id)->get();
+        $this->selectOrNot = AppliedJob::where('user_id', $this->user->user_id)
+            ->whereIn('application_status', ['Shortlisted', 'Rejected'])
+            ->count();
+        $this->list = AppliedJob::where('user_id', $this->user->user_id)
+            ->whereIn('application_status', ['Shortlisted', 'Rejected'])
+            ->get();
+
         return view('livewire.jobs');
     }
 }

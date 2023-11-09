@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire;
+
 use App\Models\View;
 use Livewire\Component;
 
@@ -14,5 +15,4 @@ class ViewDetails1 extends Component
         $views1= View::all();
         return view('livewire.view-details1',['views2'=>$views1]);
     }
-    
 }

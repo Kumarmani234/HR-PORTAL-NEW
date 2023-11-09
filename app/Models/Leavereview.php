@@ -7,39 +7,39 @@ use Illuminate\Database\Eloquent\Model;
 
 class Leavereview extends Model
 {
-    protected $fillable = [
-
-        'applied_by',
-    
-    
-    
-        'from_date',
-    
-    
-    
-        'to_date',
-    
-    
-    
-        'no_of_days',
-    
-    
-    
-        'applying_to',
-    
-    
-      'reason',
-      
-        'cc_to',
-    
-    
-    
-        'approved',
-    
-    
-    
-        'submitted',
-    
-        ];
     use HasFactory;
+    protected $fillable = [
+ 
+        'applied_by',
+   
+   
+   
+        'from_date',
+   
+   
+   
+        'to_date',
+   
+   
+   
+        'no_of_days',
+   
+   
+   
+        'applying_to',
+   
+   
+      'reason',
+     
+        'cc_to',
+   
+   
+   
+        'approved',
+   
+   
+   
+        'submitted',
+   
+        ];
 }

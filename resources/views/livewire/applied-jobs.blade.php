@@ -24,7 +24,8 @@
             border: 1px solid #e0e0e0;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Montserrat';
+            font-size: 12px;
         }
 
         h2 {
@@ -62,11 +63,32 @@
 
         /* Add more CSS styles as needed to achieve your desired design */
     </style>
-    <div class="back-button">
-        <a href="/Jobs">Back</a>
+    <div class="container-1" style="background-color: #02134F; color: white; padding: 8px;">
+        <div style="display: flex; align-items: start; justify-content: start;">
+            <img src="https://xsilica.com/images/xsilica_broucher_final_modified_05082016-2.png" alt="Logo" style="width: 200px; height: 50px; margin-right: 10px;">
+            <h1 style="font-size: 21px; margin-left:21%;margin-top:10px">Job Seeker - {{$user->full_name}}</h1>
+        </div>
+
+    </div>
+
+    <div class="row-1" style="margin-left: 60%;margin-top:10px">
+        <a href="/Jobs" style="text-decoration: none;">
+            <button style="font-size:12px;width: 130px;height:30px; border-radius: 5px; margin: 0; background-color: rgb(2, 17, 79); color: white;margin-left: 5px;">
+            <i class="fas fa-briefcase" style="margin-right: 5px;"></i> </i>
+                Jobs</button>
+        </a>
+        <a href="/Companies" style="text-decoration: none;">
+            <button style="font-size:12px;width: 130px;height:30px; border-radius: 5px; margin: 0; background-color: rgb(2, 17, 79); color: white;margin-left: 5px;">
+                <i class="fas fa-building" style="margin-right: 5px;"></i>
+                Companies</button>
+        </a>
+        <button style="font-size:12px;width: 100px; border-radius: 5px;height:30px; background-color: rgb(2, 17, 79); color: white;margin-left: 5px;">
+            <a href="/UserProfile" style="text-decoration: none;color:white"> <i class="fa fa-user" style="margin-right: 5px;"></i> Profile</a>
+        </button>
+        <button style="font-size:12px;margin-left: 5px;width: 100px; border-radius: 5px;height:30px; background-color: rgb(2, 17, 79); color: white;" wire:click="logout"> <i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i> Logout</button>
     </div>
     <div class="container">
-        <h2>Applied Jobs</h2>
+        <h4 style="text-align: center;"> Applied Jobs</h4>
         @if(count($appliedJobs) > 0)
         <table class="table table-bordered">
             <thead>

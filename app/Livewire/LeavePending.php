@@ -18,19 +18,16 @@ class LeavePending extends Component
     public $leaveRequestId;
     public $full_name;
     public $employeeDetails = [];
-   
-
     public $leaveRequest=[]; // Property to hold the selected leave request
-
-    
 
     public function mount($leaveRequestId)
     {
-        // Fetch leave request details based on $leaveRequestId
-        $this->leaveRequest = LeaveRequest::find($leaveRequestId);
+        // Fetch leave request details based on $leaveRequestId with employee details
+        $this->leaveRequest = LeaveRequest::with('employee')->find($leaveRequestId);
         $this->leaveRequest->from_date = Carbon::parse($this->leaveRequest->from_date);
         $this->leaveRequest->to_date = Carbon::parse($this->leaveRequest->to_date);
     }
+    
     public  function calculateNumberOfDays($fromDate, $fromSession, $toDate, $toSession)
     {
         try {
@@ -128,6 +125,7 @@ class LeavePending extends Component
         $employeeId = auth()->guard('emp')->user()->emp_id; 
         // Call the getLeaveBalances function to get leave balances
         $leaveBalances = LeaveBalances::getLeaveBalances($employeeId);
+        
         try {
                 // Attempt to decode applying_to
         $applyingToJson = trim($this->leaveRequest->applying_to);

@@ -36,7 +36,6 @@ class CVBuilder extends Component
             'graduation_year' => '',
         ];
     }
-
     public function removeEducation($index)
     {
         unset($this->educationEntries[$index]);
@@ -88,6 +87,7 @@ class CVBuilder extends Component
         ]);
     }
 
+
     public function submit()
     {
         $this->validate([
@@ -134,6 +134,7 @@ class CVBuilder extends Component
         session()->flash('message', 'CV created successfully.');
         $this->reset();
     }
+
     public function render()
     {
         return view('livewire.c-v-builder');
