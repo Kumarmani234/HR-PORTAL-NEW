@@ -100,6 +100,8 @@ Use App\Livewire\EmployeesReview;
 Use App\Livewire\ReviewLeave;
 use App\Livewire\ViewDetails1;
 use App\Livewire\ReviewRegularizations;
+use App\Livewire\Details;
+use App\Livewire\LeaveCancel ;
 
 
 
@@ -294,6 +296,8 @@ Route::middleware(['auth:emp'])->group(function () {
     Route::get('/review-leave', ReviewLeave::class)->name('ReviewLeave');
     Route::get('/view-details1', ViewDetails1::class)->name('view-details1');
     Route::get('/review-regularizations', ReviewRegularizations::class)->name('review-regularizations');
+    Route::get('/details/{leaveRequestId}', Details::class)->name('details');
+    Route::get('/leave-cancel', LeaveCancel::class)->name('leave-cancel');
     
 
     

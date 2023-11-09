@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        .main-container{
+        .detail-container {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -50,7 +50,7 @@
             border:1px solid #ccc;
             background:#ffffe8;
             display:flex;
-            width:55%;
+            width:80%;
             padding:5px 10px;
             border-radius:5px;
             height:auto;
@@ -62,40 +62,8 @@
             justify-content:space-between;
             margin:0.975rem auto;
         }
-        .custom-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    margin-top: 20px;
-    
-    
-}
-
-.custom-table th,
-.custom-table td {
-    border: 1px solid #ccc;
-    padding: 8px;
-}
-
-.custom-table th {
-    background-color: #89CFF0;
-}
-
-.container {
-    background-color: white;
-    width: 79%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 20px;
-    text-align: left; 
-    float: left;
-    height: 282px
-
-}
-
  
-        .review {
+        .field {
             display: flex;
             justify-content: start;
             flex-direction: column;
@@ -172,47 +140,79 @@
         width: 100%;/* Allow the height to adjust based on content */
     }
 }
-
     </style>
 </head>
 <body>
-<div class="main-container ">
-        <div style="font-size: 1rem; font-weight: 500; text-align:start; margin-left:150px; ">
-            <h6 >Review Regularizations </h6>
+<div class="detail-container ">
+        <div class="header" style="font-size: 1rem; font-weight: 500; text-align:start; margin-left:150px; ">
+            <h6 >Leave  Cancel Applied on oct 23,2023  </h6>
         </div>
         <div class="approved-leave">
             <div class="heading">
                 <div class="heading-2" >
                     <div style="display:flex; flex-direction:row; justify-content:space-between;">
-                    <div class="review">
-                    @foreach($reviews1 as $review)
-                    <span style="color: #778899; font-size: 0.875rem; font-weight: 500;"> {{ $review->applied_by }}
+                    <div class="field">
+                    <span style="color: #778899; font-size: 0.875rem; font-weight: 500;"> Applied by
                      </span>
                     <span style="color: #333; font-weight: 500; ">
-                    {{ $review->name }}
+                                    Renuka Chinthala
                     </span>
-                    <p style="margin-top: -20px; margin-left: 461px; font-size: 14px;">{{ $review->closed}}</p>
                     </div> 
                    </div>
                    <div class="middle-container">
                 <div class="view-container">
                      <div class="first" style="display:flex; gap:40px;padding:5px; ">
-                            <div class="review">
-                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">Remarks</span>
-                                <span style="font-size: 1rem; font-weight: 600;"> {{ $review->remarks }}</span>
+                            <div class="field">
+                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">From date</span>
+                                <span style="font-size: 1rem; font-weight: 600;"> oct 23,2023<br><span style="color: #494F55;font-size: 0.825rem; font-weight: 600;">session1 </span></span>
+                            </div>
+                           <div class="field">
+                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">To date</span>
+                                <span style="font-size: 1rem; font-weight: 600;">oct 23,2023 <br><span style="color: #494F55;font-size: 0.825rem; font-weight: 600;">session2</span></span>
                             </div>
                             <div class="vertical-line"></div>
-                           <div class="review">
-                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">No of days</span>
-                                <span style="font-size: 1rem; font-weight: 600;">{{ $review->no_of_days }} </span>
-                            </div>
+                         </div>
+                         <div class="box" style="display:flex;  margin-left:50px;  text-align:center; padding:5px;">
+                            <div class="field">
+                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">No. of days</span>
+                                <span style=" font-size: 0.875rem; font-weight: 600;"> 01</span>
                             </div>
                         </div>
                      </div>
                  </div>
-                 
+                 <div class="leave">
+                        <div class="pay-bal">
+                            <span style=" font-size: 0.975rem; font-weight: 500;">Balance:</span>
+                                <span style=" font-size: 0.875rem; font-weight: 500;">3</span>
+                        </div>
+                        <div class="leave-type">
+                            <span style=" color: #605448; font-size: 1rem; font-weight: 600;">Casual Leave Probation</span>
+                        </div>
+                  </div>
+              </div>
+              <div class="details">
+           <div class="data">
+           <p><span style="color: #333; font-weight: 500; font-size:1rem;">Details</span></p>
+           
+            <p style=" font-size: 0.90rem; "><span style="color: #778899; font-size: 0.875rem; font-weight: 400;padding-right: 58px;">Applying to</span  >GYAN PRABODH DASARI</p>
+          
+             <div style="display:flex; flex-direction:row; justify-conetnt-space-between;">
+             <span style="color: #778899; font-size: 0.875rem; font-weight: 400; padding-right: 88px;">Reason</span>
+             <p>I am not going to Attend Function </p>
 </div>
-<div class="side-container ">
+<p style="margin-top:10px;"><span style="color: #778899; font-size: 0.875rem; font-weight: 400; padding-right: 82px;">Contact</span>9800876997  </p>
+            
+                <p style="font-size: 0.975rem; font-weight: 500;">
+                    <span style="color: #778899; font-size: 0.875rem; font-weight: 400; padding-right: 90px;">CC to</span>
+                   
+                </p>
+                <p>Priyadashini Kanda </p>
+          
+ 
+           </div>
+        </div>
+        </div>
+        <div class="side-container ">
             <h6 style="color: #778899; font-size: 0.875rem; font-weight: 500; text-align:start;"> Application Timeline </h6>
              
        
@@ -225,26 +225,37 @@
               <div style="display:flex; flex-direction:column; gap:40px;">
               <div class="group">
               <div>
-              <span style="color: #778899; font-size: 0.825rem; font-weight: 400; text-align:start;">Accept</span>
-                        <br>
-                        <span style="color: #778899; font-weight: 400; font-size: 0.825rem;">
-                        {{ $review->accept}}
-                        </span>
-                        <br><span style="color: #778899; font-size: 0.825rem; font-weight: 400; text-align:start;">{{ $review->accept_date}} </span>
-                        <span style="color: #778899; font-weight: 400; font-size: 0.825rem;">
-                        {{ $review->accept_time}}
+                <h5 style="color: #333; font-size: 0.825rem; font-weight: 400; text-align:start;">
+                <span style="color: #778899; font-weight: 500; ">Approved
+                           
 </span>
-                   
+                        <br><span style="color: #778899; font-size: 0.825rem; font-weight: 400; text-align:start;">by</span>
+                        <span style="color: #778899; font-weight: 500; text-transform: uppercase;">
+                        Prabodh Dasari
+                        </span>
+                  
+                                <!-- <span style="color: #778899; font-size: 0.825rem; font-weight: 500;text-align:start;">
+                                    report_to'
+                                </span> -->
+                    <br> 
+                    <span style="color: #778899; font-size: 0.725rem; font-weight: 400;text-align:start;">
+                       oct 23,2023
+                    </span><span style="color: #778899; font-weight: 400; font-size: 0.825rem;">
+                        5.32 PM
+                        </span>
+                    
+                </h5>
             </div>
  
            </div>
            <div class="group">
                <div >
                   <h5 style="color: #333; font-size: 0.825rem; font-weight: 400; text-align:start;">Submitted<br>
-                  <br><span style="color: #778899; font-size: 0.825rem; font-weight: 400; text-align:start;">{{ $review->submitted_date}}  </span>
-                        <span style="color: #778899; font-weight: 400; font-size: 0.825rem;">
-                       {{ $review->submitted_time}}
+                <span style="color: #778899; font-size: 0.725rem; font-weight: 400;text-align:start;">oct 23,2023</span>
+                <span style="color: #778899; font-weight: 400; font-size: 0.825rem;">
+                        8.32 AM
                         </span>
+                    </h5>
                </div>
            </div>
               </div>
@@ -253,44 +264,9 @@
              
         </div>
         </div>
-		
     </div>
-    <div class="container">
-        <div ref="agLabel" class="ag-header-group-text" role="presentation" style="margin-bottom: 12px; font-size: 15px; margin-left: 175px;">Dates applied for regularization</div>
-        <table class="custom-table">
-            <thead style="background-color: #89CFF0;">
-                <tr>
-                    <th>Date</th>
-                    <th>Approve/Reject</th>
-                    <th>Approve Remarks</th>
-                    <th>Shift</th>
-                    <th>First In Time</th>
-                    <th>Last Out Time</th>
-                    <th>Reason</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($reviews1 as $review)
-                <tr>
-                    <td>{{ $review->date }}</td>
-                    <td>{{ $review->approve_reject }}</td>
-                    <td>{{ $review->approve_remarks }}</td>
-                    <td>{{ $review->shift }}</td>
-                    <td>{{ $review->first_in_time }}</td>
-                    <td>{{ $review->last_out_time }}</td>
-                    <td>{{ $review->reason }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>
    
-                            
-              @endforeach  
-
-       
-
 </body>
-
 </html>
+ 
+</div>
