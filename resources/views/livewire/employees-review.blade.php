@@ -22,6 +22,67 @@
                  margin-top: -40px; /* Adjust margin as needed */
  
 }
+.accordion {
+            border: 1px solid #ccc;
+            margin-bottom: 0.625rem;
+            width:90%;
+            margin:0 auto;
+            border-radius:5px;
+        }
+      .accordion:hover{
+        border: 0.0625rem solid #3a9efd;
+      }
+ 
+        .accordion-heading {
+            background-color: #fff;
+            padding: 0.625rem;
+            cursor: pointer;
+        }
+ 
+        .accordion-body {
+            display: none;
+            background-color: #fff;
+            padding: 0.625rem;
+        }
+ 
+        .accordion-content {
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+            align-items:center;
+            margin:auto 0;
+        }
+        .content {
+            display: flex;
+            justify-content:start;
+            align-items: center;
+            gap:0.625rem;
+            margin-bottom: 0.3125rem;
+        }
+ 
+        .accordion-title {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+       .accordion-button{
+        color:#DCDCDC;
+        border: 0.0625rem solid #DCDCDC;
+       }
+       .active .container {
+           border-color: #3a9efd; /* Blue border when active */
+       }
+      .accordion-button{
+       color:#DCDCDC;
+       border: 0.0625rem solid #DCDCDC;
+      }
+ 
+       .active .accordion-button {
+           color: #3a9efd;
+           border: 0.0625rem solid #3a9efd;
+        /* Blue arrow when active */
+       }
  
     </style>
    </head>
@@ -488,9 +549,28 @@
  
     <script>
         // JavaScript function to toggle the details
-        function toggleDetails(id) {
-  var e = document.getElementById(id);
-  e.style.display = e.style.display === "none" || e.style.display === "" ? "block" : "none";
+        function toggleDetails(contentId) {
+    // Get all the content sections
+    const contentSections = [
+        'restricted-content',
+        'attendence-content',
+        'resignation-content',
+        'helpdesk-content',
+        'holiday-content',
+        'leavecancel-content',
+        // Add more content section IDs here
+    ];
+
+    // Hide all content sections except the one that was clicked
+    contentSections.forEach((section) => {
+        if (section === contentId) {
+            // Show the clicked section
+            document.getElementById(section).style.display = 'block';
+        } else {
+            // Hide the other sections
+            document.getElementById(section).style.display = 'none';
+        }
+    });
 }
  
 $(function() {
@@ -544,6 +624,16 @@ $(function() {
     $('#leavecancelClosedButton'), $('#leavecancelClosedCard')
   );
 });
+function toggleAccordion(element) {
+            const accordionBody = element.nextElementSibling;
+            if (accordionBody.style.display === 'block') {
+                accordionBody.style.display = 'none';
+                element.classList.remove('active'); // Remove active class
+            } else {
+                accordionBody.style.display = 'block';
+                element.classList.add('active'); // Add active class
+            }
+        }
  
     </script>
 </body>
