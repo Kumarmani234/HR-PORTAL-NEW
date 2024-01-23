@@ -1013,14 +1013,11 @@ a:hover {
 
 .custom-radio {
     margin-right: 10px;
-    /* Adjust the margin to control the gap between radio buttons */
 }
 
 .custom-radio input {
     width: 10px;
-    /* Adjust the width to decrease the size of the radio buttons */
     height: 10px;
-    /* Adjust the height to decrease the size of the radio buttons */
 }
 
 .placeholder-small::placeholder {
@@ -1029,6 +1026,43 @@ a:hover {
     color: #a1a1a1; /* Muted color */
 }
 /* end of admin add employee */
+
+/* update employee details admin side */
+.empTable {
+    overflow-x: auto;
+    border-collapse: collapse;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    font-size: 12px;
+    max-width:100%;
+}
+.empTable td {
+    border: 1px solid #e2e8f0;
+    padding: 0.35rem;
+    text-align: center;
+}
+
+.empTable th {
+    border: 1px solid #e2e8f0;
+    padding: 0.35rem;
+    text-align: center;
+    background-color: #02134F;
+    color: #f0f4f8;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.empTable tbody tr:hover {
+    background-color: #f0f4f8;
+}
+table,thead,tbody{
+    width: 100%;
+}
+.whitespace-nowrap{
+    text-transform: capitalize;
+    text-align: center;
+}
+/* end of admin side update employee details */
 
 /* leave related styles */
 /* 1. view approved details */
