@@ -1,5 +1,6 @@
 <?php
-
+// Created by : Bandari Divya
+// About this component: This is to display leaves of employee and his team members, also holidays in a calnedar
 namespace App\Livewire;
 
 use Livewire\Component;

@@ -44,6 +44,7 @@
     <script src="{{ mix('js/app.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -97,7 +98,7 @@
 
         <div class="row m-0" style="height: 100%;width:100%; padding:0;background:#f2f2f2;">
 
-            <div class="card displayNone" id="menu-popup" style="border-radius:0px; width: auto; background:transaparent;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);padding:0;margin:0;">
+            <div class="menucard displayNone" id="menu-popup" style="border-radius:0px; width: auto; background:#fff;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);padding:0;margin:0;">
 
                 <div class="left-card-body" style="margin-top: 0px;padding: 0 5px;margin: 0;height: 600px;">
 

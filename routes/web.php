@@ -8,6 +8,9 @@ use App\Livewire\EmpLogin;
 use App\Livewire\EmployeesReview;
 use App\Livewire\Everyone;
 use App\Livewire\Feeds;
+use App\Livewire\ViewDetails;
+
+
 
  
 use App\Livewire\Attendance;
@@ -63,8 +66,6 @@ use App\Livewire\LeaveBalanaceAsOnADay;
 use App\Livewire\LetterRequests;
 use App\Livewire\TeamOnLeaveChart;
  
-use App\Livewire\ViewDetails;
-use App\Livewire\ViewDetails1;
 use App\Livewire\ListOfAppliedJobs;
 use App\Livewire\RegularisationHistory;
 use App\Livewire\TeamOnAttendance;
@@ -270,7 +271,6 @@ Route::middleware(['auth:emp'])->group(function () {
     Route::get('/view-pending-details', ViewPendingDetails::class)->name('view-pending-details');
     Route::get('/delegates', Delegates::class);
  
-    Route::get('/view-details/{leaveRequestId}', ViewDetails::class)->name('view-details');
  
     Route::get('/leave-balances', LeaveBalances::class)->name('leave-balances');
     Route::get('/leave-cancel', LeaveCancel::class)->name('leave-cancel');
@@ -310,7 +310,6 @@ Route::middleware(['auth:emp'])->group(function () {
     Route::get('/tasks', Tasks::class)->name('task');
     Route::get('/employees-review', EmployeesReview::class)->name('employees-review');
     Route::get('/review-leave', ReviewLeave::class)->name('ReviewLeave');
-    Route::get('/view-details1', ViewDetails1::class)->name('view-details1');
     Route::get('/review-regularizations', ReviewRegularizations::class)->name('review-regularizations');
 });
  

@@ -1,5 +1,6 @@
 <?php
-
+// Created by : Bandari Divya
+// About this component: Display form employees to know the details of applied leave applications which are in approved or withdrawn or rejected 
 namespace App\Livewire;
 
 use App\Models\LeaveRequest;
@@ -8,8 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use App\Helpers\LeaveHelper; 
+use App\Livewire\LeaveBalances; 
 use Carbon\Carbon;
-use App\Livewire\LeavePage;
 
 class LeavePending extends Component
 {
@@ -18,13 +19,26 @@ class LeavePending extends Component
     public $leaveRequestId;
     public $full_name;
     public $employeeDetails = [];
-    public $leaveRequest=[]; // Property to hold the selected leave request
+    public $leaveRequest; 
+    public $selectedYear;
+    public $leaveBalances;
 
+    public $leaveBalance;
     public function mount($leaveRequestId)
     {
+        $this->selectedYear = Carbon::now()->format('Y');
         // Fetch leave request details based on $leaveRequestId with employee details
         $this->leaveRequest = LeaveRequest::with('employee')->find($leaveRequestId);
-    
+        $this->leaveBalances = LeaveBalances::getLeaveBalances($this->leaveRequest->emp_id, $this->selectedYear);
+        $fromDateYear = Carbon::parse($this->leaveRequest->from_date)->format('Y');
+        // Check if the current year matches the selected year
+        if ($this->selectedYear == $fromDateYear) {
+            // If it's the current year, use the fetched leave balances
+            $leaveBalance = $this->leaveBalances;
+        } else {
+            // If it's not the current year, set leave balance to 0
+            $leaveBalance = 0;
+        }
         $this->leaveRequest->from_date = Carbon::parse($this->leaveRequest->from_date);
         $this->leaveRequest->to_date = Carbon::parse($this->leaveRequest->to_date);
     }
@@ -124,18 +138,15 @@ class LeavePending extends Component
     public function render()
     {
         $employeeId = auth()->guard('emp')->user()->emp_id; 
-        // Call the getLeaveBalances function to get leave balances
-        $leaveBalances = LeaveBalances::getLeaveBalances($employeeId);
-        
-        
+     
         try {
                 // Attempt to decode applying_to
-        // $applyingToJson = trim($this->leaveRequest->applying_to);
-        // $this->leaveRequest->applying_to = is_array($applyingToJson) ? $applyingToJson : json_decode($applyingToJson, true);
+        $applyingToJson = trim($this->leaveRequest->applying_to);
+        $this->leaveRequest->applying_to = is_array($applyingToJson) ? $applyingToJson : json_decode($applyingToJson, true);
 
-        // // Attempt to decode cc_to
-        // $ccToJson = trim($this->leaveRequest->cc_to);
-        // $this->leaveRequest->cc_to = is_array($ccToJson) ? $ccToJson : json_decode($ccToJson, true);
+        // Attempt to decode cc_to
+        $ccToJson = trim($this->leaveRequest->cc_to);
+        $this->leaveRequest->cc_to = is_array($ccToJson) ? $ccToJson : json_decode($ccToJson, true);
 
         } catch (\Exception $e) {
             dd("Error in JSON decoding: " . $e->getMessage());
@@ -143,10 +154,9 @@ class LeavePending extends Component
           
         // Pass the leaveRequest data and leaveBalances to the Blade view
         return view('livewire.leave-pending', [
-             'leaveRequest' => $this->leaveRequest,
-             'leaveBalances' => $leaveBalances,
-             
+             'leaveRequest' => $this->leaveRequest,    
+             'leaveBalance' => $this->leaveBalance         
         ]);
        
-    }  
+    }
 }

@@ -1,5 +1,6 @@
 <?php
-
+// Created by : Bandari Divya
+// About this component: This for to update employee details access only for HR or Admin
 namespace App\Livewire;
 
 use Livewire\Component;

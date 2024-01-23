@@ -7,119 +7,8 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body{
-            font-family: 'Montserrat', sans-serif;
-            overflow-y:hidden;
-        }
-        label{
-            margin-top:12px;
-            font-size:0.805rem;
-            color:#858585;
-            font-family: 'Montserrat', sans-serif;
-        }
-        .nav-side{
-            margin-top:10px;
-            font-size:0.795rem;
-            color:#6c7e90;
-            font-weight:500;
-            padding:0px 8px;
-            line-height:1.6;
-            font-family: 'Montserrat', sans-serif;
-            border-left: 2px solid transparent;
-        }
-        .nav-side:hover{
-           text-decoration:none;
-           outline:none;
-           color:black;
-        }
-        .nav-side.active {
-        color: black !important; /* Change this to your desired active color */
-        /* Remove background and add border on active tab */
-        border-radius:0 !important;
-        background-color: transparent !important;
-        border-left: 2px solid  rgb(2, 17, 79) !important; /* Change this to your desired active border color */
-    }
-        .nav-pills{
-            font-family: 'Montserrat', sans-serif;
-        }
-        .tab-pane{
-            margin-top:20px;
-            flex-direction:column;
-            background:none;
-            display:flex;
-            font-family: 'Montserrat', sans-serif;
-            align-items:center;
-            justify-content:center;
-        }
-        .accordion {
-            border: 1px solid #ccc;
-            margin-bottom: 0.625rem;
-            margin:0 auto;
-            width:90%;
-            border-radius:5px;
-            font-family: 'Montserrat', sans-serif;
-        }
-      .accordion:hover{
-        border: 0.0625rem solid #3a9efd;
-      }
-
-        .accordion-heading {
-            cursor: pointer;
-            border-radius:5px;
-        }
-
-        .accordion-body {
-            display: none;
-            padding:0;
-            margin:0;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .accordion-content {
-            display: flex;
-            flex-direction:column;
-            justify-content: center;
-            align-items: center;
-            align-items:center;
-            font-family: 'Montserrat', sans-serif;
-        }
-        .content {
-            display: flex;
-            justify-content:start;
-            align-items: center;
-            gap:0.625rem;
-            padding:5px;
-            margin-bottom: 0.3125rem;
-        }
-
-        .accordion-head {
-            display: flex;
-            background:#fff;
-            padding: 7px 5px;
-            align-items:center;
-            border-radius:5px;
-            flex-direction: row;
-            justify-content:space-between;
-        }
-        .arrow-btn{
-        color:#fff;
-        height:22px;
-        width:22px;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        border-radius:50%;
-        border: 1px solid #DCDCDC;
-       }
-       .active .container {
-           border-color: #3a9efd; /* Blue border when active */
-       }
-
-       .active .arrow-btn {
-           color: #3a9efd;
-           border: 1px solid #3a9efd;
-        /* Blue arrow when active */
-       }
+   
+       
 
         </style>
 </head>
@@ -305,8 +194,9 @@
                 </div>
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-leaveactive" role="tabpanel" aria-labelledby="pills-leaveactive-tab">
-                        @if($this->leaveApplications)
-                            <div class="reviewList" style=" width:100%;  max-height:420px; overflow-y:auto;" >
+                       <div class="closed-leaves-container"  style="width:100%; max-height:400px; overflow-y:auto; margin-top:10px;"  >
+                       @if($this->leaveApplications)
+                            <div class="reviewList"  >
                                 @livewire('view-pending-details')
                             </div>
                         @else
@@ -316,10 +206,10 @@
                                 <p style="text-align: center; font-size:15px;">Hey, you have no leave applications to review.</p>
                             </div>
                         @endif
+                       </div>
                     </div>
                     <div class="tab-pane fade" id="pills-leaveprofile" role="tabpanel" aria-labelledby="pills-leaveprofile-tab">
-                   
-                    <div class="container" style="width:100%; max-height:420px; overflow-y:auto; margin-top:10px;" >
+                     <div class="closed-leaves-container" style="width:100%; max-height:400px; overflow-y:auto; margin-top:10px;" >
                        @if(!empty($approvedLeaveApplicationsList))
                        @foreach($approvedLeaveApplicationsList as $leaveRequest)
                                 <div class="accordion mb-3">
@@ -370,7 +260,7 @@
 
                                                 </div>
 
-                                            <!-- Add other details based on your leave request structure -->
+                                
 
                                                 <div class="accordion-content">
 
@@ -402,7 +292,7 @@
 
                                             <div style="width:100%; height:1px; border-bottom:1px solid #ccc; margin-bottom:5px;"></div>
 
-                                            <div class="content">
+                                            <div class="review-content">
 
                                                 <span style="color: #778899; font-size: 0.755rem; font-weight: 500;">Duration:</span>
 
@@ -420,7 +310,7 @@
 
                                             </div>
 
-                                            <div class="content">
+                                            <div class="review-content">
 
                                                 <span style="color: #778899; font-size: 0.755rem; font-weight: 500;">Reason:</span>
 
@@ -432,14 +322,14 @@
 
                                             <div style="display:flex; flex-direction:row; justify-content:space-between;">
 
-                                                <div class="content">
+                                                <div class="review-content">
 
                                                     <span style="color: #778899; font-size: 0.755rem; font-weight: 400;">Applied on:</span>
 
                                                 <span style="color: #333; font-size: 0.755rem; font-weight: 500;">{{ $leaveRequest['approvedLeaveRequest']->created_at->format('d M, Y') }}</span>
 
                                             </div>
-                                            <div class="content">
+                                            <div class="review-content">
                                                 <span style="color: #778899; font-size: 0.755rem; font-weight: 500;">Leave Balance:</span>
                                                 @if(!empty($leaveRequest['leaveBalances']))
                                                         <div style=" flex-direction:row; display: flex; align-items: center;justify-content:center;">
@@ -459,10 +349,12 @@
                                                         </div>
                                                             <span style="font-size: 0.755rem; font-weight: 500; color: #333; margin-left: 5px;">{{ $leaveRequest['leaveBalances']['lossOfPayBalance'] }}</span>
                                                     </div>
+                                                    @else
+                                                    <span style="font-size: 0.755rem; font-weight: 500; color: #333; margin-left: 5px;">0</span>
                                                 @endif
                                             </div>
                             
-                                                <div class="content">
+                                                <div class="review-content">
 
                                                     <a href="{{ route('approved-details', ['leaveRequestId' => $leaveRequest['approvedLeaveRequest']->id]) }}">
                                                         <span style="color: #3a9efd; font-size: 0.755rem; font-weight: 500;">View Details</span>
@@ -493,6 +385,7 @@
                         @endif
 
                     </div>
+                   
                 </div>
             </div>
             <!-- leave Cancel links-->

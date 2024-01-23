@@ -1,496 +1,4 @@
 <div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Calendar</title>
-    <!-- Add Bootstrap CSS link -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Add your custom CSS styles here if needed -->
-    <style>
-        /* Add your custom styles here */
-        body {
-            font-family: 'Montserrat', sans-serif;
-            overflow-y:hidden;
-        }
-        .container-leave {
-            padding: 0;
-            margin: 0;
-        }
-        .table thead{
-            border:none;
-        }
- 
-        .table th {
-            text-align: center; /* Center days of the week */
-            height: 15px;
-            border: none;       
-            /* Adjust the height of days of the week cells */
-        }
- 
-        .table td:hover {
-            background-color: #ecf7fe; /* Hover background color */
-            cursor: pointer;
-        }
- 
-        /* Add styles for the navigation buttons */
-        .nav-btn {
-            background: none;
-            border: none;
-            color:#778899;
-            font-size:0.795rem;
-            margin-top: -6px;
-            cursor: pointer;
-        }
- 
-        .nav-btn:hover {
-            color: blue;
-        }
- 
-        /* Increase the size of tbody cells and align text to top-left */
-        .table tbody td {
-            width: 75px;
-            height: 80px;
-            border-color:#c5cdd4;
-            font-weight:500;
-            font-size: 13px; /* Adjust font size as needed */
-            vertical-align: top;
-            position: relative;
-            text-align: left;
-        }
- 
-        /* Add style for the current date cell */
-        .current-date {
-            background-color: #ff0000; /* Highlight color for the current date */
-            color: #fff; /* Text color for the current date */
-            font-weight: bold;
-        }
- 
-        .calendar-heading-container {
-            background:#fff;
-            padding:10px 10px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            /* Add spacing between heading and icons */
-        }
-        .calendar-heading-container h5{
-           font-size:0.975rem;
-           color:black;
-           font-weight:500;
-        }
- 
-        .table {
-            overflow-x: hidden; /* Add horizontal scrolling if the table overflows the container */
-        }
- 
-        .tol-calendar-legend {
-            display: flex;
-            font-size: 0.875rem;
-            width: 100%;
-            justify-content:space-between;
-            font-weight: 500;
-            color: #778899;
-        }
- 
-        /* CSS for legend circles */
-        .legend-circle {
-            display: inline-block;
-            width: 15px; /* Adjust the width as needed */
-            height: 15px; /* Adjust the height as needed */
-            border-radius: 50%;
-            text-align: center;
-            line-height: 15px; /* Vertically center the text */
-            margin-right: 2px; /* Add some spacing between the circle and text */
-            font-weight: bold; /* Make the text bold */
-            color: white; /* Text color */
-        }
- 
-        .circle-pale-yellow {
-            background-color: #ffeb3b; /* Define the yellow color */
-        }
- 
-        /* CSS for the pink circle */
-        .circle-pale-pink {
-            background-color: #d29be1; /* Define the pink color */
-        }
-        .accordion {
-        border: 1px solid #ccc;
-        border-radius:5px;
-        width: 100%; /* Adjust the width as needed */
-        top: 100px;
-     overflow-x: auto;
-        left:0;/* Adjust the top position as needed */
-      /* Adjust the right position as needed */
-      }
- 
-      .accordion-heading {
-        background-color: #fff;
-        cursor: pointer;
-      }
- 
-      .accordion-body {
-        background-color: #fff;
-        padding:0;
-        display: block;
-        width: 100%; overflow: auto;
-      }
- 
-      .accordion-content {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
- 
-      .accordion-title {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
- 
-      .active .leave-container {
-        border-color: #3a9efd; /* Blue border when active */
-      }
- 
-      .accordion-button {
-        color: #DCDCDC;
-        border: 1px solid #DCDCDC;
-      }
- 
-      .active .accordion-button {
-        color: #3a9efd;
-        border: 1px solid #3a9efd;
-      }
- 
-      @media (max-width: 760px) {
- 
- 
-        .accordion {
-          width: 65%;
-          top: auto;
-          right: auto;
-          margin-top: 20px;
-        }
-      }
-             /* Styles for the container */
-  
- 
-        /* Styles for the button */
-        .filter-button {
-            padding: 3px;
-            margin-bottom:15px;
-            background-color: #fff;
-            color: #778899;
-            font-size:0.825rem;
-            width:150px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .filter-button:hover{
-          border:1px solid #007bff;
-        }
- 
-
-  
- 
-        /* Styles for dropdown items */
-    
-        .button-container{
-          display:flex;
-          padding:10px 15px;
-          justify-content:space-between;
- 
-        }
-        .custom-button{
-          padding: 2px;
-            margin-bottom:15px;
-            background-color:#3eb0f7;
-            color: #fff;
-            width:100px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .search-container {
-            display: flex;
-        }
- 
-        /* Styles for the form group */
-        .form-group {
-            margin-right: 10px; /* Add spacing between search input and other elements */
-        }
- 
-        /* Styles for the search input */
-        .search-input {
-          border:none;
-          outline:none;
-            position: relative;
-        }
- 
-        .search-input input[type="text"] {
-            padding: 3px;
-            outline:none;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            color:#778899;
-            width: 220px; /* Adjust width as needed */
-        }
- 
-        /* Styles for the search icon */
-        .search-icon {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            color:#778899;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
- 
-        .search-icon::before {
-             /* Unicode character for a magnifying glass */
-            font-size: 16px;
-        }
-        .filter-container1{
-            display: flex;
-            background:#fff;
-            align-items:center;
-            height:31px;
-            width:30px;
-            border-radius:5px;
-            padding:5px;
-            border:1px solid #ccc;
-        }
- 
-        /* Styles for the filter group */
-        .filter-group {
-            display: flex;
-            align-items: center;
-        }
- 
-        /* Styles for the Font Awesome icon */
-        .fa-icon {
-            font-size: 14px;
-            color:#778899;
-             /* Add spacing between icon and text */
-        }
- 
-        .calendar-date {
-            color:black;
-            cursor: pointer;
-        }
- 
-        .event-details {
-            display:flex;
-            width:100%;
-            background:pink;
-            justify-content:end;
-            flex-direction:row;
-            padding: 0px;
-        }
-        .date-day{
-            width:40%;
-            display:flex;
-            text-align:center;
-            color:#778899;
-            padding:10px 15px;
-            justify-content:center;
-            border:1px solid #ccc;
-            background: #fff;
-        }
-        .holiday-con{
-            display:flex;
-            text-align:start;
-            justify-content:start;
-            align-items:center;
-            width:100%;
-            list-style:none;
-            padding:10px 15px;
-            border:1px solid #ccc;
-            background: #fff;
-        }
-     
-        .table  .text{
-            font-size:0.875rem;
-            color:#778899;
-            font-weight:600;
-        }
-        .circle {
-            width: 12px; /* Adjust the width and height for your preferred circle size */
-        height: 12px;
-        border-radius: 50%; /* Make the element circular */
-        position: absolute; /* Position the circle absolutely */
-        top: 12px; /* Adjust top and right values for positioning */
-        right: 10px;
-        text-align: center;
-        line-height: 20px;
-        }
-
-        /* Define a class for circular cells with a pink background */
-        .circle.IRIS {
-            background-color: #d29be1;
-        }
-        .circle-grey {
-        width: 20px; /* Adjust the width and height for your preferred circle size */
-        height: 20px;
-        color: black;
-        border-radius: 50%; /* Make the element circular */
-        position: absolute; /* Position the circle absolutely */
-        text-align: center;
-        background-color: #b7b7b7;
-        line-height: 15px; /* Match the height for center alignment */
-        top: 60%; /* Position the circle at 50% from the top */
-        left: 50%; /* Position the circle at 50% from the left */
-        transform: translate(-50%, -50%); /* Move the circle to the center */
-    }
-    .active-date {
-        background-color: #ecf7fe; /* Active and hover background color */
-        cursor: pointer;
-        border-color:1px solid  blue;
-    }
-
-    .sidebar {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  border-radius:5px;
-  z-index: 1;
-  top: 0;
-  right: 0; /* Position the sidebar to the right */
-  background-color: #fff;
-  overflow-x: hidden;
-  transition: width 0.5s;
-}
-
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidebar a:hover {
-  color: #f1f1f1;
-}
-
-.sidebar .closebtn {
-  position: absolute;
-  left: 25px; /* Adjust the close button position */
-  font-size: 36px;
-  margin-left: 150px;
-  
-}
-
-.openbtn {
-  cursor: pointer;
-  display:flex;
-  justify-content:center;
-  background-color: #fff;
-  border: none;
-  width:20px;
-  z-index: 2;
-  right: 10px;
-  top: 10px;
-}
-
-.filter-container1:hover {
-  background-color: #f6faff;
-}
-.openbtn:hover {
-  background-color: #f6faff;
-}
-
-#main {
-  transition: margin-left .5s;
-  margin-right: 0;
-  padding-left: 0;
-}
-.header {
-    display: flex; align-items: center; background-color: #dce0e5; padding: 10px;
-}
-.header h6{
-  color:#778899;
-  font-weight:500;
-}
-.locations{
-    background:#fff;
-    font-size:0.825rem;
-    width:195px;
-    height:200px;
-    border-radius:5px;
-    border:1px solid #ccc;
-    box-shadow:1px 2px 1px 0 rgba(0,0,0,0.2);
-    position: absolute; top: 145px; left:35px;  padding: 10px; border: 1px solid #ccc;
-}
-.departments{
-    background:#fff;
-    font-size:0.825rem;
-    width:195px;
-    height:200px;
-    border-radius:5px;
-    border:1px solid #ccc;
-    box-shadow:1px 2px 1px 0 rgba(0,0,0,0.2);
-    position: absolute; top: 225px; left:35px;  padding: 10px; border: 1px solid #ccc;
-}
-.main-content{
-    background:#fff;
-    padding:15px 20px;
-    flex-grow: 1;
-}
-.loc-dropdown{
-    width:100%;
-    border:1px solid #ccc;
-    cursor:pointer;
-    text-align:center;
-    background:#fff;
-    padding:5px;
-    border-radius:5px;
-}
-.loc-dropdown p{
-   font-size:0.825rem;font-weight:500;color:#778899;margin-bottom:0;
-}
-.btn-2{
-    background:rgb(2, 17, 79);
-    color:#fff;
-    font-size:0.825rem;
-    padding:3px 10px;
-    border-radius:5px;
-    border:none;
-}
-.btn-3{
-    color:#778899;
-    padding:3px 10px;
-    background:#fff;
-    border:1px solid #ccc;
-    border-radius:5px;
-}
-.btn-3:hover{
-  background:#ebf5ff;
-}
-.btn-1{
-    color:rgb(2, 17, 79);
-    padding:3px 10px;
-    background:#fff;
-    font-size:0.825rem;
-    border:1px solid rgb(2, 17, 79);
-    border-radius:5px;
-}
-::placeholder {
-        font-size: 0.725rem; /* Adjust the font size as needed */
-        color:#778899;
-    }
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
-}
-       
-    </style>
-</head>
 <body>
     <div class="container-leave" >
         <div class="sidebar" style="width: {{ $showDialog ? '250px' : '0' }};display: flex; flex-direction: column; height: 100vh;">
@@ -520,7 +28,7 @@
                     @if($showLocations)
                         <div class="locations">
                             <div style="display: flex;justify-content:space-between; text-align:center;align-items: center;padding:0;height:40px;position relative">
-                               <p style="font-size:0.725rem;padding:0;color:#148aff;font-weight:500;">Select Location</p>
+                               <p style="font-size:0.725rem; padding:0; color:#148aff;font-weight:500;">Select Location</p>
                                <a href="#" wire:click="closeLocations" style="top:-5px; right:5px;position:absolute;" >×</a>
                             </div>
                              <div style="display:flex;flex-direction:column;gap:10px;">
@@ -597,12 +105,11 @@
             <select style="font-size:0.855rem;padding:2px 10px;cursor:pointer;outline:none;" wire:model.lazy="filterCriteria" id="filterType" class="filter-dropdown" wire:change="filterBy($event.target.value)">
                 <option style="font-size:0.825rem;padding:10px 15px;" value="Me" @if($filterCriteria === 'Me') selected @endif>Me</option>
                 <option style="font-size:0.825rem;padding:10px 15px;" value="MyTeam" @if($filterCriteria === 'MyTeam') selected @endif>My Team</option>
-                <!-- Add more options as needed -->
             </select>
         </div>
 
 
-        <button class="custom-button">
+        <button class="custom-button-down">
         <i class="fa fa-download" aria-hidden="true"></i>
         </button>
     </div>
@@ -616,8 +123,8 @@
                     </div>
                 </div>
                 <!-- Calendar -->
-                <div class="table-responsive">
-                <table class="table table-bordered">
+                <div class="table-responsive m-0 p-0">
+                <table class="table-calendar table-bordered">
                         <thead>
                             <tr>
                                 <th class="text">Sun</th>
@@ -629,7 +136,7 @@
                                 <th class="text">Sat</th>
                             </tr>
                         </thead>
-                        <tbody id="calendar-body">
+                        <tbody class="m-0 p-0" id="calendar-body">
                             @foreach ($calendar as $week)
                                 <tr>
                                     @foreach ($week as $day)
@@ -651,7 +158,7 @@
                                                     @else
                                                         {{ str_pad($day['day'], 2, '0', STR_PAD_LEFT) }}
                                                     @endif
-                                                    <div class="circle{{ $day['isPublicHoliday'] ? ' IRIS' : '' }}">
+                                                    <div class="circles{{ $day['isPublicHoliday'] ? ' IRIS' : '' }}">
                                                         <!-- Render your content -->
                                                     </div>
                                                     @php
@@ -737,21 +244,21 @@
                             </div>
                         </div>
                 
-                    <div class="accordion" >
-                         <div class="accordion-heading active" onclick="toggleAccordion(this)">
-                            <div class="accordion-title">
+                    <div class="leave-accordion" >
+                         <div class="leave-accordion-heading active" onclick="toggleAccordion(this)">
+                            <div class="leave-accordion-title">
                                 <div class="accordion-content">
                                    <span style="font-size: 16px; font-weight: 500;color:#778899;padding:10px 15px;">Leave transactions({{ count($this->leaveTransactions) }})</span>
                                 </div>
-                                <div class="accordion-button" style="border-radius: 50%; height: 0.5rem; width: 0.5rem; display: flex; justify-content: center; align-items: center;">
-                                        <!-- <i class="fas fa-chevron-down"></i> -->
-                                </div>
+                                <div class="arrow-btn" >
+                                 <i class="fa fa-angle-down"></i>
+                            </div>
                         </div>
                     </div>
-                     <div class="accordion-body">
+                     <div class="leave-accordion-body">
                        <div class="col-md-12 scroll-tabel" style="overflow-y:auto;max-height:320px; min-height:280px;padding:0;">
                         <table class="leave-table" style="width: 100%; border-collapse: collapse; ;overflow: auto;">
-                            <thead style="background-color: #ecf7fc; text-align:start;  width:100%;">
+                            <thead style="text-align:start;  width:100%;">
                                 <tr>
                                     <th style="padding:7px 5px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;color:#778899;font-size:0.725rem;font-weight:normal;width: 40%;">Employee ID</th>
                                     <th style="padding:7px 5px; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;color:#778899;font-size:0.725rem;font-weight:normal;width: 20%;">No of days</th>
@@ -823,8 +330,6 @@
             </div>
     </div>
  
-    
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
         function toggleAccordion(element) {
         const accordionBody = element.nextElementSibling;
@@ -842,6 +347,5 @@
 
     </script> 
 </body>
-</html>
  
 </div>

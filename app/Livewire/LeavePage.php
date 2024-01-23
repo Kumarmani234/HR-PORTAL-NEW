@@ -1,5 +1,6 @@
 <?php
-
+// Created by : Bandari Divya
+// About this component:this page for to display leave apply form, pending and history of applied leave applications
 namespace App\Livewire;
 
 use Livewire\Component;

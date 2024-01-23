@@ -1,5 +1,6 @@
 <?php
-
+// Created by : Bandari Divya
+// About this component: Landing/Home page for admin dashboard
 namespace App\Livewire;
 
 use Livewire\Component;

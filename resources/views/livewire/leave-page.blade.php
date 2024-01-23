@@ -1,145 +1,6 @@
 <div>
-    <style>
-        .nav-buttons {
-            font-family: Montserrat;
-            text-decoration: none;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .links:hover {
-            color: blue;
-        }
-
-        .accordion {
-            border: 0.0625rem solid #ccc;
-            margin-bottom: 0.625rem;
-            width: 90%;
-            margin: 0 auto;
-        }
-
-        .accordion:hover {
-            border: 0.0625rem solid #3a9efd;
-        }
-
-        .info-paragraph {
-            display: none;
-        }
-
-        .accordion-heading {
-            background-color: #fff;
-            padding: 0.625rem;
-            cursor: pointer;
-        }
-
-        .accordion-body {
-            display: none;
-            background-color: #fff;
-            padding: 0.625rem;
-        }
-
-        .accordion-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .content {
-            display: flex;
-            justify-content: start;
-            align-items: center;
-            gap: 0.625rem;
-            margin-bottom: 0.3125rem;
-        }
-
-        .accordion-title {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-        .active .container {
-            border-color: #3a9efd;
-            /* Blue border when active */
-        }
-
-        .accordion-button {
-            color: #DCDCDC;
-            border: 0.0625rem solid #DCDCDC;
-        }
-
-       .active .accordion-button {
-           color: #3a9efd;
-           border: 0.0625rem solid #3a9efd;
-        /* Blue arrow when active */
-       }
-       .side {
-        display: flex;
-        font-size: 0.875rem;
-        flex-direction: row; /* Change from 'row' to 'column' */
-        width: 55%;
-        padding: 5px;
-        border-radius: 5px;
-        justify-content: space-between;
-        margin-left: 100px;
-        margin-top: 15px;
-        cursor:pointer;
-    }
-
-
-        .side a {
-            text-decoration: none;
-            color: #333;
-            padding: 5px;
-        }
-
-        .side a.active {
-            color: #3a9efd;
-
-        }
-
-        .line {
-            height: 25px;
-            width: 1px;
-            border-right: 1px solid #ccc;
-        }
-
-        .withdraw {
-            background: #3a9efd;
-            border: none;
-            padding: 5px 10px;
-            color: white;
-            font-weight: 500;
-            border-radius: 5px;
-        }
-    </style>
-    <div class="toggle-container" style=" width:95%;">
-        <style>
-            /* Define your custom CSS classes */
-            .custom-nav-tabs {
-                background-color: #fff;
-                border-radius: 5px;
-                display: flex;
-                font-weight: 500;
-                color: #778899;
-                width: 50%;
-                font-size: 0.825rem;
-                /* Background color for the tabs */
-            }
-
-            .custom-nav-link {
-                color: #ccc;
-                /* Text color for inactive tabs */
-            }
-
-            .custom-nav-link.active {
-                margin-top: 5px;
-                color: white;
-                background-color: rgb(2, 17, 79);
-                border-radius: 5px;
-            }
-        </style>
+  
+    <div class="toggle-container" style="width:95%;">
         @if(session()->has('message'))
         <div class="alert alert-success" style="display:flex; justify-content:space-between;">
             {{ session('message') }}
@@ -201,7 +62,7 @@
         </div>
 
  
-            <div class="row" id="leave" style="width:85%; margin-top:20px; margin-left:100px;">
+            <div class="row" id="leave" style="width:95%; margin-top:20px; margin:0 auto;">
         
                <div>@livewire('leave-apply')</div>
             </div>
@@ -248,7 +109,7 @@
 
 
         {{-- Apply Tab --}}
-        <div class="row" id="personalDetails" style=" margin-top:20px;display: none; margin-left:100px;">
+        <div class="row" id="personalDetails" style=" margin-top:20px;display: none; margin:0 auto;">
             <div>@livewire('leave-apply')</div>
         </div>
 
@@ -261,35 +122,35 @@
 
             <div class="container mt-4">
 
-                <div class="accordion">
+                <div class="pending-accordion">
 
-                    <div class="accordion-heading" onclick="toggleAccordion(this)">
+                    <div class="pending-accordion-heading" onclick="toggleAccordion(this)">
 
-                        <div class="accordion-title">
+                        <div class="pending-accordion-title">
 
                             <!-- Display leave details here based on $leaveRequest -->
 
-                            <div class="accordion-content">
+                            <div class="pending-accordion-content">
 
-                                <span style="color: #778899; font-size: 0.875rem; font-weight: 500;">Category</span>
+                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">Category</span>
 
-                                <span style="color: #36454F; font-size: 1rem; font-weight: 500;">Leave</span>
-
-                            </div>
-
-                            <div class="accordion-content">
-
-                                <span style="color: #778899; font-size: 0.875rem; font-weight: 500;">Leave Type</span>
-
-                                <span style="color: #36454F; font-size: 1rem; font-weight: 500;">{{ $leaveRequest->leave_type}}</span>
+                                <span style="color: #36454F; font-size: 0.825rem; font-weight: 500;">Leave</span>
 
                             </div>
 
-                            <div class="accordion-content">
+                            <div class="pending-accordion-content">
 
-                                <span style="color: #778899; font-size: 0.875rem; font-weight: 500;">No. of Days</span>
+                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">Leave Type</span>
 
-                                <span style="color: #36454F; font-size: 1rem; font-weight: 500;">
+                                <span style="color: #36454F; font-size: 0.825rem; font-weight: 500;">{{ $leaveRequest->leave_type}}</span>
+
+                            </div>
+
+                            <div class="pending-accordion-content">
+
+                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">No. of Days</span>
+
+                                <span style="color: #36454F; font-size: 0.825rem; font-weight: 500;">
 
                                     {{ $this->calculateNumberOfDays($leaveRequest->from_date, $leaveRequest->from_session, $leaveRequest->to_date, $leaveRequest->to_session) }}
 
@@ -300,29 +161,27 @@
 
                             <!-- Add other details based on your leave request structure -->
 
-                            <div class="accordion-content">
+                            <div class="pending-accordion-content">
 
-                                <span style="margin-top:0.625rem; font-size: 1rem; font-weight: 400; color:#cf9b17;">{{ strtoupper($leaveRequest->status) }}</span>
+                                <span style="margin-top:0.625rem; font-size: 0.825rem; font-weight: 400; color:#cf9b17;">{{ strtoupper($leaveRequest->status) }}</span>
 
                             </div>
 
-                            <div class="accordion-button" style="margin-top: 0.625rem; font-size: 1rem;  height: 0.625rem; width: 0.625rem; border-radius: 50%; background: #fff;  display: flex; justify-content: center; align-items: center; ">
-
-                                <!-- Down arrow character -->
-
+                            <div class="arrow-btn" >
+                                 <i class="fa fa-angle-down"></i>
                             </div>
 
                         </div>
 
                     </div>
 
-                    <div class="accordion-body">
+                    <div class="pending-accordion-body p-0">
 
                         <div style="width:100%; height:1px; border-bottom:1px solid #ccc; margin-bottom:10px;"></div>
 
-                        <div class="content">
+                        <div class="pending-content px-2">
 
-                            <span style="color: #778899; font-size: 0.875rem; font-weight: 500;">Duration:</span>
+                            <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">Duration:</span>
 
                             <span style="font-size: 0.8125rem;">
 
@@ -338,11 +197,11 @@
 
                         </div>
 
-                        <div class="content">
+                        <div class="pending-content px-2">
 
-                            <span style="color: #778899; font-size: 0.875rem; font-weight: 500;">Reason:</span>
+                            <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">Reason:</span>
 
-                            <span style="font-size: 0.8125rem;">{{ $leaveRequest->reason }}</span>
+                            <span style="font-size: 0.825rem;">{{ ucfirst($leaveRequest->reason) }}</span>
 
                         </div>
 
@@ -350,19 +209,19 @@
 
                         <div style="display:flex; flex-direction:row; justify-content:space-between;">
 
-                            <div class="content">
+                            <div class="pending-content px-2">
 
-                                <span style="color: #778899; font-size: 0.875rem; font-weight: 400;">Applied on:</span>
+                                <span style="color: #778899; font-size: 0.825rem; font-weight: 400;">Applied on:</span>
 
-                                <span style="color: #333; font-size: 1rem; font-weight: 500;">{{ $leaveRequest->created_at->format('d M, Y') }}</span>
+                                <span style="color: #333; font-size: 0.825rem; font-weight: 500;">{{ $leaveRequest->created_at->format('d M, Y') }}</span>
 
                             </div>
 
-                            <div class="content">
+                            <div class="pending-content px-2">
 
                                 <a href="{{ route('leave-history', ['leaveRequestId' => $leaveRequest->id]) }}">
 
-                                    <span style="color: #3a9efd; font-size: 0.875rem; font-weight: 500;">View Details</span>
+                                    <span style="color: #3a9efd; font-size: 0.875rem; ">View Details</span>
 
                                 </a>
                                 <button class="withdraw" wire:click="cancelLeave({{ $leaveRequest->id }})">Withdraw</button>
@@ -404,35 +263,35 @@
 
             <div class="container mt-4">
 
-                <div class="accordion">
+                <div class="pending-accordion">
 
-                    <div class="accordion-heading" onclick="toggleAccordion(this)">
+                    <div class="pending-accordion-heading" onclick="toggleAccordion(this)">
 
-                        <div class="accordion-title">
+                        <div class="pending-accordion-title">
 
                             <!-- Display leave details here based on $leaveRequest -->
 
-                            <div class="accordion-content">
+                            <div class="pending-accordion-content">
 
-                                <span style="color: #778899; font-size: 0.875rem; font-weight: 500;">Category</span>
+                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">Category</span>
 
-                                <span style="color: #36454F; font-size: 1rem; font-weight: 500;">Leave</span>
-
-                            </div>
-
-                            <div class="accordion-content">
-
-                                <span style="color: #778899; font-size: 0.875rem; font-weight: 500;">Leave Type</span>
-
-                                <span style="color: #36454F; font-size: 1rem; font-weight: 500;">{{ $leaveRequest->leave_type}}</span>
+                                <span style="color: #36454F; font-size: 0.825rem; font-weight: 500;">Leave</span>
 
                             </div>
 
-                            <div class="accordion-content">
+                            <div class="pending-accordion-content">
 
-                                <span style="color: #778899; font-size: 0.875rem; font-weight: 500;">No. of Days</span>
+                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">Leave Type</span>
 
-                                <span style="color: #36454F; font-size: 1rem; font-weight: 500;">
+                                <span style="color: #36454F; font-size: 0.825rem; font-weight: 500;">{{ $leaveRequest->leave_type}}</span>
+
+                            </div>
+
+                            <div class="pending-accordion-content">
+
+                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">No. of Days</span>
+
+                                <span style="color: #36454F; font-size: 0.825rem; font-weight: 500;">
 
                                     {{ $this->calculateNumberOfDays($leaveRequest->from_date, $leaveRequest->from_session, $leaveRequest->to_date, $leaveRequest->to_session) }}
 
@@ -446,41 +305,39 @@
 
 
 
-                            <div class="accordion-content">
+                            <div class="pending-accordion-content">
 
                                 @if(strtoupper($leaveRequest->status) == 'APPROVED')
 
-                                <span style="margin-top:0.625rem; font-size: 0.9rem; font-weight: 500; color:#32CD32;">{{ strtoupper($leaveRequest->status) }}</span>
+                                <span style="margin-top:0.625rem; font-size: 0.825rem; font-weight: 500; color:#32CD32;">{{ strtoupper($leaveRequest->status) }}</span>
 
                                 @elseif(strtoupper($leaveRequest->status) == 'REJECTED')
 
-                                <span style="margin-top:0.625rem; font-size: 0.9rem; font-weight: 500; color:#FF0000;">{{ strtoupper($leaveRequest->status) }}</span>
+                                <span style="margin-top:0.625rem; font-size: 0.825rem; font-weight: 500; color:#FF0000;">{{ strtoupper($leaveRequest->status) }}</span>
 
                                 @else
 
-                                <span style="margin-top:0.625rem; font-size: 0.9rem; font-weight: 500; color:#778899;">{{ strtoupper($leaveRequest->status) }}</span>
+                                <span style="margin-top:0.625rem; font-size: 0.825rem; font-weight: 500; color:#778899;">{{ strtoupper($leaveRequest->status) }}</span>
 
                                 @endif
 
                             </div>
 
-                            <div class="accordion-button" style="margin-top: 0.625rem; font-size: 1rem;  height: 0.625rem; width: 0.625rem; border-radius: 50%; background: #fff;  display: flex; justify-content: center; align-items: center; ">
-
-                                <!-- Down arrow character -->
-
+                            <div class="arrow-btn" >
+                                 <i class="fa fa-angle-down"></i>
                             </div>
 
                         </div>
 
                     </div>
 
-                    <div class="accordion-body">
+                    <div class="pending-accordion-body">
 
                         <div style="width:100%; height:1px; border-bottom:1px solid #ccc; margin-bottom:10px;"></div>
 
-                        <div class="content">
+                        <div class="pending-content px-2">
 
-                            <span style="color: #778899; font-size: 0.875rem; font-weight: 500;">Duration:</span>
+                            <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">Duration:</span>
 
                             <span style="font-size: 0.8125rem;">
 
@@ -496,9 +353,9 @@
 
                         </div>
 
-                        <div class="content">
+                        <div class="pending-content px-2">
 
-                            <span style="color: #778899; font-size: 0.875rem; font-weight: 500;">Reason:</span>
+                            <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">Reason:</span>
 
                             <span style="font-size: 0.8125rem;">{{ $leaveRequest->reason }}</span>
 
@@ -508,18 +365,18 @@
 
                         <div style="display:flex; flex-direction:row; justify-content:space-between;">
 
-                            <div class="content">
+                            <div class="pending-content px-2">
 
-                                <span style="color: #778899; font-size: 0.875rem; font-weight: 400;">Applied on:</span>
+                                <span style="color: #778899; font-size: 0.825rem; font-weight: 400;">Applied on:</span>
 
-                                <span style="color: #333; font-size: 1rem; font-weight: 500;">{{ $leaveRequest->created_at->format('d M, Y') }}</span>
+                                <span style="color: #333; font-size: 0.825rem; font-weight: 500;">{{ $leaveRequest->created_at->format('d M, Y') }}</span>
 
                             </div>
 
-                            <div class="content">
+                            <div class="pending-content px-2">
 
                                 <a href="{{ route('leave-pending', ['leaveRequestId' => $leaveRequest->id]) }}">
-                                    <span style="color: #3a9efd; font-size: 0.875rem; font-weight: 500;">View Details</span>
+                                    <span style="color: #3a9efd; font-size: 0.825rem; font-weight: 500;">View Details</span>
                                 </a>
 
                             </div>
@@ -552,8 +409,6 @@
 
     </div>
 </div>
-
-
 
 <script>
     function toggleInfo() {

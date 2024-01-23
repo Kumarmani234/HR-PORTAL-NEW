@@ -64,25 +64,7 @@
             flex-direction: row;
             justify-content:space-between;
         }
-       .arrow-btn{
-        background-color:#fff;
-        height:22px;
-        width:22px;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        border-radius:50%;
-        border: 1px solid #ccc;
-       }
-       .active .container {
-           border-color: #3a9efd; /* Blue border when active */
-       }
-
-       .active .arrow-btn {
-           color: #3a9efd;
-           border: 1px solid #3a9efd;
-        /* Blue arrow when active */
-       }
+ 
         .approveBtn{
             background:#007BFF;
             border:1px solid #007BFF;
@@ -230,6 +212,8 @@
                                         </div>
                                             <span style="font-size: 0.755rem; font-weight: 500; color: #333; margin-left: 5px;">{{ $leaveRequest['leaveBalances']['lossOfPayBalance'] }}</span>
                                     </div>
+                                    @else
+                                    <span style="font-size: 0.755rem; font-weight: 500; color: #333; margin-left: 5px;">0</span>
                                 @endif
                             </div>
                             
