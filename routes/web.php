@@ -46,6 +46,7 @@ use App\Livewire\SalarySlips;
 use App\Livewire\PlanA;
 use App\Livewire\Documents;
 use App\Livewire\Declaration;
+use App\Livewire\DocForms;
 use App\Livewire\Downloadform;
 use App\Livewire\Documentcenter;
 use App\Livewire\DocumentCenterLetters;
@@ -71,6 +72,7 @@ use App\Livewire\RegularisationHistory;
 use App\Livewire\TeamOnAttendance;
 use App\Livewire\TeamOnAttendanceChart;
 use App\Livewire\ViewPendingDetails;
+use App\Livewire\Emojies;
 use Illuminate\Support\Facades\Route;
  
  
@@ -101,7 +103,7 @@ Route::get('/Login&Register', function () {
     return view('login_and_register_view');
 });
  
- 
+Route::post('/store-emoji', [Emojies::class, 'store']);
  
 Route::middleware(['auth:web'])->group(function () {
     Route::get('/CreateCV', function () {
@@ -191,6 +193,7 @@ Route::middleware(['auth:it'])->group(function () {
 Route::middleware(['auth:emp'])->group(function () {
 
     Route::get('/', Home::class)->name('home');
+    Route::get('/doc-forms', DocForms::class);
     Route::get('/LeaveBalanceAsOnADay', LeaveBalanaceAsOnADay::class);
  
     // Attendance Routes
@@ -205,7 +208,8 @@ Route::middleware(['auth:emp'])->group(function () {
     Route::get('/attendance-muster-data', AttendenceMasterDataNew::class)->name('attendance-muster-data');
     Route::get('/ProfileInfo', ProfileInfo::class)->name('profile.info');
     Route::get('/Settings', Settings::class);
-
+ 
+ 
     //Feeds Module
     Route::get('/Feeds', Feeds::class);
     Route::get('/everyone', Everyone::class);
@@ -269,7 +273,7 @@ Route::middleware(['auth:emp'])->group(function () {
  
  
     Route::get('/view-pending-details', ViewPendingDetails::class)->name('view-pending-details');
-    Route::get('/delegates', Delegates::class);
+    Route::get('/delegates', Delegates::class)->name('delegates');
  
  
     Route::get('/leave-balances', LeaveBalances::class)->name('leave-balances');
