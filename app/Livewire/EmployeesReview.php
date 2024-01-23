@@ -1,5 +1,6 @@
 <?php
- 
+// Created by : Bandari Divya
+// About this component: Manager can review leave applications which are applied by team
 namespace App\Livewire;
 use App\Models\EmployeeDetails;
 use App\Models\LeaveRequest;
@@ -11,6 +12,10 @@ use Livewire\Component;
 class EmployeesReview extends Component
 {
     public $count;
+    public $leaveRequests;
+    public $employeeId;
+    public $leaveApplications;
+    public $approvedLeaveRequests;
     public $applying_to= [];
     public $matchingLeaveApplications = [];
     public $leaveRequest;
@@ -18,8 +23,13 @@ class EmployeesReview extends Component
     public $approvedLeaveApplicationsList;
     public $searchTerm = '';
     public $filterData;
+    public $selectedYear;
+
    
- 
+   public function mount(){
+
+    $this->selectedYear = Carbon::now()->format('Y');
+   }
     public  function calculateNumberOfDays($fromDate, $fromSession, $toDate, $toSession)
     {
         try {
@@ -110,23 +120,6 @@ class EmployeesReview extends Component
     {
         return (int) str_replace('Session ', '', $session);
     }
-    public function starredFilter()
-{
-   
-    $employeeId = auth()->guard('emp')->user()->emp_id;
- 
-    $this->leaveRequests = LeaveRequest::whereIn('status', ['Pending'])
-        ->where(function ($query) {
-            // Filter based on applying_to and cc_to
-            $query->whereJsonContains('applying_to', ['manager_id' => $employeeId])
-                  ->orWhereJsonContains('cc_to', ['emp_id' => $employeeId]);
-        })
-        ->when($this->searchTerm, function ($query) {
-            // Apply search filter if search term is present
-            $query->where('your_column_name', 'like', '%' . $this->searchTerm . '%');
-        })
-        ->get();
-}
  
  
  
@@ -135,47 +128,59 @@ class EmployeesReview extends Component
         $employeeId = auth()->guard('emp')->user()->emp_id;
        
         $this->leaveRequests = LeaveRequest::where('status', 'Pending')->get();
+        $selectedYear = $this->selectedYear;
         $matchingLeaveApplications = [];
-   
+    
         foreach ($this->leaveRequests as $leaveRequest) {
             $applyingToJson = trim($leaveRequest->applying_to);
             $applyingArray = is_array($applyingToJson) ? $applyingToJson : json_decode($applyingToJson, true);
-   
+    
             $ccToJson = trim($leaveRequest->cc_to);
             $ccArray = is_array($ccToJson) ? $ccToJson : json_decode($ccToJson, true);
-   
+    
             $isManagerInApplyingTo = isset($applyingArray[0]['manager_id']) && $applyingArray[0]['manager_id'] == $employeeId;
             $isEmpInCcTo = isset($ccArray[0]['emp_id']) && $ccArray[0]['emp_id'] == $employeeId;
-   
+    
             if ($isManagerInApplyingTo || $isEmpInCcTo) {
                 $matchingLeaveApplications[] = $leaveRequest;
             }
         }
- 
-        $this->approvedLeaveRequests = LeaveRequest::whereIn('leave_applies.status', ['approved','rejected'])
+    
+        $this->approvedLeaveRequests = LeaveRequest::whereIn('leave_applies.status', ['approved', 'rejected'])
         ->where(function ($query) use ($employeeId) {
             $query->whereJsonContains('applying_to', [['manager_id' => $employeeId]])
                 ->orWhereJsonContains('cc_to', [['emp_id' => $employeeId]]);
         })
         ->join('employee_details', 'leave_applies.emp_id', '=', 'employee_details.emp_id')
         ->orderBy('created_at', 'desc')
-        ->get(['leave_applies.*', 'employee_details.image', 'employee_details.first_name','employee_details.last_name']);
+        ->get(['leave_applies.*', 'employee_details.image', 'employee_details.first_name', 'employee_details.last_name']);
         $approvedLeaveApplications = [];
-   
+    
         foreach ($this->approvedLeaveRequests as $approvedLeaveRequest) {
             $applyingToJson = trim($approvedLeaveRequest->applying_to);
             $applyingArray = is_array($applyingToJson) ? $applyingToJson : json_decode($applyingToJson, true);
          
             $ccToJson = trim($approvedLeaveRequest->cc_to);
             $ccArray = is_array($ccToJson) ? $ccToJson : json_decode($ccToJson, true);
-   
+    
             $isManagerInApplyingTo = isset($applyingArray[0]['manager_id']) && $applyingArray[0]['manager_id'] == $employeeId;
             $isEmpInCcTo = isset($ccArray[0]['emp_id']) && $ccArray[0]['emp_id'] == $employeeId;
             $approvedLeaveRequest->formatted_from_date = Carbon::parse($approvedLeaveRequest->from_date)->format('d-m-Y');
             $approvedLeaveRequest->formatted_to_date = Carbon::parse($approvedLeaveRequest->to_date)->format('d-m-Y');
-   
+    
             if ($isManagerInApplyingTo || $isEmpInCcTo) {
-                $leaveBalances = LeaveBalances::getLeaveBalances($approvedLeaveRequest->emp_id);
+                // Get leave balance for the current year only
+                $leaveBalances = LeaveBalances::getLeaveBalances($approvedLeaveRequest->emp_id, $selectedYear);
+                // Check if the from_date year is equal to the current year
+                $fromDateYear = Carbon::parse($approvedLeaveRequest->from_date)->format('Y');
+
+                if ($fromDateYear == $selectedYear) {
+                    // Get leave balance for the current year only
+                    $leaveBalances = LeaveBalances::getLeaveBalances($approvedLeaveRequest->emp_id, $selectedYear);
+                } else {
+                    // If from_date year is not equal to the current year, set leave balance to 0
+                    $leaveBalances = 0;
+                }
                 $approvedLeaveApplications[] =  [
                     'approvedLeaveRequest' => $approvedLeaveRequest,
                     'leaveBalances' => $leaveBalances,
@@ -183,15 +188,13 @@ class EmployeesReview extends Component
             }
         }
         $this->approvedLeaveApplicationsList = $approvedLeaveApplications;
- 
         $this->leaveApplications = $matchingLeaveApplications;
- 
-           return view('livewire.employees-review', [
+    
+        return view('livewire.employees-review', [
             'leaveApplications' => $this->leaveApplications,
             'approvedLeaveApplicationsList' => $this->approvedLeaveApplicationsList,
         ]);
     }
- 
- 
+    
+
 }
- 

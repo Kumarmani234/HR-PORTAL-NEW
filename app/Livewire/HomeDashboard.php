@@ -1,5 +1,6 @@
 <?php
-
+// Created by : Bandari Divya
+// About this component: Home page for admin 
 namespace App\Livewire;
 
 use Livewire\Component;

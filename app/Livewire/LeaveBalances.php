@@ -1,5 +1,6 @@
 <?php
-
+// Created by : Bandari Divya
+// About this component: It shows remaining and used leaves (leave balance)
 namespace App\Livewire;
 
 use Illuminate\Support\Carbon;
@@ -13,9 +14,12 @@ use PDF;
 class LeaveBalances extends Component
 {
     public $employeeDetails;
-    public $sickLeavePerYear = 12; // Assuming 12 days of sick leave per year
-    public $casualLeavePerYear = 12; // Assuming 12 days of casual leave per year
+    public $sickLeavePerYear = 12; 
+    public $casualLeavePerYear = 12;
     public $lossOfPayPerYear = 0;
+    public $sickLeaveForYear2024 = 12; 
+    public $casualLeaveForYear2024 = 12; 
+    public $lossOfPayLeaveForYear2024 = 0;
     public $sickLeaveBalance;
     public $casualLeaveBalance;
     public $lossOfPayBalance;
@@ -33,27 +37,29 @@ class LeaveBalances extends Component
     public $consumedLossOfPayLeaves;
   
     public $sortBy = 'oldest_first'; 
-    public $selectedYear = '2023';
+    public $selectedYear;
     public $show2022Content = false;
-    public $show2024Content = false;
+    public $show2023Content = false;
 
-    
+    public $totalCausalDays;
+    public $totalSickDays;
+    public $totalLossOfPayDays;
 
     public function mount()
     {
+        $this->selectedYear = Carbon::now()->format('Y');
+
         $employeeId = auth()->guard('emp')->user()->emp_id;
         $this->employeeDetails = EmployeeDetails::where('emp_id', $employeeId)->first();
 
         // Check if employeeDetails is not null before accessing its properties
         if ($this->employeeDetails) {
             // Get the logged-in employee's approved leave days for sick, causal, and loss of pay leave
-            $approvedLeaveDays = LeaveHelper::getApprovedLeaveDays($employeeId);
-
+            $leaveBalances = LeaveHelper::getApprovedLeaveDays($employeeId, $this->selectedYear);
             // Use the returned values in your component
-            $this->totalCausalDays = $approvedLeaveDays['totalCausalDays'];
-            $this->totalSickDays = $approvedLeaveDays['totalSickDays'];
-            $this->totalLossOfPayDays = $approvedLeaveDays['totalLossOfPayDays'];
-
+            $this->totalCausalDays = $leaveBalances['totalCausalDays'];
+            $this->totalSickDays = $leaveBalances['totalSickDays'];
+            $this->totalLossOfPayDays = $leaveBalances['totalLossOfPayDays'];
             // Calculate leave balances
             $this->sickLeaveBalance = $this->sickLeavePerYear - $this->totalSickDays;
             $this->casualLeaveBalance = $this->casualLeavePerYear - $this->totalCausalDays;
@@ -73,7 +79,6 @@ class LeaveBalances extends Component
                 return $this->getSickLeaveColor($percentage);
             case 'Causal Leave Probation':
                 return $this->getSickLeaveColor($percentage);
-                // Add more cases for other leave types if needed
             default:
                 return '#000000'; // Default color
         }
@@ -85,13 +90,11 @@ class LeaveBalances extends Component
     }    
     public function checkSortBy()
 {
-    dd('xdcfvgbhnj');
     $employeeId = auth()->guard('emp')->user()->emp_id;
     $this->employeeDetails = EmployeeDetails::where('emp_id', $employeeId)->first();
     $query = LeaveRequest::join('employee_details', 'leave_applies.emp_id', '=', 'employee_details.emp_id')
             ->select('leave_applies.*', 'employee_details.*', 'leave_applies.created_at as leave_created_at')
             ->where('leave_applies.emp_id', $employeeId);
-            // Add sorting logic based on the selected option
             if ($this->sortBy == 'oldest_first') {
                 $query->orderBy('leave_created_at', 'asc');
             } else{
@@ -114,48 +117,51 @@ class LeaveBalances extends Component
             $gender = $this->employeeDetails->gender;
             $grantedLeave = ($gender === 'Female') ? 90 : 05;
 
+            $leaveBalances = LeaveBalances::getLeaveBalances($employeeId, $this->selectedYear);
+
             return view('livewire.leave-balances', [
                 'gender' => $gender,
                 'grantedLeave' => $grantedLeave,
-                'sickLeaveBalance' => $this->sickLeaveBalance,
-                'casualLeaveBalance' => $this->casualLeaveBalance,
-                'lossOfPayBalance' => $this->lossOfPayBalance,
+                'sickLeaveBalance' => $leaveBalances['sickLeaveBalance'],
+                'casualLeaveBalance' => $leaveBalances['casualLeaveBalance'],
+                'lossOfPayBalance' => $leaveBalances['lossOfPayBalance'],
                 'employeeDetails' => $this->employeeDetails,
                 'leaveTransactions' => $this->leaveTransactions,
                 'percentageCasual' => $percentageCasual,
                 'percentageSick' => $percentageSick,
                 'show2022Content' => $this->show2022Content,
-                'show2024Content' => $this->show2024Content,
+                'show2023Content' => $this->show2023Content,
             ]);
         }
     }
 
-    public static function getLeaveBalances($employeeId)
+    public static function getLeaveBalances($employeeId, $selectedYear)
     {
         $employeeDetails = EmployeeDetails::where('emp_id', $employeeId)->first();
-        
     
         if (!$employeeDetails) {
             return null;
         }
-
-        $sickLeavePerYear = 12; // Assuming 12 days of sick leave per year
-        $casualLeavePerYear = 12; // Assuming 12 days of casual leave per year
-        $lossOfPayPerYear = 0;
-
+    
+        $sickLeavePerYear = 12; // Assuming sick leaves for the specified year
+        $casualLeavePerYear = 12; // Assuming casual leaves for the specified year
+        $lossOfPayPerYear = 0; // Assuming loss of pay leaves for the specified year
+    
         // Get the logged-in employee's approved leave days for sick, causal, and loss of pay leave
-        $approvedLeaveDays = LeaveHelper::getApprovedLeaveDays($employeeId);
-
+        $approvedLeaveDays = LeaveHelper::getApprovedLeaveDays($employeeId, $selectedYear);
+    
         // Calculate leave balances
         $sickLeaveBalance = $sickLeavePerYear - $approvedLeaveDays['totalSickDays'];
         $casualLeaveBalance = $casualLeavePerYear - $approvedLeaveDays['totalCausalDays'];
         $lossOfPayBalance = $lossOfPayPerYear - $approvedLeaveDays['totalLossOfPayDays'];
+    
         return [
             'sickLeaveBalance' => $sickLeaveBalance,
             'casualLeaveBalance' => $casualLeaveBalance,
             'lossOfPayBalance' => $lossOfPayBalance,
         ];
     }
+    
     public  function calculateNumberOfDays($fromDate, $fromSession, $toDate, $toSession)
 
     {
@@ -208,7 +214,6 @@ class LeaveBalances extends Component
                 if ($startDate->isWeekday()) {
                     $totalDays += 1;
                 }
-
                 // Move to the next day
                 $startDate->addDay();
             }
@@ -243,27 +248,28 @@ class LeaveBalances extends Component
         }
     }
     public function yearDropDown(){
+        $currentYear = Carbon::now()->format('Y');
         if ($this->isTrue('2022')) {
             $this->show2022Content = true;
-            $this->show2024Content = false;
-        } elseif ($this->isTrue('2024')) {
+            $this->show2023Content = false;
+        } elseif ($this->isTrue('2023')) {
             $this->show2022Content = false;
-            $this->show2024Content = true;
+            $this->show2023Content = true;
+        }elseif ($this->isTrue($currentYear)) {
+            $this->show2022Content = false;
+            $this->show2023Content = false;
         } else {
             $this->show2022Content = false;
-            $this->show2024Content = false;
+            $this->show2023Content = false;
         }
     }
     public function isTrue($year)
     {
-        // Add your conditions here to determine if the year is "true" or "false"
         return $this->selectedYear === $year;
-       
     }
 
     private function getSessionNumber($session)
     {
-        // You might need to customize this based on your actual session values
         return (int) str_replace('Session ', '', $session);
     }
   

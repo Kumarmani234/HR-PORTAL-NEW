@@ -74,42 +74,66 @@ class LeaveHelper
         return (int) str_replace('Session ', '', $session);
     }
 
-    public static function getApprovedLeaveDays($employeeId)
-    {
+   // LeaveHelper.php
+
+public static function getApprovedLeaveDays($employeeId, $selectedYear = null, $allLeaveTypes = false)
+{
+    try {
         // Fetch approved leave requests
-        $approvedLeaveRequests = LeaveRequest::where('emp_id', $employeeId)
-            ->where('status', 'approved')
-            ->whereIn('leave_type', ['Causal Leave Probation', 'Sick Leave', 'Loss Of Pay'])
-            ->get();
+        $query = LeaveRequest::where('emp_id', $employeeId)
+            ->where('status', 'approved');
+
+        // Adding leave types
+        if (!$allLeaveTypes) {
+            $query->whereIn('leave_type', ['Causal Leave Probation', 'Sick Leave', 'Loss Of Pay']);
+        }
+
+        if ($selectedYear) {
+            $query->whereYear('from_date', $selectedYear);
+        }
+
+        $approvedLeaveRequests = $query->get();
         $totalCausalDays = 0;
         $totalSickDays = 0;
         $totalLossOfPayDays = 0;
-    
+
         // Calculate the total number of days based on sessions for each approved leave request
         foreach ($approvedLeaveRequests as $leaveRequest) {
             $leaveType = $leaveRequest->leave_type;
-            $days = self::calculateNumberOfDays(
-                $leaveRequest->from_date,
-                $leaveRequest->from_session,
-                $leaveRequest->to_date,
-                $leaveRequest->to_session
-            );
-            // Accumulate days based on leave type
-            if ($leaveType === 'Causal Leave Probation') {
-                $totalCausalDays += $days;
-            } elseif ($leaveType === 'Sick Leave') {
-                $totalSickDays += $days;
-            } elseif ($leaveType === 'Loss Of Pay') {
-                $totalLossOfPayDays += $days;
+            
+            // Extract the year from the leave request's from_date
+            $leaveYear = Carbon::parse($leaveRequest->from_date)->format('Y');
+
+            // Check if the leave request is for the selected year
+            if ($selectedYear && $leaveYear == $selectedYear) {
+                $days = self::calculateNumberOfDays(
+                    $leaveRequest->from_date,
+                    $leaveRequest->from_session,
+                    $leaveRequest->to_date,
+                    $leaveRequest->to_session
+                );
+
+                // Accumulate days based on leave type
+                if ($leaveType === 'Causal Leave Probation') {
+                    $totalCausalDays += $days;
+                } elseif ($leaveType === 'Sick Leave') {
+                    $totalSickDays += $days;
+                } elseif ($leaveType === 'Loss Of Pay') {
+                    $totalLossOfPayDays += $days;
+                }
             }
         }
-    
+
         return [
             'totalCausalDays' => $totalCausalDays,
             'totalSickDays' => $totalSickDays,
             'totalLossOfPayDays' => $totalLossOfPayDays,
         ];
 
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
     }
+}
+
     
 }

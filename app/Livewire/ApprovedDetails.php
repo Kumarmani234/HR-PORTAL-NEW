@@ -1,5 +1,6 @@
 <?php
-
+// Created by : Bandari Divya
+// About this component: this is detailed details of approved, rejected leave applications
 namespace App\Livewire;
 
 use App\Models\LeaveRequest;
@@ -18,15 +19,18 @@ class ApprovedDetails extends Component
     public $leaveRequestId;
     public $full_name;
     public $employeeDetails = [];
-    public $leaveRequest=[]; // Property to hold the selected leave request
+    public $leaveRequest; 
+    public $selectedYear;
+    public $leaveBalances;
  
     public function mount($leaveRequestId)
     {
         // Fetch leave request details based on $leaveRequestId with employee details
+        $this->selectedYear = Carbon::now()->format('Y');
         $this->leaveRequest = LeaveRequest::with('employee')->find($leaveRequestId);
         $this->leaveRequest->from_date = Carbon::parse($this->leaveRequest->from_date);
         $this->leaveRequest->to_date = Carbon::parse($this->leaveRequest->to_date);
-        $this->leaveBalances = LeaveBalances::getLeaveBalances($this->leaveRequest->emp_id);
+        $this->leaveBalances = LeaveBalances::getLeaveBalances($this->leaveRequest->emp_id, $this->selectedYear);
      
     }
    
@@ -123,30 +127,37 @@ class ApprovedDetails extends Component
     }
  
     public function render()
-    {
-        $employeeId = auth()->guard('emp')->user()->emp_id;
-        // Call the getLeaveBalances function to get leave balances
-        $leaveBalances = LeaveBalances::getLeaveBalances($employeeId);
-       
-        try {
-                // Attempt to decode applying_to
+{
+
+    // Fetch leave balances for the selected year
+    $this->leaveBalances = LeaveBalances::getLeaveBalances($this->leaveRequest->emp_id, $this->selectedYear);
+    $fromDateYear = Carbon::parse($this->leaveRequest->from_date)->format('Y');
+    // Check if the current year matches the selected year
+    if ($this->selectedYear == $fromDateYear) {
+        // If it's the current year, use the fetched leave balances
+        $leaveBalance = $this->leaveBalances;
+    } else {
+        // If it's not the current year, set leave balance to 0
+        $leaveBalance = 0;
+    }
+    try {
+        // Attempt to decode applying_to
         $applyingToJson = trim($this->leaveRequest->applying_to);
         $this->leaveRequest->applying_to = is_array($applyingToJson) ? $applyingToJson : json_decode($applyingToJson, true);
- 
+
         // Attempt to decode cc_to
         $ccToJson = trim($this->leaveRequest->cc_to);
         $this->leaveRequest->cc_to = is_array($ccToJson) ? $ccToJson : json_decode($ccToJson, true);
- 
-        } catch (\Exception $e) {
-            dd("Error in JSON decoding: " . $e->getMessage());
-        }
-         
-        // Pass the leaveRequest data and leaveBalances to the Blade view
-        return view('livewire.approved-details', [
-             'leaveRequest' => $this->leaveRequest,
-             'leaveBalances' => $this->leaveBalances,
-        ]);
-       
-    }  
+
+    } catch (\Exception $e) {
+        dd("Error in JSON decoding: " . $e->getMessage());
+    }
+
+    // Pass the leaveRequest data and leaveBalance to the Blade view
+    return view('livewire.approved-details', [
+        'leaveRequest' => $this->leaveRequest,
+        'leaveBalance' => $leaveBalance,
+    ]);
+}
 
 }

@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <div class="container custom-form">
+    <div class="custom-form">
         <div class="row">
             <div class="table-responsive">
                 <table class="table-start">

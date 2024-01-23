@@ -1,5 +1,6 @@
 <?php
-
+// Created by : Bandari Divya
+// About this component: Displays the bar chart of team members who are on leave, only manager can able to see
 namespace App\Livewire;
 
 use Livewire\Component;

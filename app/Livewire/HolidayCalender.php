@@ -1,5 +1,6 @@
 <?php
-
+// Created by : Bandari Divya
+// About this component: Displaying Holidays list 
 namespace App\Livewire;
 
 use Livewire\Component;
@@ -26,9 +27,7 @@ class HolidayCalender extends Component
             // Handle the exception, log it, or display an error message
             \Log::error('Error fetching calendar data: ' . $e->getMessage());
     
-            // Provide a default value or an error message to display
             $calendarData = [];
-            // You can also redirect to an error page or show a notification to the user
         }
     
         return view('livewire.holiday-calender', [

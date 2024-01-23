@@ -88,7 +88,7 @@
                     </div>
                     <div class="col-md-4 ">
                         <div class="col-12 mb-2 p-0">
-                            <div class="card mx-0" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
+                            <div class="admin-card mx-0 bg-white rounded" style="box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);">
                                 <div class="card-header" style="background:rgb(2, 17, 79);color:white;padding:4px;font-size:14px;font-weight:500;">
                                     Recently Activity
                                 </div>
@@ -99,7 +99,7 @@
                                     <p class="card-text">With supporting text below as a natural lead-in to additional
                                         content.</p>
                                     <div style="display:flex;justify-content:end;">
-                                          <a href="#" class="btn btn-start">See All Activity</a>
+                                          <a href="#" class="activity btn-start">See All Activity</a>
                                     </div>
                                 </div>
                             </div>

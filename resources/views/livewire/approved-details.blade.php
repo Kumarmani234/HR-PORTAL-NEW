@@ -1,198 +1,41 @@
 <div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leave Details</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-          body{
-            font-family: 'Montserrat', sans-serif;
-        }
-        .detail-container {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: 10px;
-        padding: 5px;
-        background-color: none;
-    }
-          .approved-leave{
-            display: flex;
-        flex-direction: row;
-        width: 100%;
-        gap: 10px;
-        padding: 5px;
-        background-color: none;
-          }
- 
-    .heading {
-    flex: 8; /* Adjust the flex value to control the size of the heading container */
-    padding: 20px;
-    width: 100%;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius:5px;
-}
- 
-.side-container {
-    flex: 4; /* Adjust the flex value to control the size of the side container */
-    background-color: #fff;
-    text-align: center;
-    padding: 20px;
-    height: 230px;
-    border-radius:5px;
-    border:1px solid #dcdcdc;
-}
-   
-        .view-container{
-            border:1px solid #ccc;
-            background:#ffffe8;
-            display:flex;
-            width:80%;
-            padding:5px 10px;
-            border-radius:5px;
-            height:auto;
-        }
-        .middle-container{
-            background:#fff;
-            display:flex;
-            flex-direction:row;
-            justify-content:space-between;
-            margin:0.975rem auto;
-        }
- 
-        .field {
-            display: flex;
-            justify-content: start;
-            flex-direction: column;
-        }
- 
-        .pay-bal  {
-         display:flex;
-         gap:10px;
-        }
- 
-        .details {
-       
-            line-height:2;
-        }
- 
-        .details p {
-            margin: 0;
-        }
-        .vertical-line {
-            width: 1px; /* Width of the vertical line */
-            height: 70px; /* Height of the vertical line */
-            background-color: #ccc;
-            margin-left:-10px; /* Color of the vertical line */
-        }
- 
- 
-        .group h6{
-            font-weight:600;
-            font-size:0.875rem;
-        }
-        .group h5{
-            font-weight: 400;
-            font-size: 1rem;
-            white-space: nowrap; /* Prevent text from wrapping */
-            overflow: hidden; /* Hide overflowing text */
-            text-overflow: ellipsis;
-            margin-top:0.975rem;
-        }
-        .group {
-            margin-left:10px;
-        }
-     
-        .data{
-            display:flex;
-            flex-direction:column;
-   
-        }
-        .cirlce{
-            height:0.75rem; width:0.75rem; background: #778899; border-radius:50%;
-        }
-        .v-line{
-            height:100px; width:0.5px; background: #778899; border-right:1px solid #778899; margin-left:5px;
-        }
-        .leave{
-            display:flex; flex-direction:row; gap:50px; background:#fff;
-            border-bottom:1px solid #ccc;padding-bottom:10px;
-        }
-        @media screen and (max-width: 1060px) {
-           .detail-container{
-            width:100%;
-            display:flex;
-            flex-direction:column;
-           }
-           .heading {
-        flex: 1; /* Change the flex value for the heading container */
-        padding: 10px; /* Modify padding as needed */
-        width: 100%;
-    }
- 
-    .side-container {
-        flex: 1; /* Change the flex value for the side container */
-        padding: 10px; /* Modify padding as needed */
-        height: auto;
-        width: 100%;/* Allow the height to adjust based on content */
-    }
-}
-@media screen and (max-width: 960px) {
-.approved-leave{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: 10px;
-        padding: 5px;
-        background-color: none;
-          }
-        }
-    </style>
-</head>
 <body>
- 
     <div class="detail-container ">
-        <div class="header" style="font-size: 1rem; font-weight: 500; text-align:start; margin-left:150px; ">
-            <h6 >Leave Applied on {{ $leaveRequest->created_at->format('d M, Y') }} </h6>
+        <div class="date-heading" style="font-size: 0.855rem; font-weight: 500; text-align:start; margin-left:150px; ">
+            <p >Leave Applied on {{ $leaveRequest->created_at->format('d M, Y') }} </p>
         </div>
         <div class="approved-leave">
             <div class="heading">
                 <div class="heading-2" >
-                    <div style="display:flex; flex-direction:row; justify-content:space-between;">
+                    <div style="display:flex; flex-direction:row; justify-content:space-between;padding:10px 15px;">
                     <div class="field">
-                            <span style="color: #778899; font-size: 0.875rem; font-weight: 500;">
+                            <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">
                              Applied by
                             </span>
                             @if(strtoupper($leaveRequest->status) == 'APPROVED')
-                                <span style="color: #333; font-weight: 500; text-transform: uppercase;">
+                                <span style="color: #333; font-size: 0.755rem;font-weight: 500; text-transform: uppercase;">
                                     {{ $this->leaveRequest->employee->first_name }} {{ $this->leaveRequest->employee->last_name }}
                                 </span>
                                 @elseif(strtoupper($leaveRequest->status) == 'REJECTED')
-                                <span style="color: #333; font-weight: 500; text-transform: uppercase;">
+                                <span style="color: #333; font-size: 0.755rem;font-weight: 500; text-transform: uppercase;">
                                     {{ $this->leaveRequest->employee->first_name }} {{ $this->leaveRequest->employee->last_name }}
                                 </span>
                             @endif
                         </div>
  
                      <div>
-                        <span style="color: #32CD32; font-size: 0.875rem; font-weight: 500; text-transform:uppercase;">
+                        <span style="color: #32CD32; font-size: 0.805rem; font-weight: 500; text-transform:uppercase;">
                         @if(strtoupper($leaveRequest->status) == 'APPROVED')
 
-                                    <span style="margin-top:0.625rem; font-size: 0.9rem; font-weight: 500; color:#32CD32;">{{ strtoupper($leaveRequest->status) }}</span>
+                                    <span style="margin-top:0.625rem; font-size: 0.805rem; font-weight: 500; color:#32CD32;">{{ strtoupper($leaveRequest->status) }}</span>
 
                                 @elseif(strtoupper($leaveRequest->status) == 'REJECTED')
 
-                                    <span style="margin-top:0.625rem; font-size: 0.9rem; font-weight: 500; color:#FF0000;">{{ strtoupper($leaveRequest->status) }}</span>
+                                    <span style="margin-top:0.625rem; font-size: 0.805rem; font-weight: 500; color:#FF0000;">{{ strtoupper($leaveRequest->status) }}</span>
 
                                 @else
 
-                                    <span style="margin-top:0.625rem; font-size: 0.9rem; font-weight: 500; color:#778899;">{{ strtoupper($leaveRequest->status) }}</span>
+                                    <span style="margin-top:0.625rem; font-size: 0.805rem; font-weight: 500; color:#778899;">{{ strtoupper($leaveRequest->status) }}</span>
 
                                 @endif
                         </span>
@@ -200,73 +43,98 @@
                 </div>
             <div class="middle-container">
                 <div class="view-container">
-                     <div class="first" style="display:flex; gap:40px;padding:5px; ">
+                     <div class="approved-dates" style="display:flex; gap:40px;padding:5px 10px; ">
                             <div class="field">
-                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">From date</span>
-                                <span style="font-size: 1rem; font-weight: 600;"> {{ $leaveRequest->from_date->format('d M, Y') }}<br><span style="color: #494F55;font-size: 0.825rem; font-weight: 600;">{{ $leaveRequest->from_session }}</span></span>
+                                <span style="color: #778899; font-size: 0.755rem; font-weight: 500;">From date</span>
+                                <span style="font-size: 0.805rem; font-weight: 600;"> {{ $leaveRequest->from_date->format('d M, Y') }}<br><span style="color: #494F55;font-size: 0.725rem;font-weight:500; ">{{ $leaveRequest->from_session }}</span></span>
                             </div>
                             <div class="field">
-                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">To date</span>
-                                <span style="font-size: 1rem; font-weight: 600;">{{ $leaveRequest->to_date->format('d M, Y') }} <br><span style="color: #494F55;font-size: 0.825rem; font-weight: 600;">{{ $leaveRequest->to_session }}</span></span>
+                                <span style="color: #778899; font-size: 0.755rem; font-weight: 500;">To date</span>
+                                <span style="font-size: 0.805rem; font-weight: 600;">{{ $leaveRequest->to_date->format('d M, Y') }} <br><span style="color: #494F55;font-size: 0.725rem;font-weight:500; ">{{ $leaveRequest->to_session }}</span></span>
                             </div>
-                            <div class="vertical-line"></div>
                          </div>
+                         <div style="width:1px;border:1px solid #ccc;"></div>
                          <div class="box" style="display:flex;  margin-left:30px;  text-align:center; padding:5px;">
                             <div class="field">
-                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;">No. of days</span>
-                                <span style=" font-size: 0.875rem; font-weight: 600;"> {{ $this->calculateNumberOfDays($leaveRequest->from_date, $leaveRequest->from_session, $leaveRequest->to_date, $leaveRequest->to_session) }}</span>
+                                <span style="color: #778899; font-size: 0.755rem; font-weight: 500;">No. of days</span>
+                                <span style=" font-size: 0.805rem; font-weight: 600;"> {{ $this->calculateNumberOfDays($leaveRequest->from_date, $leaveRequest->from_session, $leaveRequest->to_date, $leaveRequest->to_session) }}</span>
                             </div>
                         </div>
                      </div>
                  </div>
                     <div class="leave">
                         <div class="pay-bal">
-                               <span style=" font-size: 0.975rem; font-weight: 500;">Balance:</span>
-                                     @if(!empty($this->leaveBalances))
-                                                        <div style=" flex-direction:row; display: flex; align-items: center;justify-content:center;">
-                                                        <!-- Sick Leave -->
-                                                            <div style="width: 20px; height: 20px; border-radius: 50%; background-color: #e6e6fa; display: flex; align-items: center; justify-content: center; margin-left:15px;">
-                                                                <span style="font-size: 0.625rem; color: #50327c;font-weight:500;">SL</span>
-                                                        </div>
-                                                            <span style="font-size: 0.795rem; font-weight: 500; color: #50327c; margin-left: 5px;">{{ $this->leaveBalances['sickLeaveBalance'] }}</span>
+                               <span style=" font-size: 0.805rem; font-weight: 500;">Balance:</span>
+                               @php
+                                    // Extract the year from the from_date property
+                                    $fromDateYear = Carbon\Carbon::parse($this->leaveRequest->from_date)->format('Y');
+                                @endphp
+                                @if (!empty($this->leaveBalances) && $fromDateYear == $this->selectedYear)
+                                    <div style="flex-direction: row; display: flex; align-items: center; justify-content: center;">
+                                        <!-- Sick Leave -->
+                                        <div style="width: 20px; height: 20px; border-radius: 50%; background-color: #e6e6fa; display: flex; align-items: center; justify-content: center; margin-left:15px;">
+                                            <span style="font-size: 0.625rem; color: #50327c; font-weight: 500;">SL</span>
+                                        </div>
+                                        <span style="font-size: 0.795rem; font-weight: 500; color: #50327c; margin-left: 5px;">{{ $this->leaveBalances['sickLeaveBalance'] }}</span>
 
+                                        <!-- Casual Leave -->
+                                        <div style="width: 20px; height: 20px; border-radius: 50%; background-color: #e7fae7; display: flex; align-items: center; justify-content: center; margin-left: 15px;">
+                                            <span style="font-size: 0.625rem; color: #1d421e; font-weight: 500;">CL</span>
+                                        </div>
+                                        <span style="font-size: 0.795rem; font-weight: 500; color: #1d421e; margin-left: 5px;">{{ $this->leaveBalances['casualLeaveBalance'] }}</span>
 
-                                                        <!-- Casual Leave -->
-                                                        <div style="width: 20px; height: 20px; border-radius: 50%; background-color: #e7fae7; display: flex; align-items: center; justify-content: center; margin-left: 15px;">
-                                                                <span style="font-size: 0.625rem; color: #1d421e;font-weight:500;">CL</span>
-                                                        </div>
-                                                            <span style="font-size: 0.795rem; font-weight: 500; color: #1d421e; margin-left: 5px;">{{ $this->leaveBalances['casualLeaveBalance'] }}</span>
-                                                        <!-- Loss of Pay -->
-                                                        <div style="width: 20px; height: 20px; border-radius: 50%; background-color: #ffebeb; display: flex; align-items: center; justify-content: center; margin-left: 15px;">
-                                                                <span style="font-size: 0.625rem; color: #890000;font-weight:500;">LP</span>
-                                                        </div>
-                                                            <span style="font-size: 0.795rem; font-weight: 500; color: #890000; margin-left: 5px;">{{ $this->leaveBalances['lossOfPayBalance'] }}</span>
-                                                    </div>
-                                                @endif
-                              </div>
-                        <div class="leave-type">
-                            <span style=" color: #605448; font-size: 1rem; font-weight: 600;">{{ $leaveRequest->leave_type }}</span>
-                        </div>
-                  </div>
-              </div>
- 
+                                        <!-- Loss of Pay -->
+                                        <div style="width: 20px; height: 20px; border-radius: 50%; background-color: #ffebeb; display: flex; align-items: center; justify-content: center; margin-left: 15px;">
+                                            <span style="font-size: 0.625rem; color: #890000; font-weight: 500;">LP</span>
+                                        </div>
+                                        <span style="font-size: 0.795rem; font-weight: 500; color: #890000; margin-left: 5px;">{{ $this->leaveBalances['lossOfPayBalance'] }}</span>
+                                    </div>
+                                @else
+                                    <!-- Display 0 or any other message when the year does not match -->
+                                    <span style="text-align: center; color: #000;font-weight:500;font-size:0.795rem;">0</span>
+                                @endif
+
+                            </div>
+                                <div class="leave-type">
+                                    <span style=" color: #605448; font-size: 0.805rem; font-weight: 600;">{{ $leaveRequest->leave_type }}</span>
+                                </div>
+                           </div>
+                     </div>
+     <div style="height:1px;border:1px solid #f3f3f3;"></div>
         <div class="details">
            <div class="data">
-           <p><span style="color: #333; font-weight: 500; font-size:1rem;">Details</span></p>
-           @if(!empty($leaveRequest['applying_to']))
-            @foreach($leaveRequest['applying_to'] as $applyingTo)
-            <p style=" font-size: 0.90rem; "><span style="color: #778899; font-size: 0.875rem; font-weight: 400;padding-right: 58px;">Applying to</span  >{{ $applyingTo['report_to'] }}</p>
-            @endforeach
+           <p><span style="color: #333; font-weight: 500; font-size:0.825rem;">Details</span></p>
+           @if (!empty($leaveRequest['applying_to']))
+                <div class="row">
+                    @foreach ($leaveRequest['applying_to'] as $applyingTo)
+                        <div class="col-md-6">
+                            <div class="d-flex flex-row gap-4   ">
+                                <span style="color: #778899; font-size: 13px; font-weight: 400;">Applying to</span>
+                                <p style="font-size: 13px;">{{ ucfirst($applyingTo['report_to']) }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             @endif
-             <div style="display:flex; flex-direction:row; justify-conetnt-space-between;">
-             <span style="color: #778899; font-size: 0.875rem; font-weight: 400; padding-right: 88px;">Reason</span>
-             <p style="font-size: 0.895rem;">{{ $leaveRequest->reason }}</p>
-        
-             </div>
-            <p style="margin-top:10px;font-size: 0.875rem;"><span style="color: #778899; font-size: 0.875rem; font-weight: 400; padding-right: 82px;">Contact</span>{{ $leaveRequest->contact_details }} </p>
+            <div class="row mt-1">
+                <div class="col-md-6">
+                    <div class="d-flex flex-row gap-5">
+                        <span style="color: #778899; font-size: 0.805rem; font-weight: 400;">Reason</span>
+                        <p style="font-size: 0.805rem;">{{ ucfirst($leaveRequest->reason) }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-6">
+                    <div class="d-flex flex-row gap-5">
+                        <span style="color: #778899; font-size: 0.805rem; font-weight: 400;">Contact</span>
+                        <p style="font-size: 0.805rem;">{{ ucfirst($leaveRequest->contact_details) }}</p>
+                    </div>
+                </div>
+            </div>
             @if(!empty($leaveRequest->cc_to))
-                <p style="font-size: 0.975rem; font-weight: 500;">
-                    <span style="color: #778899; font-size: 0.875rem; font-weight: 400; padding-right: 90px;">CC to</span>
+                <p style="font-size: 0.805rem; font-weight: 500;">
+                    <span style="color: #778899; font-size: 0.805rem; font-weight: 400; padding-right: 90px;">CC to</span>
                     @foreach($leaveRequest->cc_to as $ccToItem)
                     {{ $ccToItem['full_name'] }} (#{{ $ccToItem['emp_id'] }})
                     @if(!$loop->last)
@@ -275,24 +143,23 @@
                     @endforeach
                 </p>
             @endif
- 
            </div>
         </div>
         </div>
         <div class="side-container ">
-            <h6 style="color: #778899; font-size: 0.875rem; font-weight: 500; text-align:start;"> Application Timeline </h6>
+            <h6 style="color: #778899; font-size: 0.825rem; font-weight: 500; text-align:start;"> Application Timeline </h6>
            <div  style="display:flex; ">
            <div style="margin-top:20px;">
              <div class="cirlce"></div>
              <div class="v-line"></div>
             <div class=cirlce></div>
              </div>
-              <div style="display:flex; flex-direction:column; gap:40px;">
+              <div style="display:flex; flex-direction:column; gap:70px;">
               <div class="group">
               <div>
-                <h5 style="color: #333; font-size: 0.825rem; font-weight: 400; text-align:start;">
+                <h5 class="mt-2"style="color: #333; font-size: 0.755rem; font-weight: 400; text-align:start;">
                     @if(strtoupper($leaveRequest->status) == 'WITHDRAWN')
-                        Withdrawn <br><span style="color: #778899; font-size: 0.825rem; font-weight: 400; text-align:start;">by</span>
+                        Withdrawn <br><span style="color: #778899; font-size: 0.755rem; font-weight: 400; text-align:start;">by</span>
                         <span style="color: #778899; font-weight: 500; text-transform: uppercase;">
                             {{ $this->leaveRequest->employee->first_name }}  {{ $this->leaveRequest->employee->last_name }}
                         </span>
@@ -300,16 +167,16 @@
                         Approved <br> by
                         @if(!empty($leaveRequest['applying_to']))
                             @foreach($leaveRequest['applying_to'] as $applyingTo)
-                                <span style="color: #778899; font-size: 0.825rem; font-weight: 500;text-align:start;">
+                                <span style="color: #778899; font-size: 0.755rem; font-weight: 500;text-align:start;">
                                     {{ $applyingTo['report_to'] }}
                                 </span>
                             @endforeach
                         @endif
                     @else
                         Rejected by <br>
-                        <span style="color: #778899; font-size: 0.825rem; font-weight: 500;text-align:start;">
+                        <span style="color: #778899; font-size: 0.795rem; font-weight: 500;text-align:start;">
                                     {{ $applyingTo['report_to'] }}
-                                </span>
+                        </span>
                     @endif
                     <br>
                     <span style="color: #778899; font-size: 0.725rem; font-weight: 400;text-align:start;">
@@ -321,7 +188,7 @@
            </div>
            <div class="group">
                <div >
-                  <h5 style="color: #333; font-size: 0.825rem; font-weight: 400; text-align:start;">Submitted<br>
+                  <h5 style="color: #333; font-size: 0.755rem; font-weight: 400; text-align:start;">Submitted<br>
                 <span style="color: #778899; font-size: 0.725rem; font-weight: 400;text-align:start;">{{ $leaveRequest->created_at->format('d M, Y g:i A') }}</span>
                     </h5>
                </div>
@@ -334,7 +201,5 @@
         </div>
     </div>
    
-</body>
-</html>
- 
+</body> 
 </div>

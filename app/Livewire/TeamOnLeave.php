@@ -1,5 +1,6 @@
 <?php
-
+// Created by : Bandari Divya
+// About this component: Used to chehck login employee is manager or not if manager it displays the team on leave text in dropdown
 namespace App\Livewire;
 
 use Illuminate\Support\Facades\Auth;

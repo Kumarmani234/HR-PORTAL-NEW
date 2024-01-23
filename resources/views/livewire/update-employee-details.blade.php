@@ -1,55 +1,7 @@
 <div style="width:100%;">    
-    <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-ezgG2veqOA/5zPBnKFVr+1tFZZHoOjHshEWbRl0Yt83QCBTZw1A+DIADKh5F9UOI" crossorigin="anonymous">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.19.0/font/bootstrap-icons.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-ezgG2veqOA/5zPBnKFVr+1tFZZHoOjHshEWbRl0Yt83QCBTZw1A+DIADKh5F9UOI" crossorigin="anonymous">    
-        <style>
-            
-            .empTable {
-                border-collapse: collapse;
-                background-color: white;
-                border: 1px solid #e2e8f0;
-                font-size: 12px;
-                max-width:100%;
-            }
-
-            .empTable td {
-                border: 1px solid #e2e8f0;
-                padding: 0.35rem;
-                text-align: left;
-            }
-
-            .empTable th {
-                border: 1px solid #e2e8f0;
-                padding: 0.35rem;
-                text-align: center;
-                background-color: #02134F;
-                color: #f0f4f8;
-                font-weight: bold;
-                white-space: nowrap;
-            }
-
-            .empTable tbody tr:hover {
-                background-color: #f0f4f8;
-            }
-            table,thead,tbody{
-                width: 100%;
-            }
-            .whitespace-nowrap{
-                text-transform: capitalize;
-                text-align: center;
-            }
-            
-                   
-
-        </style>
-    </head>
     <div class="m-0 p-0">
     <h4 class="text-2xl font-bold mb-2 text-center" style="color:rgb(2, 17, 79);">All Employee Details</h4>
-    <div class="d-flex mb-2 justify-content-between">
+    <div class="d-flex mb-2 justify-content-between overflow-hidden">
         <!-- ... other buttons ... -->
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -80,7 +32,7 @@
                     <th class="whitespace-nowrapp" wire:click="sortBy('date_of_birth')">DOB</th>
                     <th class="whitespace-nowrap" wire:click="sortBy('mobile_number')">Mobile No</th>
                     <th class="whitespace-nowrap" wire:click="sortBy('employee_type')">Employee Type</th>
-                    <th class="whitespace-nowrappp" style="width:150px;">Action</th>
+                    <th class="whitespace-nowrappp" style="width:160px;">Action</th>
                     <!-- Add more table headers as needed -->
                 </tr>
             </thead>

@@ -1,5 +1,6 @@
 <?php
-
+// Created by : Bandari Divya
+// About this component: Only manager can review leave applications which are applied by his team members.
 namespace App\Livewire;
 use App\Models\LeaveRequest;
 use App\Models\EmployeeDetails;
@@ -12,6 +13,9 @@ use Livewire\Component;
 class ViewPendingDetails extends Component
 {
     public $employeeDetails = [];
+    public $selectedYear;
+    public $show2022Content = false;
+    public $show2023Content = false;
     public $employeeId;
     public $leaveRequests;
     public $count;
@@ -23,6 +27,8 @@ class ViewPendingDetails extends Component
 
     public function mount()
     {
+        $this->selectedYear = Carbon::now()->format('Y');
+
             $employeeId = auth()->guard('emp')->user()->emp_id;
             $this->leaveRequests = LeaveRequest::where('leave_applies.status', 'pending')
             ->where(function ($query) use ($employeeId) {
@@ -30,6 +36,7 @@ class ViewPendingDetails extends Component
                     ->orWhereJsonContains('cc_to', [['emp_id' => $employeeId]]);
             })
             ->join('employee_details', 'leave_applies.emp_id', '=', 'employee_details.emp_id')
+            ->orderBy('created_at', 'desc')
             ->get(['leave_applies.*', 'employee_details.image', 'employee_details.first_name','employee_details.last_name']);
             $matchingLeaveApplications = [];
         
@@ -45,7 +52,16 @@ class ViewPendingDetails extends Component
         
                 if ($isManagerInApplyingTo || $isEmpInCcTo) {
                     // Call the getLeaveBalances function to get leave balances for each application
-                    $leaveBalances = LeaveBalances::getLeaveBalances($leaveRequest->emp_id);
+                    $leaveBalances = LeaveBalances::getLeaveBalances($leaveRequest->emp_id, $this->selectedYear);
+                    $fromDateYear = Carbon::parse($leaveRequest->from_date)->format('Y');
+                    if ($fromDateYear == $this->selectedYear) {
+                        // Get leave balance for the current year only
+                        $leaveBalances = LeaveBalances::getLeaveBalances($leaveRequest->emp_id, $this->selectedYear);
+                    } else {
+                        // If from_date year is not equal to the current year, set leave balance to 0
+                        $leaveBalances = 0;
+                    }
+
                     // Add leave balances and leave request data to the array
                     $matchingLeaveApplications[] = [
                         'leaveRequest' => $leaveRequest,
@@ -173,4 +189,5 @@ class ViewPendingDetails extends Component
         // Refresh the Livewire component
         return redirect()->to('livewire.employees-review');
     }
+
 }    

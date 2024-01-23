@@ -1,266 +1,6 @@
 <div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Container Layout</title>
-  
-    <!-- Include Open Sans font -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        /* Container row */
-        body{
-            font-family: 'Montserrat', sans-serif;
-            overflow-y:hidden;
-        }
-      .bal-container{
-        margin-top: 20px; 
-        width: 100%;
-      }
-
-        /* Buttons and dropdown */
-        .buttons-container {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end; /* Align buttons to the right */
-            margin-top: 20px; /* Add some distance from the top */
-            margin-right: 20px; /* Add some distance from the right */
-        }
-
-        .button2 {
-            margin-right: 10px;
-            padding:5px 5px ;
-            width: 100px;
-            text-align:center;
-            border: none;
-            background-color: rgb(2, 17, 79);
-            color: #fff;
-            border-radius: 5px;
-            font-weight: 500;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        .button1 {
-            margin-right: 10px;
-            padding: 5px 5px;
-            width: 100px;
-            border: 1px solid rgb(2, 17, 79);
-            background-color: #fff;
-            color: rgb(2, 17, 79);
-            border-radius: 5px;
-            text-align:center;
-            font-weight: 500;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        .buttons-container .dropdown {
-            background-color: #fff;
-            border: 1px solid #ccc;
-            padding: 5px;
-            width: 100px; /* Set the width of the dropdown */
-            border-radius: 5px; /* Add some rounded corners */
-            font-size: 14px; /* Adjust font size */
-        }
-
-        /* Style for hover effect on options */
-        .buttons-container .dropdown:hover {
-            cursor: pointer;
-            border: 1px solid #00BFFF;
-            padding: 5px; /* Add space between options */
-        }
-
-        .dropdown option {
-            padding: 5px 10px; /* Add space around the text in each option */
-        }
-
-        .view {
-            text-decoration: none;
-        }
-
-        .view:hover {
-            color: #007BFF;
-        }
-        .leave-bal{
-            border: 1px solid #bfcee3;
-             padding: 5px 10px; 
-             border-radius: 5px;
-              text-align: center; 
-              height: 200px; 
-              background-color:#fff;
-        }
-        .balance{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-        /* Tube-like container */
-        .tube-container {
-            position: relative;
-            width: 100%;
-            height: 7px;
-            margin-top: 52px;
-            background:#fff;
-            border:1px solid #ccc;
-            border-radius:10px;
-        }
-
-        .tube {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            border-radius:7px;
-            height: 100%;
-            /* Green color for leaves */
-            transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
-        }
-        .center h5{
-            color:#778899;
-            font-size: 22px;
-            font-weight:600;
-        }
-        .center{
-            text-align: center;
-            align-items:center;
-             margin-top: 20px; 
-             font-size: 16px;
-        }
-        .center span{
-            color: #778899; 
-            font-size: 12px; 
-            font-weight: 400;
-             text-transform: capitalize;
-        }
-      
-        .leave-type{
-            color: #778899;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        .leave-gran{
-            color: #778899; 
-            font-size: 14px; 
-            font-weight: 500; 
-            text-transform: capitalize;
-        }
-        .remaining{
-            color: #778899;
-             font-size: 12px;
-              font-weight: 400;
-               text-transform: capitalize;
-        }
-        .view-bal{
-            font-size:1.2rem;
-            color:#00BFFF;
-        }
-        .btn-cancel{
-            background:#fff;
-            border:1px solid #1E90FF;
-            color:#1E90FF;
-            border-radius:5px;
-        }
-        .modal-title{
-            font-size:0.975rem;
-        }
-        .modal-header{
-            background: #F2F2F2;
-        }
-        .form-group label{
-           font-size:0.825rem;
-           font-weight:500;
-           color:#778899;
-        }
-        .form-control option{
-         font-weight:600;
-         font-size:0.9rem;
-        }
-
-    </style>
-</head>
 <body>
 <div class="container" id="card-content" style="display:none;margin:0 auto; align-items:center;background:#fcfcfc; width:100%;">
-        <!DOCTYPE html>
-<head>
-    <style>
-        .leave-transctions{
-            background:#fff;
-            margin:0 auto;
-            width:100%;
-            padding:20px 30px;
-            box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
-        }
-        .pdf-heading{
-            text-align:center;
-            display:flex;
-            flex-direction:row;
-            gap:10px;
-        }
-
-        /* Header Styles */
-       .pdf-heading h2 {
-            color: black;
-            font-size:1.1rem;
-            font-weight:600;
-        }
-       .pdf-heading span p{
-            font-size:0.700rem;
-            font-weight:500;
-            margin-top:2px;
-            color:#36454F;
-        }
-       .pdf-heading h3 {
-            font-weight:500;
-            margin-top:-5px;
-            font-size:0.895rem;
-        }
-        .emp-details{
-            padding: 5px 10px;
-        }
-       
-        .emp-details span{
-            font-size:0.835rem;
-            color:#333;
-           font-weight:400;
-           margin-left:5px;
-        }
-        .emp-details p{
-            font-size:0.875rem;
-            font-weight:600;
-        }
-        .emp-info{
-            display:flex;
-            flex-direction:row;
-            border:1px solid #333;
-           gap: 100px;
-           
-        }
-        /* Table Styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1.2px solid #808080;
-            padding: 8px;
-            width:100px;
-           text-align:center;
-        }
-        td{
-            font-size:0.795rem;
-        }
-        th {
-            font-size:0.825rem;
-            background-color: #C0C0C0;
-        }
-    </style>
-</head>
 <body>
     <div class="leave-transctions">
         <div class="pdf-heading">
@@ -423,9 +163,9 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="label-style">Sort by</label>
-                               <select name="sortBy"  wire:model="sortBy" class="form-control" wire:change="checkSortBy" id="sortBySelect">
-                                    <option value="oldest_first" {{ $sortBy == 'oldest_first' ? 'selected' : '' }}>Date (Oldest First)</option>
-                                    <option value="newest_first" {{ $sortBy == 'newest_first' ? 'selected' : '' }}>Date (Newest First)</option>
+                               <select name="sortBy"   class="form-control"  id="sortBySelect">
+                                    <option value="oldest_first">Date (Oldest First)</option>
+                                    <option value="newest_first">Date (Newest First)</option>
                                 </select>
                             </div>
                         </div>
@@ -447,7 +187,7 @@
         <div class="bal-container" >
          <div class="row" style="margin:10px auto;">
             <div class="col-md-4">
-                <div class="leave-bal">
+                <div class="leave-bal mb-2">
                     <div class="balance">
                         <div class="field">
                             <span class="leave-type" >Loss Of Pay</span>
@@ -464,7 +204,7 @@
             </div>
          <!-- ... (previous code) ... -->
             <div class="col-md-4">
-               <div class="leave-bal">
+               <div class="leave-bal mb-2">
                 <div class="balance">
                     <div class="field">
                         <span class="leave-type">
@@ -493,7 +233,7 @@
             </div>
               </div>
                 <div class="col-md-4">
-                    <div class="leave-bal">
+                    <div class="leave-bal mb-2">
                         <div class="balance">
                                 <div class="field">
                                     <span class="leave-type">Casual Leave 
@@ -517,7 +257,7 @@
             </div>
             <div class="row" style="margin:10px auto;">
               <div class="col-md-4">
-                    <div class="leave-bal" style="margin-top">
+                    <div class="leave-bal mb-2" >
                         <div class="balance">
                                 <div class="field">
                                     <span class="leave-type">Sick Leave
@@ -542,13 +282,12 @@
             
         </div>
         @endif
-        <!-- 2024 year -->
-        @if($show2024Content)
-        <div>
-        <div class="bal-container" >
-         <div class="row" style="margin:10px auto;">
+<!-- leave  -->
+@if($show2023Content)
+    <div class="bal-container" >
+        <div class="row" style="margin:10px auto;">
             <div class="col-md-4">
-                <div class="leave-bal">
+                <div class="leave-bal mb-2">
                     <div class="balance">
                         <div class="field">
                             <span class="leave-type" >Loss Of Pay</span>
@@ -558,14 +297,119 @@
                         </div>
                     </div>
                     <div class="center" >
-                        <h5 >0</h5>
+                        <h5 >0 </h5>
                         <p style="margin-top:-15px;"><span class="remaining" >balance</span></p>
                     </div>
                 </div>
             </div>
          <!-- ... (previous code) ... -->
             <div class="col-md-4">
-               <div class="leave-bal">
+               <div class="leave-bal mb-2">
+                <div class="balance">
+                    <div class="field">
+                        <span class="leave-type">
+                            @if($gender === 'Female')
+                            Maternity Leave
+                            @elseif($gender === 'Male')
+                            Paternity Leave
+                            @else
+                            Leave Type
+                            @endif
+                        </span>
+                    </div>
+                    <div>
+                        <span class="leave-gran">Granted:{{ $grantedLeave }}</span>
+                    </div>
+                </div>
+                <div class="center">
+                    <h5>0</h5>
+                    <p style="margin-top:-15px;"><span class="remaining">balance</span></p>
+                    <a href="#" class="view" style="font-size:0.9rem;">View Details</a>
+                </div>
+                <div class="tube-container">
+                    <p style="color: #778899; font-size: 10px; text-align:start; margin-top:-15px;font-weight: 400;">0 of {{ $grantedLeave }} Consumed</p>
+                    <div class="tube" style="width: 0%; background-color: #1E90FF;"></div> <!-- Adjust the width and color based on your usage -->
+                </div>
+            </div>
+              </div>
+                <div class="col-md-4">
+                    <div class="leave-bal mb-2">
+                        <div class="balance">
+                                <div class="field">
+                                    <span class="leave-type">Casual Leave 
+                                </div>
+                                <div>
+                                    <span class="leave-gran">Granted:0</span>
+                                </div>
+                         </div>
+                         <div class="center" >
+                             <h5 >0</h5>
+                             <p style="margin-top:-15px;"><span class="remaining" >balance</span></p>
+                             <a href="#" style="font-size:0.9rem;">View Details</a>
+                        </div>
+                            <div class="tube-container">
+                            <p style="color: #778899; font-size: 10px; text-align: start; margin-top: -15px; font-weight: 400;">
+                                        {{ $casualLeavePerYear }} of {{ $casualLeavePerYear }} Consumed
+                                </p>
+                               <div class="tube" style="width: 100%; background-color: #1E90FF;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin:10px auto;">
+              <div class="col-md-4">
+                    <div class="leave-bal mb-2" >
+                        <div class="balance">
+                                <div class="field">
+                                    <span class="leave-type">Sick Leave
+                                </div>
+                                <div>
+                                    <span class="leave-gran">Granted:{{ $sickLeavePerYear }}</span>
+                                </div>
+                         </div>
+                            <div class="center" >
+                                <h5 >0</h5>
+                                <p style="margin-top:-15px;"><span class="remaining" >balance</span></p>
+                                <a href="#" style="font-size:0.9rem;">View Details</a>
+                            </div>
+                            <div class="tube-container">
+                            <p style="color: #778899; font-size: 10px; text-align: start; margin-top: -15px; font-weight: 400;">
+                                        {{ $sickLeavePerYear }} of {{ $sickLeavePerYear }} Consumed
+                                </p>
+                            <div class="tube" style="width: 100%; background-color: #1E90FF;"></div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        @endif
+
+<!-- 2024 -->
+        <div>
+        <div class="bal-container" >
+         <div class="row" style="margin:10px auto;">
+            <div class="col-md-4">
+                <div class="leave-bal mb-2">
+                    <div class="balance">
+                        <div class="field">
+                            <span class="leave-type" >Loss Of Pay</span>
+                        </div>
+                        <div>
+                            <span class="leave-gran">Granted:{{$lossOfPayPerYear}}</span>
+                        </div>
+                    </div>
+                    <div class="center" >
+                        <h5 >
+                            {{$lossOfPayBalance}}
+                        </h5>
+                        <p style="margin-top:-15px;"><span class="remaining" >balance</span></p>
+                    </div>
+                </div>
+            </div>
+         <!-- ... (previous code) ... -->
+            <div class="col-md-4">
+               <div class="leave-bal mb-2">
                 <div class="balance">
                     <div class="field">
                         <span class="leave-type">
@@ -594,23 +438,23 @@
             </div>
               </div>
                 <div class="col-md-4">
-                    <div class="leave-bal">
+                    <div class="leave-bal mb-2 ">
                         <div class="balance">
                                 <div class="field">
                                     <span class="leave-type">Casual Leave 
                                 </div>
                                 <div>
-                                    <span class="leave-gran">Granted:0</span>
+                                    <span class="leave-gran">Granted:{{$casualLeavePerYear}}</span>
                                 </div>
                          </div>
                          <div class="center" >
-                             <h5 >0</h5>
+                             <h5 >{{$casualLeaveBalance}}</h5>
                              <p style="margin-top:-15px;"><span class="remaining" >balance</span></p>
                              <a href="#" style="font-size:0.9rem;">View Details</a>
                         </div>
                         <div class="tube-container">
-                                <p style="color: #778899; font-size: 10px; text-align:start; margin-top:-15px;font-weight: 400;">0 of {{ $grantedLeave }} Consumed</p>
-                                <div class="tube" style="width: 0%; background-color: #1E90FF;"></div> <!-- Adjust the width and color based on your usage -->
+                                <p style="color: #778899; font-size: 10px; text-align:start; margin-top:-15px;font-weight: 400;">0 of {{ $casualLeaveForYear2024 }} Consumed</p>
+                                <div class="tube" style="width: 0%; background-color: #1E90FF;"></div> 
                             </div>
                         </div>
                     </div>
@@ -618,113 +462,7 @@
             </div>
             <div class="row" style="margin:10px auto;">
               <div class="col-md-4">
-                    <div class="leave-bal" style="margin-top">
-                        <div class="balance">
-                                <div class="field">
-                                    <span class="leave-type">Sick Leave
-                                </div>
-                                <div>
-                                    <span class="leave-gran">Granted:0</span>
-                                </div>
-                         </div>
-                            <div class="center" >
-                                <h5>0</h5>
-                                <p style="margin-top:-15px;"><span class="remaining" >balance</span></p>
-                                <a href="#" style="font-size:0.9rem;">View Details</a>
-                            </div>
-                            <div class="tube-container">
-                                <p style="color: #778899; font-size: 10px; text-align:start; margin-top:-15px;font-weight: 400;">0 of {{ $grantedLeave }} Consumed</p>
-                                <div class="tube" style="width: 0%; background-color: #1E90FF;"></div> <!-- Adjust the width and color based on your usage -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div>
-        </div>
-        @endif
-<!-- leave  -->
-    <div class="bal-container" >
-        <div class="row" style="margin:10px auto;">
-            <div class="col-md-4">
-                <div class="leave-bal">
-                    <div class="balance">
-                        <div class="field">
-                            <span class="leave-type" >Loss Of Pay</span>
-                        </div>
-                        <div>
-                            <span class="leave-gran">Granted:0</span>
-                        </div>
-                    </div>
-                    <div class="center" >
-                        <h5 >{{$lossOfPayBalance}} </h5>
-                        <p style="margin-top:-15px;"><span class="remaining" >balance</span></p>
-                    </div>
-                </div>
-            </div>
-         <!-- ... (previous code) ... -->
-            <div class="col-md-4">
-               <div class="leave-bal">
-                <div class="balance">
-                    <div class="field">
-                        <span class="leave-type">
-                            @if($gender === 'Female')
-                            Maternity Leave
-                            @elseif($gender === 'Male')
-                            Paternity Leave
-                            @else
-                            Leave Type
-                            @endif
-                        </span>
-                    </div>
-                    <div>
-                        <span class="leave-gran">Granted:{{ $grantedLeave }}</span>
-                    </div>
-                </div>
-                <div class="center">
-                    <h5>{{ $grantedLeave }}</h5>
-                    <p style="margin-top:-15px;"><span class="remaining">balance</span></p>
-                    <a href="#" class="view" style="font-size:0.9rem;">View Details</a>
-                </div>
-                <div class="tube-container">
-                    <p style="color: #778899; font-size: 10px; text-align:start; margin-top:-15px;font-weight: 400;">0 of {{ $grantedLeave }} Consumed</p>
-                    <div class="tube" style="width: 0%; background-color: #1E90FF;"></div> <!-- Adjust the width and color based on your usage -->
-                </div>
-            </div>
-              </div>
-
-
-                <div class="col-md-4">
-                    <div class="leave-bal">
-                        <div class="balance">
-                                <div class="field">
-                                    <span class="leave-type">Casual Leave 
-                                </div>
-                                <div>
-                                    <span class="leave-gran">Granted:{{ $casualLeavePerYear }}</span>
-                                </div>
-                         </div>
-                         <div class="center" >
-                             <h5 >{{ $casualLeaveBalance }}</h5>
-                             <p style="margin-top:-15px;"><span class="remaining" >balance</span></p>
-                             <a href="#" style="font-size:0.9rem;">View Details</a>
-                        </div>
-                            <div class="tube-container">
-                                <p style="color: #778899; font-size: 10px; text-align:start; margin-top:-15px;font-weight: 400;">
-                                @if($consumedCasualLeaves > 0)
-                                        {{ $consumedCasualLeaves }} of {{ $casualLeavePerYear }} Consumed
-                                    @else
-                                        0 of {{ $casualLeavePerYear }} Consumed
-                                    @endif
-                            </p>
-                            <div class="tube" style="width: {{ $percentageCasual }}%; background-color: {{ $this->getTubeColor($consumedCasualLeaves, $casualLeavePerYear, 'Causal Leave Probation') }};"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="margin:10px auto;">
-              <div class="col-md-4">
-                    <div class="leave-bal" style="margin-top">
+                    <div class="leave-bal mb-2">
                         <div class="balance">
                                 <div class="field">
                                     <span class="leave-type">Sick Leave
@@ -734,33 +472,19 @@
                                 </div>
                          </div>
                             <div class="center" >
-                                <h5 >{{ $sickLeaveBalance }}</h5>
+                                <h5>{{ $sickLeaveBalance }}</h5>
                                 <p style="margin-top:-15px;"><span class="remaining" >balance</span></p>
                                 <a href="#" style="font-size:0.9rem;">View Details</a>
                             </div>
                             <div class="tube-container">
-                            <p style="color: #778899; font-size: 10px; text-align: start; margin-top: -15px; font-weight: 400;">
-                                    @if($consumedSickLeaves > 0)
-                                        {{ $consumedSickLeaves }} of {{ $sickLeavePerYear }} Consumed
-                                    @else
-                                        0 of {{ $sickLeavePerYear }} Consumed
-                                    @endif
-                                </p>
-                                <div class="tube" style="width: {{ $percentageSick }}%; background-color: {{ $this->getTubeColor($consumedSickLeaves, $sickLeavePerYear, 'Sick Leave') }};"></div>
+                                <p style="color: #778899; font-size: 10px; text-align:start; margin-top:-15px;font-weight: 400;">0 of {{ $sickLeaveForYear2024 }} Consumed</p>
+                                <div class="tube" style="width: 0%; background-color: #1E90FF;"></div> <!-- Adjust the width and color based on your usage -->
                             </div>
                         </div>
                     </div>
-                   
-            </div>
+                </div>
+           </div>
         </div>
-
-        <!-- modal container -->
-        
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-
 <!-- Initialize Datepicker -->
 <script>
     $(document).ready(function() {
@@ -838,6 +562,5 @@
 </script>
 
     </body>
-    </html>
 
 </div>

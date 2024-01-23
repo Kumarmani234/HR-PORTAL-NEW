@@ -150,7 +150,7 @@
                                <div class="home-hover mb-2">
                                   <div class="reviews">
                                   <div style="border-radius: 5px; border: 1px solid #CFCACA;  background-color: white;">
-                                    <div class="heading" style="display:flex; justify-content:space-between;padding:5px 10px;">
+                                    <div class="team-heading" style="display:flex; justify-content:space-between;padding:5px 10px;">
                                        <div style="color: #677A8E;font-weight:500;font-size:0.825rem;">
                                             Team On Leave
                                         </div>
@@ -261,7 +261,7 @@
                                                 <p style="color: #778899; font-size: 0.775rem; font-weight: 500; ">
                                                         Late Arrival({{ $CountLateSwipes }})
                                                     </p>
-                                                <div class="team-leave d-flex flex-row mr gap-3">
+                                                <div class="team-leave d-flex flex-row  gap-3">
                                                 @php
                                                   function getRandomLateColor() {
                                                                 $colors = ['#FFD1DC', '#D2E0FB', '#ADD8E6', '#E6E6FA', '#F1EAFF','#FFC5C5'];

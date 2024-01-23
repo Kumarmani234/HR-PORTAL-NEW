@@ -1,14 +1,14 @@
 <?php
-
+// Created by : Bandari Divya
+// About this component: It shows the details of applied leave applications from a team, later will approved by manager
 namespace App\Livewire;
+use Livewire\Component;
 
-use App\Models\LeaveRequest;
-use App\Models\EmployeeDetails;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Livewire\Component;
 use App\Helpers\LeaveHelper; 
 use Carbon\Carbon;
+use App\Models\LeaveRequest;
 use App\Livewire\LeavePage; 
 use App\Livewire\LeaveBalances; 
 
@@ -20,16 +20,27 @@ class ViewDetails extends Component
     public $full_name;
     public  $firstName;
     public $employeeDetails = [];
-    public $leaveRequest=[]; // Property to hold the selected leave request
-
+    public $leaveRequest;
+    public $leaveBalances;
+    public $selectedYear;
     public function mount($leaveRequestId)
     {
         // Fetch leave request details based on $leaveRequestId with employee details
+        $this->selectedYear = Carbon::now()->format('Y');
+
         $this->leaveRequest = LeaveRequest::with('employee')->find($leaveRequestId);
       
-        // Call the getLeaveBalances function to get leave balances
-      
-        $this->leaveRequest->leaveBalances = LeaveBalances::getLeaveBalances( $this->leaveRequest->emp_id);
+        $this->leaveBalances = LeaveBalances::getLeaveBalances($this->leaveRequest->emp_id, $this->selectedYear);
+        $fromDateYear = Carbon::parse($this->leaveRequest->from_date)->format('Y');
+        // Check if the current year matches the selected year
+        if ($this->selectedYear == $fromDateYear) {
+            // If it's the current year, use the fetched leave balances
+            $leaveBalance = $this->leaveBalances;
+        } else {
+            // If it's not the current year, set leave balance to 0
+            $leaveBalance = 0;
+        }
+
         $this->firstName = $this->leaveRequest->employee->first_name . ' ' . $this->leaveRequest->employee->last_name;
         $this->leaveRequest->from_date = Carbon::parse($this->leaveRequest->from_date);
         $this->leaveRequest->to_date = Carbon::parse($this->leaveRequest->to_date);
@@ -129,15 +140,13 @@ class ViewDetails extends Component
     }
 
     public function render()
-    {
-       
-        
+    { 
         try {
-                // Attempt to decode applying_to
+                //json decode applying_to
         $applyingToJson = trim($this->leaveRequest->applying_to);
         $this->leaveRequest->applying_to = is_array($applyingToJson) ? $applyingToJson : json_decode($applyingToJson, true);
 
-        // Attempt to decode cc_to
+        // json decode cc_to
         $ccToJson = trim($this->leaveRequest->cc_to);
         $this->leaveRequest->cc_to = is_array($ccToJson) ? $ccToJson : json_decode($ccToJson, true);
 
@@ -145,9 +154,9 @@ class ViewDetails extends Component
             dd("Error in JSON decoding: " . $e->getMessage());
         }
           
-        // Pass the leaveRequest data and leaveBalances to the Blade view
         return view('livewire.view-details', [
-             'leaveRequest' => $this->leaveRequest,             
+             'leaveRequest' => $this->leaveRequest,  
+             'leaveBalances' => $this->leaveBalances,           
         ]);
        
     }  

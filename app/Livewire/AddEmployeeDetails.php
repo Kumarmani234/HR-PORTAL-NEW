@@ -1,5 +1,6 @@
 <?php
-
+// Created by : Bandari Divya
+// About this component: To add employee details/employee registartion form
 namespace App\Livewire;
 
 use Livewire\Component;
@@ -77,7 +78,7 @@ class AddEmployeeDetails extends Component
     public $reportTos, $selectedEmployee, $employee;
 
 
-
+   //to store employees details
     public function register()
     {
 
@@ -135,7 +136,7 @@ EmployeeDetails::create([
             'employee_status' => $this->employee_status,
             'emergency_contact' => $this->emergency_contact,
             'password' => $this->password,
-            'image' => $imagePath, // Example storage for image upload
+            'image' => $imagePath, // storage for image upload
             'blood_group' => $this->blood_group,
             'nationality' => $this->nationality,
             'religion' => $this->religion,
@@ -170,18 +171,8 @@ EmployeeDetails::create([
     }
 
 
-    // public function updatedImage()
-    // {
-    //     $this->validate([
-    //         'image' => 'image|max:1024', // Adjust the validation rules as needed
-    //     ]);
-
-    //     $this->savedImage = $this->image->store('employee_image', 'public');
-    // }
-
-
-
     public $companieIds;
+    //logout for admin dashbaord
     public function logout()
     {
         auth()->guard('com')->logout();
