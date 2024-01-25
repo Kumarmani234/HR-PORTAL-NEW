@@ -1,13 +1,13 @@
 <div>
-<div class="row ng-star-inserted">
-<div class="col-sm-6 col-md-4 ng-star-inserted">
-    <div class="itd-plan-card itd-plan-card-filled">
-        <p class="text-semi-bold text-4 plan-title ng-star-inserted">
+<div class="row ng-star-inserted" style=" display: flex;">
+<div class="col-sm-6 col-md-4 ng-star-inserted" >
+    <div class="itd-plan-card itd-plan-card-filled" style="border: 1px solid #ccc;padding: 15px;margin-bottom: 20px;background-color: #f9f9f9;">
+        <p class="text-semi-bold text-4 plan-title ng-star-inserted" style=" font-size: 18px;font-weight: bold;margin-bottom: 10px;">
             <span>Plan A</span>
             <span class="plan-view-btn">
               <a href="/plan-C" style="margin-left:120px;font-size:14px"> View Plan </a>
             </span>
-            <span dropdown class="plan-options gt-pl-3">
+            <span dropdown class="plan-options gt-pl-3" style=" margin-left: 110px;">
                 <i dropdowntoggle class="icon-gt-options dropdown-button" aria-haspopup="true"></i>
             </span>
         </p>
@@ -39,20 +39,20 @@
               </div>
             </div>
           </div>
-          <div class="plan-submit">
+          <div class="plan-submit" style="text-align: center; margin-top: 20px;">
           <button class="btn btn-primary ng-star-inserted" tabindex="0" disabled="" style="height:30px;background:#D9D9D9;color:#787777;border:1px solid grey"><p style="margin-top:-5px">Proceed to Submit</p></button>
             <p class="text-6 text-muted text-regular ng-star-inserted" style="text-align: center;">Declaration window is not open</p>
           </div>
         </div>
       </div>
-      <div class="col-sm-6 col-md-4 ng-star-inserted">
-        <div class="itd-plan-card itd-plan-card-filled">
-          <p class="text-semi-bold text-4 plan-title ng-star-inserted">
+      <div class="col-sm-6 col-md-4 ng-star-inserted" >
+        <div class="itd-plan-card itd-plan-card-filled" style="border: 1px solid #ccc;padding: 15px;margin-bottom: 20px;background-color: #f9f9f9;">
+          <p class="text-semi-bold text-4 plan-title ng-star-inserted" style=" font-size: 18px;font-weight: bold;margin-bottom: 10px;">
             <span>Plan B</span>
             <span class="plan-view-btn">
               <a href="/plan-C" style="margin-left:120px;font-size:14px"> View Plan </a>
             </span>
-            <span dropdown class="plan-options gt-pl-3">
+            <span dropdown class="plan-options gt-pl-3"  style="margin-left: 110px;">
               <i dropdowntoggle class="icon-gt-options dropdown-button" aria-haspopup="true"></i>
             </span>
           </p>
@@ -84,20 +84,20 @@
               </div>
             </div>
           </div>
-          <div class="plan-submit">
+          <div class="plan-submit" style="text-align: center; margin-top: 20px;">
             <button class="btn btn-primary ng-star-inserted" tabindex="0" disabled="" style="height:30px;background:#D9D9D9;color:#787777;border:1px solid grey"><p style="margin-top:-5px">Proceed to Submit</p></button>
             <p class="text-6 text-muted text-regular ng-star-inserted" style="text-align: center;color:#787777">Declaration window is not open</p>
           </div>
         </div>
       </div>
-      <div class="col-sm-6 col-md-4 ng-star-inserted">
-        <div class="itd-plan-card itd-plan-card-filled">
-          <p class="text-semi-bold text-4 plan-title ng-star-inserted">
+      <div class="col-sm-6 col-md-4 ng-star-inserted" >
+        <div class="itd-plan-card itd-plan-card-filled" style="border: 1px solid #ccc;padding: 15px;margin-bottom: 20px;background-color: #f9f9f9;">
+          <p class="text-semi-bold text-4 plan-title ng-star-inserted" style=" font-size: 18px;font-weight: bold;margin-bottom: 10px;">
             <span>Plan C</span>
             <span class="plan-view-btn">
               <a href="/plan-C" style="margin-left:120px;font-size:14px"> View Plan </a>
             </span>
-            <span dropdown class="plan-options gt-pl-3">
+            <span dropdown class="plan-options gt-pl-3" style="margin-left: 110px;">
               <i dropdowntoggle class="icon-gt-options dropdown-button" aria-haspopup="true"></i>
             </span>
           </p>
@@ -129,7 +129,7 @@
               </div>
             </div>
           </div>
-          <div class="plan-submit">
+          <div class="plan-submit" style="text-align: center; margin-top: 20px;">
           <button class="btn btn-primary ng-star-inserted" tabindex="0" disabled="" style="height:30px;background:#D9D9D9;color:#787777;border:1px solid grey"><p style="margin-top:-5px">Proceed to Submit</p></button>
             <p class="text-6 text-muted text-regular ng-star-inserted" style="text-align: center;">Declaration window is not open</p>
           </div>
@@ -137,9 +137,9 @@
       </div>
       <!-- More plan cards go here -->
     </div>
-    
-    
+   
+   
   </div>
-  
+ 
 </div>
 </div>

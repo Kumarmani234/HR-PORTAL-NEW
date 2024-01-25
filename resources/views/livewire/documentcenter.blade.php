@@ -1,27 +1,11 @@
 <div>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Left Menu (Conditional)</title>
-
-</head>
 <body>
  
-<div class="container">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap">
- 
-    <!-- Left Menu and Content (Conditional) -->
-    <div class="left-menu">
-   
-        <!-- Add your menu items here -->
-    </div>
- 
-    <!-- Content Area -->
+<div class="doc">
+     <!-- Content Area -->
     <div class="content" style="height:auto" >
     <div style="display: flex; ">
-<div class="container" style="width: 700px; display: flex;background:white">
+<div class="doc" style="width: 700px; display: flex;background:white">
 <div style="flex: 1;">
     <h1 style="margin-top: 20px; font-size: 17px; font-family: montserrat;">
         We've got it sorted for you!
@@ -88,25 +72,26 @@
     </div>
    
 </div>
-<div class="container" style="height: 90px; width: 280px; background-color: white; border: 1px solid #D9D9D9; border-radius: 5px;  margin-left:-20px;margin-top:10px">
+<div class="doc" style="height: 110px; width: 280px; background-color: white; border: 1px solid #D9D9D9; border-radius: 5px;  margin-top:10px">
     <div class="A" style="height: 45px;">
-  <div style="display: flex; flex-direction: row;">
+     <div style="display: flex; flex-direction: row; gap:10px;">
          <img src="https://th.bing.com/th/id/R.a8fbb7dd4338480fc0f29d78375994bb?rik=uovY7DoomLCYXw&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fletter-png-big-image-png-2400.png&ehk=C4gR%2bU0pBkTI5moKfEGFAQerMguNcEQaCUdK2w97iOk%3d&risl=&pid=ImgRaw&r=0" alt="Image Description" style="height: 25px; width: 25px; margin-left: 10px; margin-top: 20px;">
-          <p style="margin-top: 20px; margin-left: 20px;font-size:12px">Letter</p>
-          <a class="links" href="/document-center-letters" style="margin-top: 23px; padding-left: 90px; font-size: 12px;  color: black; text-decoration: none;">
-    <span onmouseover="this.style.color='#33B3BC'; this.style.textDecoration='underline';" onmouseout="this.style.color='blue'; this.style.textDecoration='none';">
-    View all
-    </span>
-  </a>
+          <p style="margin-top: 20px; font-size:12px">Letter</p>
      </div>
       </div>
+      <div class="p-3">
+      <a class="links" href="/document-center-letters" style="margin-top: 23px; font-size: 12px;  color: black; text-decoration: none;">
+        <span onmouseover="this.style.color='#33B3BC'; this.style.textDecoration='underline';" onmouseout="this.style.color='blue'; this.style.textDecoration='none';">
+        View all
+        </span>
+    </a>
+      </div>
       <div class="B" style="height: 45px;display: flex;">
-     <div  style="display: flex; flex-direction: row; margin-left: 10px; margin-top: 10px;">
-         <p style="font-size: 14px; font-family: 'Open Sans', ">Pending:0</p>
-         <p style="margin-left: 100px; font-size: 12px; color: #677A8E;">Declined:0</p>
+     <div  class="px-3" style="display: flex; flex-direction: row; gap:50px; ">
+         <p style="font-size: 14px; ">Pending:0</p>
+         <p style=" font-size: 12px; color: #677A8E;">Declined:0</p>
      </div>
   </div>
       </div>
 </div>
-</html>
 </div>

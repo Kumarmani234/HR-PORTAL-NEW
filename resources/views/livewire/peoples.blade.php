@@ -2,7 +2,7 @@
 
 <div>
     <x-loading-indicator />
-    <div class="container">
+    <div class="people-container">
         <div class="row" style="margin-left: 1%; width: 20%; position: relative;width:500px">
             <div class="col" style="text-align: center; border-radius: 5px; margin-right: 10px; cursor: pointer;">
                 <a id="starred-tab-link" style="text-decoration: none; font-size: 13px; color: {{ $activeTab === 'starred' ? 'rgb(2, 17, 79);' : '#333' }}" wire:click="$set('activeTab', 'starred')" class="links">Starred</a>
@@ -19,26 +19,24 @@
         <!-- Starred tab content -->
         <div class="row" style="margin-top: 15px">
             <!-- Search input and filter button -->
-            <div class="col" style="width: 150px; background-color: white; border-radius: 5px; height: auto; margin-right: 20px; padding: 5px;">
-                <div class="container" style="margin-top: 10px">
-                    <div class="row">
-                        <div class="col" style="margin: 0px; padding: 0px">
-                            <div class="input-group">
-                                <input wire:model="search" style="font-size: 10px; border-radius: 5px 0 0 5px; cursor: pointer" type="text" class="form-control" placeholder="Search for Emp.Name or ID" aria-label="Search" aria-describedby="basic-addon1">
-                                <div class="input-group-append">
-                                    <button wire:click="starredFilter" style="height: 30px; border-radius: 0 5px 5px 0; background-color: rgb(2, 17, 79);; color: #fff; border: none;" class="btn" type="button">
+            <div class="col " style="background-color: white; border-radius: 5px; height: auto; margin-right: 20px; padding: 5px;">
+                <div class="people-container" style="margin-top: 10px">
+                    <div class="row mx-2 mt-1">
+                        <div class="col px-3" style="margin: 0px;">
+                            <div class="input-group" >
+                                <input wire:model="search" style="width:90%;font-size: 10px; border-radius: 5px 0 0 5px; cursor: pointer; " type="text" class="form-control" placeholder="Search for Emp.Name or ID" aria-label="Search" aria-describedby="basic-addon1">
+                                    <button wire:click="starredFilter" style=" height: 25px; border-radius: 0 5px 5px 0; background-color: rgb(2, 17, 79);; color: #fff; border: none;" class="search-btn" type="button">
                                         <i style="text-align: center;" class="fa fa-search"></i>
                                     </button>
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="margin-top: 15px; font-size: 13px;">
+                    <div class="row  mx-2 mt-1 p-4" style=" font-size: 13px;">
                         @if ($starredPeoples->isEmpty())
-                        <div class="container" style="text-align: center; color: gray;">Looks like you don't have any records</div>
+                        <div class="people-container ml-5" style="text-align: center; color: gray;">Looks like you don't have any records</div>
                         @else
                         @foreach ($starredPeoples->where('starred_status', 'starred') as $people)
-                        <div wire:click="starredPersonById('{{ $people->id }}')" class="container" style="height:auto;cursor: pointer; background-color: {{ $selectStarredPeoples && $selectStarredPeoples->id == $people->id ? '#ccc' : 'grey' }}; padding: 5px; margin-bottom: 8px; width: 400px; border-radius: 5px;">
+                        <div wire:click="starredPersonById('{{ $people->id }}')" class="people-container" style="height:auto;cursor: pointer; background-color: {{ $selectStarredPeoples && $selectStarredPeoples->id == $people->id ? '#ccc' : 'grey' }}; padding: 5px; margin-bottom: 8px; width: 400px; border-radius: 5px;">
                             <div class="row align-items-center">
                                 <div class="col-md-2">
                                     @if($people->profile == "")
@@ -156,16 +154,14 @@
         <div class="row" style="margin-top: 15px; width: 100%;">
             <!-- Search input and filter button -->
             <div class="col" style="width: 150px; background-color: white; border-radius: 5px; height: auto; margin-right: 20px; padding: 5px;">
-                <div class="container" style="margin-top: 10px">
-                    <div class="row">
-                        <div class="col" style="margin: 0px; padding: 0px">
-                            <div class="input-group">
-                                <input wire:model="searchTerm" style="font-size: 10px; cursor: pointer; border-radius: 5px 0 0 5px;" type="text" class="form-control" placeholder="Search for Emp.Name or ID" aria-label="Search" aria-describedby="basic-addon1">
-                                <div class="input-group-append">
-                                    <button wire:click="filter" style="height: 30px; border-radius: 0 5px 5px 0; background-color: rgb(2, 17, 79); color: #fff; border: none;" class="btn" type="button">
+                <div class="people-container" style="margin-top: 10px">
+                <div class="row mx-2 mt-1">
+                        <div class="col px-3" style="margin: 0px;">
+                            <div class="input-group" >
+                                <input wire:model="searchTerm" style="width:90%;font-size: 10px; border-radius: 5px 0 0 5px; cursor: pointer; " type="text" class="form-control" placeholder="Search for Emp.Name or ID" aria-label="Search" aria-describedby="basic-addon1">
+                                    <button wire:click="filter" style=" height: 25px; border-radius: 0 5px 5px 0; background-color: rgb(2, 17, 79);; color: #fff; border: none;" class="search-btn" type="button">
                                         <i style="text-align: center;" class="fa fa-search"></i>
                                     </button>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -173,10 +169,10 @@
 
                 <div class="row" style="margin-top: 15px; font-size: 13px;">
                     @if ($peopleData->isEmpty())
-                    <div class="container" style="text-align: center; color: gray;">No People Found</div>
+                    <div class="people-container" style="text-align: center; color: gray;">No People Found</div>
                     @else
                     @foreach($peopleData as $people)
-                    <div wire:click="selectPerson('{{ $people->emp_id }}')" class="container" style="height:auto;cursor: pointer; background-color: {{ $selectedPerson && $selectedPerson->emp_id == $people->emp_id ? '#ccc' : 'grey' }}; padding: 5px; margin-bottom: 8px; width: 400px; border-radius: 5px;">
+                    <div wire:click="selectPerson('{{ $people->emp_id }}')" class="people-container" style="height:auto;cursor: pointer; background-color: {{ $selectedPerson && $selectedPerson->emp_id == $people->emp_id ? '#ccc' : 'grey' }}; padding: 5px; margin-bottom: 8px; width: 400px; border-radius: 5px;">
                         <div class="row align-items-center">
                             <div class="col-md-2">
                                 @if($people->image=="")

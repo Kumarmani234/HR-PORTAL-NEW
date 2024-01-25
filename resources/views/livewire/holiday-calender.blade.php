@@ -1,7 +1,6 @@
 <div>
-    <body>
-        <div class="container">
-            <div class="row">
+        <div class="container-holiday m-0">
+            <div class="row m-0 p-0">
                 <div class="col-md-12 text-right">
                     <select id="yearSelect">
                         <option class="dropdown" value="2023">2023</option>
@@ -17,27 +16,27 @@
         $key = 0; // Reset the loop counter
         @endphp
         <div class="hol-container" id="calendar2023" style="display: none;"> <!-- Start the grid -->
-            <div class="row m-0"> <!-- Create a flex container for months -->
+            <div class="row m-0 align-items-stretch"> <!-- Create a flex container for months -->
                 @foreach($filteredData2023->groupBy(function($entry) {
                 return date('F Y', strtotime($entry->date));
                 }) as $month => $entries)
                 <div class="col-md-3">
-                    <div class="inner-container">
-                        <h6>{{ $month }}</h6>
+                    <div class="inner-container bg-white px-4 py-2 rounded mb-0 mt-4 overflow-auto border hover:bg-light " style="height:230px;box-shadow: 0 2px 5px 1px rgb(0 0 0 / 7%);border-color:#ccc;">
+                        <h6 style="font-weight:500;font-size:12px;color:rgb(2, 17, 79);">{{ $month }}</h6>
                         @if($entries->isEmpty() || $entries->every(function ($entry) {
                         return empty($entry->festivals);
                         }))
-                        <div class="no-holidays">
+                        <div class="no-holidays text-center d-flex align-items-center justify-content-center mt-10 font-weight-500" style="color:#778899;">
                             <h6>No holidays</h6>
                         </div>
                         @else
-                        <div class="group" >
+                        <div class="group px-2" >
                             @foreach($entries as $entry)
-                            <div class="fest" style="display:flex; gap:20px;">
-                                <h5>{{ date('d', strtotime($entry->date)) }}<span>
-                                        <p style="font-size: 0.7rem;">{{ substr($entry->day, 0, 3) }}</p>
+                            <div class="fest d-flex gap-4 align-items-center" style="color:#778899;">
+                                <h5 class="d-flex flex-column align-items-center">{{ date('d', strtotime($entry->date)) }}<span >
+                                        <p style="font-size: 10px;">{{ substr($entry->day, 0, 3) }}</p>
                                     </span></h5>
-                                <p style=" font-size: 0.856rem;">{{ $entry->festivals }}</p>
+                                <p style=" font-size: 12px;">{{ $entry->festivals }}</p>
                             </div>
                             @endforeach
                         </div>
@@ -53,28 +52,28 @@
         $filteredData2024 = $calendarData->where('year', 2024)->sortBy('date');
         $currentMonth = '';
         @endphp
-        <div id="calendar2024" class="hol-container">
-            <div class="row m-0"> <!-- Create a flex container for months -->
+        <div id="calendar2024" class="hol-container ">
+            <div class="row m-0 align-items-stretch"> <!-- Create a flex container for months -->
                 @foreach($filteredData2024->groupBy(function($entry) {
                 return date('F Y', strtotime($entry->date));
                 }) as $month => $entries)
                 <div class="col-md-3">
-                    <div class="inner-container">
-                        <h6>{{ $month }}</h6>
+                    <div class="inner-container bg-white px-4 py-2 rounded mb-0 mt-4 overflow-auto border hover:bg-dark" style="border-color:#ccc;height:230px;box-shadow: 0 2px 5px 1px rgb(0 0 0 / 5%);">
+                        <h6 style="font-weight:500;font-size:12px;color:rgb(2, 17, 79);">{{ $month }}</h6>
                         @if($entries->isEmpty() || $entries->every(function ($entry) {
                         return empty($entry->festivals);
                         }))
-                        <div class="no-holidays">
+                        <div class="no-holidays text-center d-flex align-items-center justify-content-center font-weight-500 mt-10" style="color:#778899;">
                             <h6>No holidays</h6>
                         </div>
                         @else
-                        <div class="group" style="">
+                        <div class="group px-2" >
                             @foreach($entries as $entry)
-                            <div class="fest" style="display:flex; gap:10px;">
-                                <h5>{{ date('d', strtotime($entry->date)) }}<span>
-                                        <p style="font-size: 0.7rem;">{{ substr($entry->day, 0, 3) }}</p>
+                            <div class="fest d-flex gap-4 align-items-center" style="color:#778899;">
+                                <h5 class="d-flex flex-column align-items-center">{{ date('d', strtotime($entry->date)) }}<span >
+                                        <p style="font-size: 10px;">{{ substr($entry->day, 0, 3) }}</p>
                                     </span></h5>
-                                <p style=" font-size: 0.856rem;">{{ $entry->festivals }}</p>
+                                <p style=" font-size: 12px;">{{ $entry->festivals }}</p>
                             </div>
                             @endforeach
                         </div>
@@ -84,11 +83,6 @@
                 @endforeach
             </div>
         </div>
-
-        <!-- Include Bootstrap and jQuery JavaScript -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script>
             $(document).ready(function() {
                 // Initially, show the calendar for the selected year
@@ -104,8 +98,4 @@
                 });
             });
         </script>
-
-    </body>
-
-    </html>
 </div>

@@ -44,6 +44,8 @@ class Attendance extends Component
     public $from_date;
     public $to_date;
 
+   
+
     public $status;
     public $dynamicDate;
     public $view_student_emp_id; 
@@ -102,6 +104,7 @@ class Attendance extends Component
         // You can change the date format as needed
     }
    public $k,$k1;
+  
    protected function getPublicHolidaysForMonth($year, $month)
    {
        return HolidayCalendar::whereYear('date', $year)
@@ -123,9 +126,11 @@ private function isEmployeePresentOnDate($date)
 }
 private function isEmployeeLeaveOnDate($date, $employeeId)
 {
-    $employeeId= auth()->guard('emp')->user()->emp_id;
-    // Check if there is a leave request that covers the given date for the specified employee
+    $employeeId = auth()->guard('emp')->user()->emp_id;
+
+    // Check if there is an approved leave request that covers the given date for the specified employee
     return LeaveRequest::where('emp_id', $employeeId)
+        ->where('status', 'approved') // Add this condition for approved status
         ->where(function ($query) use ($date) {
             $query->whereDate('from_date', '<=', $date)
                 ->whereDate('to_date', '>=', $date);
@@ -262,7 +267,13 @@ public function generateCalendar()
 }
 public function updateDate($date1)
 {
-    $this->changeDate=1;
+    $parsedDate = \Carbon\Carbon::parse($date1);
+  
+    
+
+    if ($parsedDate->format('Y-m-d') < \Carbon\Carbon::now()->format('Y-m-d')) {
+        $this->changeDate = 1;
+    }
    
     // Handle any additional logic needed when the date is updated
     // You can use $formattedDate or $this->selectedDate as needed
@@ -332,18 +343,16 @@ private function calculateActualHours($swipe_records)
     }
 }
   public function viewDetails($id)
-  {
-   
+  { 
     $student = SwipeRecord::find($id);
     
-   
     // $this->view_student_id = $student->student_id;
     $this->view_student_emp_id = $student->emp_id;
     
     $this->view_student_swipe_time= $student->swipe_time;
     $this->view_student_in_or_out= $student->in_or_out;
     // $check=$this->view_student_emp_id.''.$this->view_student_swipe_time.''.$this->view_student_in_or_out;
-    $this->showViewStudentModal();
+    $this->showSR=true;
   }
 
   public function closeViewStudentModal()
@@ -363,9 +372,22 @@ private function calculateActualHours($swipe_records)
   public function showViewTableModal(){
     $this->show1=true;
   }
-  public function close(){
-    $this->show=false;  
-  }
+//   public function close(){
+   
+//     $this->show=false; 
+    
+//   }
+public $showSR=false;
+public function openSwipes(){
+    dd();
+    $this->showSR=true;
+}
+public function closeSWIPESR()
+{
+    dd();
+    $this->showSR=false;
+    $this->showSR=false;
+}
   public function close1(){
     $this->show1=false;  
   }

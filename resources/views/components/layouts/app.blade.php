@@ -42,7 +42,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <script src="{{ mix('js/app.js') }}"></script>
-
+<!-- image picker links -->
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
+ 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
@@ -93,7 +97,7 @@
     <div>
 
         <style>
-            @import url('/css/app.css');
+            @import url('/public/app.css');
         </style>
 
 
@@ -376,7 +380,7 @@
                     </div>
                     <div class="notification-icon">
 
-                        <i style="color: white;" class="fas mr-1    fa-bell"></i>
+                        <i style="color: white;" class="fas mr-1 fa-bell"></i>
 
                     </div>
                     @endauth

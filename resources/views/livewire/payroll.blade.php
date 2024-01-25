@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Left Menu (Conditional)</title>
-  
-</head>
-<body>
-<div class="container">
 
+<div >
+ 
     <p style="margin-left: 60px;color: blue;  font-family: Open Sans, sans-serif; margin-top: 10px;font-weight:medium;font-size:16px;text-decoration:underline">Payslips</p>
-
+ 
 <div _ngcontent-etd-c531="" class="document-body-card ng-star-inserted">
     <documents-card _ngcontent-etd-c531="" _nghost-etd-c530="" id="cat_2023" class="ng-star-inserted">
-        <div class="container-2023">
+        <div class="container-2023" style="  background-color: #ffffff; padding: 20px; height: 500px; width: 450px;margin-left: 260px;  border: 1px solid #D9D9D9; border-radius: 5px; margin-right: 10px; /* Adjust as needed */ margin-bottom: 20px; ">
             <div _ngcontent-etd-c530="" class="doc-card-title text-secondary text-4">2023</div>
             <div class="title-line"></div>
-
+ 
             <!-- Loop through the last 4 months in descending order -->
             @for ($i = 1; $i <= 4; $i++)
                 @php
@@ -28,7 +20,7 @@
                         $currentYear -= 1;
                     }
                 @endphp
-
+ 
                 <div _ngcontent-etd-c530="" class="doc-card has-selected">
                     <div _ngcontent-etd-c530="" class="doc-card-hover ng-star-inserted">
                         <div _ngcontent-etd-c530="" class="doc-card-body">
@@ -55,14 +47,14 @@
         </div>
     </documents-card>
 </div>
-
-
-              
+ 
+ 
+             
         </div>
     </div>
 </div></div>
-
-
+ 
+ 
 <script>
     function togglePdf(year, containerId) {
         var pdfLink = document.getElementById('pdfLink' + year + '_' + containerId);
@@ -73,5 +65,5 @@
         }
     }
 </script>
-</body>
-</html>
+
+ 

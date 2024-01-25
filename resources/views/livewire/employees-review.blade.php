@@ -75,7 +75,7 @@
             <!-- confirmation links -->
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
             <div style="display:flex;align-items:center;justify-content:center;">
-               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+               <ul class="nav nav-pills mb-3" id="pills-Confrmsstab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-confirmationActive-tab" data-toggle="pill" href="#pills-confirmationActive" role="tab" aria-controls="pills-confirmationActive" aria-selected="true">Active</a>
                     </li>
@@ -111,7 +111,7 @@
             <!-- Resignation links -->
             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
             <div style="display:flex;align-items:center;justify-content:center;">
-               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+               <ul class="nav nav-pills mb-3" id="pills-Regtab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-resignationActive-tab" data-toggle="pill" href="#pills-resignationActive" role="tab" aria-controls="pills-resignationActive" aria-selected="true">Active</a>
                     </li>
@@ -147,7 +147,7 @@
             <!-- help desk links -->
             <div class="tab-pane fade" id="v-pills-helpdesk" role="tabpanel" aria-labelledby="v-pills-helpdesk-tab">
             <div style="display:flex;align-items:center;justify-content:center;">
-               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+               <ul class="nav nav-pills mb-3" id="pills-helptab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-helpdeskActive-tab" data-toggle="pill" href="#pills-helpdeskActive" role="tab" aria-controls="pills-helpdeskActive" aria-selected="true">Active</a>
                     </li>
@@ -183,7 +183,7 @@
             <!-- leave links -->
             <div class="tab-pane fade" id="v-pills-leave" role="tabpanel" aria-labelledby="v-pills-leave-tab">
                 <div style="display:flex;align-items:center;justify-content:center;">
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <ul class="nav nav-pills mb-3" id="pills-leavetab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="pills-leaveactive-tab" data-toggle="pill" href="#pills-leaveactive" role="tab" aria-controls="pills-leaveactive" aria-selected="true">Active</a>
                         </li>
@@ -391,7 +391,7 @@
             <!-- leave Cancel links-->
             <div class="tab-pane fade" id="v-pills-leavecancel" role="tabpanel" aria-labelledby="v-pills-leavecancel-tab">
                <div style="display:flex;align-items:center;justify-content:center;">
-               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+               <ul class="nav nav-pills mb-3" id="pills-canceltab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-leavecancel-tab" data-toggle="pill" href="#pills-leavecancel" role="tab" aria-controls="pills-leavecancel" aria-selected="true">Active</a>
                     </li>
@@ -425,7 +425,7 @@
             <!-- Comp off links-->
             <div class="tab-pane fade" id="v-pills-LeaveComp" role="tabpanel" aria-labelledby="v-pills-LeaveComp-tab">
             <div style="display:flex;align-items:center;justify-content:center;">
-               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+               <ul class="nav nav-pills mb-3" id="pills-comptab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-leaveCompOff-tab" data-toggle="pill" href="#pills-leaveCompOff" role="tab" aria-controls="pills-leaveCompOff" aria-selected="true">Active</a>
                     </li>
@@ -459,7 +459,7 @@
             <!-- restricted Holidays links -->
             <div class="tab-pane fade" id="v-pills-restricted" role="tabpanel" aria-labelledby="v-pills-restricted-tab">
             <div style="display:flex;align-items:center;justify-content:center;">
-               <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+               <ul class="nav nav-pills mb-3" id="pills-restab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-restrictedHoliday-tab" data-toggle="pill" href="#pills-restrictedHoliday" role="tab" aria-controls="pills-restrictedHoliday" aria-selected="true">Active</a>
                     </li>

@@ -40,13 +40,13 @@
       <div _ngcontent-whw-c468="" class="itd-plan-details-content ng-star-inserted">
         <div _ngcontent-whw-c468="" class="row">
           <!-- Card 1 -->
-         <div class="row" style="height:200px;margin-top:20px;width:300px;background:white;margin-left:10px;border:1px solid silver;border-radius:5px">
+         <div class="row" style="height:200px;margin-top:20px;width:280px;background:white;margin-left:10px;border:1px solid silver;border-radius:5px">
          <img src="https://calisthenicsacademy.co/wp-content/uploads/2015/11/number-8-no-lines.png" style="height:40px;width:80px;margin-top:40px;margin-left:70px">
          <p _ngcontent-whw-c467="" class="text-black" title="Sec 80C" style="margin-left:70px">Sec 80C</p>
          
-    <p style="margin-top:-20px;margin-left:40px">Total Value: {{ $total }}/1,50,000</p>
+    <p style="margin-left:40px">Total Value: {{ $total }}/1,50,000</p>
  
-         <a class="declaration-link" style="margin-top: -30px; margin-left: 50px;" wire:click="addSec80">Add to declaration</a>
+         <a class="declaration-link" style="margin-left: 50px;" wire:click="addSec80">Add to declaration</a>
          @if($showSec80CDialog)
  
 <div class="modal" tabindex="-1" role="dialog" style="display: block;">
@@ -192,11 +192,11 @@
 @endif
  
 </div>
-<div class="row" style="height:200px;margin-top:20px;width:300px;background:white;margin-left:30px;border:1px solid silver;border-radius:5px">
+<div class="row" style="height:200px;margin-top:20px;width:280px;background:white;margin-left:20px;border:1px solid silver;border-radius:5px">
 <img src="https://completed.com/images/accurate.png" style="height:50px;width:80px;margin-top:40px;margin-left:90px">
          <p _ngcontent-whw-c467="" class="text-black" title="Sec 80C" style="margin-left:40px">Other Chapter VI-A Deductions</p>
-         <p style="margin-top:-20px;margin-left:40px">Total Value: {{ $totaldeductions }}/1,50,000</p>
-         <a class="declaration-link" style="margin-top: -30px; margin-left: 50px;" wire:click="addshowVIDeductions">Add to declaration</a>
+         <p style="margin-left:40px">Total Value: {{ $totaldeductions }}/1,50,000</p>
+         <a class="declaration-link" style=" margin-left: 50px;" wire:click="addshowVIDeductions">Add to declaration</a>
          @if($showVIDeductions)
  
 <div class="modal" tabindex="-1" role="dialog" style="display: block;">
@@ -353,6 +353,7 @@
                 @if($totaldeductions)
         <p>Total Value: {{ $totaldeductions }}</p>
     @endif
+ 
             </div>
         </form>
     </div>
@@ -364,12 +365,12 @@
  
 @endif
 </div>
-<div class="row" style="height:200px;margin-top:20px;width:300px;background:white;margin-left:30px;border:1px solid silver;border-radius:5px">
+<div class="row" style="height:200px;margin-top:20px;width:280px;background:white;margin-left:20px;border:1px solid silver;border-radius:5px">
 <img src="https://www.creditloan.com/media/final-definitive-guide-how-to-maximize-the-value-of-your-credit-cards-personal-loans-68.png" style="height:50px;width:80px;margin-top:40px;margin-left:70px">
          <p _ngcontent-whw-c467="" class="text-black" title="Sec 80C" style="margin-left:50px">Medical (Sec 80D)
  
 </p>
-<a class="declaration-link" style="margin-top: -40px; margin-left: 50px;" wire:click="addMedical">Add to declaration</a>
+<a class="declaration-link" style="margin-left: 50px;" wire:click="addMedical">Add to declaration</a>
          @if($showMedicalDialog)
  
          <div class="modal" tabindex="-1" role="dialog" style="display: block;">
@@ -475,10 +476,10 @@
         <div _ngcontent-whw-c468="" class="itd-plan-details-content ng-star-inserted">
         <div _ngcontent-whw-c468="" class="row">
           <!-- Card 1 -->
-         <div class="row" style="height:200px;margin-top:20px;width:300px;background:white;margin-left:10px;border:1px solid silver;border-radius:5px;">
+         <div class="row" style="height:200px;margin-top:20px;width:280px;background:white;margin-left:10px;border:1px solid silver;border-radius:5px;">
          <img src="https://d2zcpk7yfyf2dq.cloudfront.net/milaap/image/upload/v1493815112/production/entity_details/milaap_page/1892/Fund_1493815111.png" style="height:40px;width:80px;margin-top:40px;margin-left:90px">
          <p _ngcontent-whw-c467="" class="text-black" title="Sec 80C" style="margin-left:20px">Income/loss from House Property</p>
-         <a class="declaration-link" style="margin-top: -40px; margin-left: 50px;" wire:click="addIncome">Add to declaration</a>
+         <a class="declaration-link" style="margin-left: 50px;" wire:click="addIncome">Add to declaration</a>
  
 @if($showIncomeDialog)
  
@@ -574,12 +575,12 @@
          
  
 </div>
-<div class="row" style="height:200px;margin-top:20px;width:300px;background:white;margin-left:30px;border:1px solid silver;border-radius:5px">
+<div class="row" style="height:200px;margin-top:20px;width:280px;background:white;margin-left:20px;border:1px solid silver;border-radius:5px">
 <img src="https://completed.com/images/accurate.png" style="height:50px;width:80px;margin-top:40px;margin-left:90px">
          <p _ngcontent-whw-c467="" class="text-black" title="Sec 80C" style="margin-left:40px">Other Income
  
 </p>
-<a class="declaration-link" style="margin-top: -40px; margin-left: 50px;" wire:click="addshowOtherIncome">Add to declaration</a>
+<a class="declaration-link" style="margin-top: 10px; margin-left: 50px;" wire:click="addshowOtherIncome">Add to declaration</a>
  
 @if($showOtherIncome)
  
@@ -668,12 +669,12 @@
  
 @endif
 </div>
-<div class="row" style="height:200px;margin-top:20px;width:300px;background:white;margin-left:30px;border:1px solid silver;border-radius:5px">
+<div class="row" style="height:200px;margin-top:20px;width:280px;background:white;margin-left:20px;border:1px solid silver;border-radius:5px">
 <img src="https://www.creditloan.com/media/final-definitive-guide-how-to-maximize-the-value-of-your-credit-cards-personal-loans-68.png" style="height:50px;width:80px;margin-top:40px;margin-left:70px">
          <p _ngcontent-whw-c467="" class="text-black" title="Sec 80C" style="margin-left:50px">Salary Allowance
  
 </p>
-<a class="declaration-link" style="margin-top: -40px; margin-left: 50px;" wire:click="addSalayAllowance">Add to declaration</a>
+<a class="declaration-link" style="margin-top: 10px; margin-left: 50px;" wire:click="addSalayAllowance">Add to declaration</a>
  
 @if($showSalayAllowance)
  
@@ -774,9 +775,9 @@
   <!---->
 </div>
 <div class="container" style="height:60px;width:105%;background:white;margin-top:30px;margin-left:-120px">
-
+ 
     <button style="border-radius:5px;border:1px solid #80daeb;height:30px;width:160px;margin-left:800px;margin-top:15px;"><a href="/itstatement">View IT Calculation</a> </button>
-
+ 
 </div>
 <script>
         // Get the modal and buttons

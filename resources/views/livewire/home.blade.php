@@ -1,6 +1,6 @@
 <div>
 <body>
-    <div class="container">
+    <div class="msg-container">
     @if (session()->has('success'))
         <div class="custom-alert alert-success" style="text-align: center;margin-left:20%;width: 500px;">
             {{ session('success') }}
@@ -29,14 +29,14 @@
                         <carousel class="ng-star-inserted" style="width:470px">
                             <!-- Carousel content goes here -->
                         </carousel>
-                        <div class="quote-text" style="font-size:13px;font-family: 'Montserrat', sans-serif;">
+                        <div class="quote-text" style="font-size:12px; line-height:1.6;">
                             <!-- Quote text will be dynamically inserted here -->
                         </div>
-                        <div class="author-text" style="font-size:13px;font-family: 'Montserrat', sans-serif;">
+                        <div class="author-text" style="font-size:12px; line-height:1.6;">
                             <!-- Author text will be dynamically inserted here -->
                         </div>
                         <div class="watch-video">
-                            <p style="font-size:13px;font-family: 'Montserrat', sans-serif;">Watch the video to understand your new Employee Self Service portal quickly.</p>
+                            <p style="font-size:12px; line-height:1.6;">Watch the video to understand your new Employee Self Service portal quickly.</p>
                             <a href="https://greytip-2.wistia.com/medias/vbxdhiqvk6" class="text-primary-400 pt-1x cursor-pointer text-sm font-semibold pb-2x inline-block">Watch Video</a>
                         </div>
                     </div>
@@ -55,23 +55,23 @@
                         <div class="home-hover mb-2">
                                <div class="reviews">
                                   <div class="bg-white rounded" style="border: 1px solid #CFCACA;">
-                                  <div class="home-heading d-flex justify-content-between p-2">
-                                       <div class="section-name rounded">
-                                            Review
+                                  <div class="home-heading d-flex justify-content-between p-3">
+                                       <div class="rounded">
+                                         <p style="font-size:12px;color:#778899;font-weight:500;">  Review</p>
                                         </div>
                                         <div >
                                         <a href="/employees-review" style="font-size:16px; "><img src="/images/up-arrow.png" alt="" style="width:20px;height:27px;"></a>
                                         </div>
                                     </div>
                                     @if(($this->count) > 0)
-                                          <div class="notify d-flex justify-content-between mt-1 p-2">
-                                                <p style="color: black; font-size: 0.875rem; font-weight: 500;">
+                                          <div class="notify d-flex justify-content-between mt-1 p-3">
+                                                <p style="color: black; font-size: 12px; font-weight: 500;">
                                                     {{$count}} <br>
-                                                    <span style="color: #778899; font-size: 0.795rem; font-weight: 500;">Things to review</span>
+                                                    <span style="color: #778899; font-size:11px; font-weight: 500;">Things to review</span>
                                                 </p>
-                                                <img src="https://png.pngtree.com/png-vector/20190214/ourlarge/pngtree-vector-notes-icon-png-image_509622.jpg" alt="" style="height: 50px; width: 50px;">
+                                                <img src="https://png.pngtree.com/png-vector/20190214/ourlarge/pngtree-vector-notes-icon-png-image_509622.jpg" alt="" style="height: 40px; width: 40px;">
                                             </div>
-                                            <div class="leave-display d-flex border-top p-2" >
+                                            <div class="leave-display d-flex border-top p-3" >
                                             @php
                                                 function getRandomColor() {
                                                     $colors = ['#FFD1DC', '#B0E57C', '#ADD8E6', '#E6E6FA', '#FFB6C1'];
@@ -99,9 +99,9 @@
                                             @endfor
                                                
                                                 @if ($count > 4)
-                                                    <div class="circle-notify d-flex flex-column mt-2" style="color:blue;cursor:pointer; align-items:center;">
-                                                      <a href="#" style="color:blue;font-size:0.725rem;">+{{ $count - 4 }}</a>
-                                                       <p style="font-size:0.725rem;margin-top:-5px;"><span class="remaining" >More</span></p>
+                                                    <div class="circle-notify d-flex flex-column mt-3" style="cursor:pointer; align-items:center;">
+                                                      <a href="#" style="color:blue;font-size:10px">+{{ $count - 4 }}</a>
+                                                       <p style="color:blue;font-size:10px;margin-top:-5px;"><span class="remaining" >More</span></p>
                                                     </div>
                                                 @endif
                                             </div>
@@ -119,8 +119,8 @@
                         
                         <div class="home-hover mb-2">
                             <div style="border-radius: 5px; border: 1px solid #CFCACA;background-color: white;padding:10px 15px;justify-content:center;display: flex;flex-direction:column;">
-                                  <div style="color: #677A8E; font-weight:500;font-size:0.825rem;">
-                                                IT Declaration
+                                       <div>
+                                            <p style="font-size:12px;color:#778899;font-weight:500;">IT Declaration</p>
                                             </div>
                                                <div style="display: flex;gap:10px;margin-top:10px;">
                                                 <img src="https://th.bing.com/th/id/OIP.ISoRyxX3652noSb_DpscdAHaHa?pid=ImgDet&rs=1" alt="Image Description" style="height: 40px; width: 40px;  ">
@@ -128,15 +128,15 @@
                                                 </div>
                                                 <div class="B" style="color:  #677A8E;   font-size: 12px;display:flex;justify-content:end;">
                                                     <a href="/formdeclaration" class="button-link">
-                                                        <button class="custom-button view-button" style="width:60px;border:1px solid blue;border-radius:5px;padding:0;color:blue;background:#fff;">View</button>
+                                                        <button class="custom-btn" style="width:60px;border:1px solid blue;border-radius:5px;padding:0;color:blue;background:#fff;">View</button>
                                                     </a>
                                              </div>
                                         </div>
                                     </div>
                             <div class="home-hover mb-2">
                                    <div style=" border-radius: 5px; border: 1px solid #CFCACA; background-color: white;padding:10px 15px;justify-content:center;display: flex;flex-direction:column;">
-                                                <div style="color: #677A8E;font-weight:500;font-size:0.825rem;">
-                                                    POI
+                                                <div >
+                                                   <p style="font-size:12px;color:#778899;font-weight:500;"> POI</p>
                                                 </div>
                                                 <div style="display:flex;gap:5px;margin-top:10px;"> <!-- Added margin-top here -->
                                                     <img src="https://th.bing.com/th/id/OIP.So8FF1OSJHwqUi-IcIgQIgAAAA?pid=ImgDet&w=104&h=109&c=7&dpr=1.5" alt="Image Description" style="height: 30px; width: 30px;">
@@ -151,8 +151,8 @@
                                   <div class="reviews">
                                   <div style="border-radius: 5px; border: 1px solid #CFCACA;  background-color: white;">
                                     <div class="team-heading" style="display:flex; justify-content:space-between;padding:5px 10px;">
-                                       <div style="color: #677A8E;font-weight:500;font-size:0.825rem;">
-                                            Team On Leave
+                                       <div>
+                                           <p style="font-size:12px;color:#778899;font-weight:500;"> Team On Leave</p>
                                         </div>
                                         <div >
                                            <a href="/team-on-leave-chart" style="font-size:16px; "><img src="/images/up-arrow.png" alt="" style="width:20px;height:27px;"></a>
@@ -201,7 +201,7 @@
                                         @else
                                            <div style="display:flex;justify-content:center;flex-direction:column;align-items:center;">
                                            <img src="https://ftl.technology/images/theme-pics/case.png" alt="Image Description" style="height: 50px; width: 50px;">
-                                            <p style="color: #677A8E; font-size: 12px; ">
+                                            <p style="color: #677A8E; font-size: 11px; ">
                                                 Wow!No leaves planned today.
                                             </p>
                                            </div>
@@ -216,13 +216,13 @@
                       @if($ismanager) 
                          <div class="home-hover">
                             <div style=" border-radius: 5px; border: 1px solid #CFCACA;  background-color: #fff;padding:10px 15px;">
-                                <div style="color: #677A8E;  font-weight:500; display:flex;justify-content:space-between;font-size:0.825rem;">
-                                    Who is in?
+                                <div style="color: #677A8E;  font-weight:500; display:flex;justify-content:space-between;">
+                                    <p style="font-size:12px;"> Who is in?</p>
                                     <a href="/whoisinchart" style="font-size:16px; "><img src="/images/up-arrow.png" alt="" style="width:20px;height:27px;"></a>
                                 </div>
                                         <div>
                                             <div class="who-is-in d-flex flex-column justify-content-start mt-1 bg-white">
-                                                <p style="color: #778899; font-size: 0.775rem; font-weight: 500; ">
+                                                <p class="section-name">
                                                         Not Yet In ({{ $CountAbsentEmployees }})
                                                     </p>
                                                 <div class="team-leave d-flex flex-row gap-3">
@@ -249,8 +249,8 @@
                                         @endfor
                                          @if ($CountAbsentEmployees > 4)
                                             <div class="circle-notify" style="color:blue;cursor:pointer;display:flex;flex-direction:column;align-items:center;margin-top:10px;">
-                                                <a href="#" style="color:blue;font-size:0.725rem;">+{{ $CountAbsentEmployees - 4 }}</a>
-                                                <p style="font-size:0.725rem;margin-top:-5px;"><span class="remaining" >More</span></p>
+                                                <a href="#" style="color:blue;font-size:10px;">+{{ $CountAbsentEmployees - 4 }}</a>
+                                                <p style="font-size:10px;margin-top:-5px;"><span class="remaining" >More</span></p>
                                             </div>
                                          @endif
                                         </div>
@@ -258,7 +258,7 @@
                                 <!-- /second row -->
                                     
                                     <div class="who-is-in d-flex flex-column justify-content-start mt-1 bg-white">
-                                                <p style="color: #778899; font-size: 0.775rem; font-weight: 500; ">
+                                                <p  class="section-name">
                                                         Late Arrival({{ $CountLateSwipes }})
                                                     </p>
                                                 <div class="team-leave d-flex flex-row  gap-3">
@@ -274,7 +274,7 @@
                                                     @endphp
                                                
                                                    @if(isset($LateSwipes[$i]))                   
-                                                   <div class="circle" style="border: 2px solid {{getRandomLateColor() }};border-radius:50%;">
+                                                <div class="circle" style="border: 2px solid {{getRandomAbsentColor() }};border-radius:50%;width: 35px;height: 35px;display: flex;align-items: center;justify-content: center;">
                                                         <span class="initials">
                                                             {{ strtoupper(substr(trim($employee['first_name']), 0, 1)) }}{{ strtoupper(substr(trim($employee['last_name']), 0,1)) }}
                                                         </span>
@@ -293,7 +293,7 @@
                                   <!-- /third row -->
                                   
                                   <div class="who-is-in d-flex flex-column justify-content-start mt-1 bg-white">
-                                                <p style="color: #778899; font-size: 0.775rem; font-weight: 500; ">
+                                                <p  class="section-name">
                                                         On Time({{ $CountEarlySwipes }})
                                                     </p>
                                                 <div class="team-leave d-flex flex-row mr gap-3">
@@ -312,7 +312,7 @@
 
                                                 @endphp
                                                    
-                                                <div class="circle" style="border: 2px solid {{getRandomEarlyColor() }};border-radius:50%;">
+                                                <div class="circle" style="border: 2px solid {{getRandomAbsentColor() }};border-radius:50%;width: 35px;height: 35px;display: flex;align-items: center;justify-content: center;">
                                                     <span class="initials">
                                                         {{ strtoupper(substr(trim($employee['first_name']), 0, 1)) }}{{ strtoupper(substr(trim($employee['last_name']), 0,1)) }}
                                                     </span>
@@ -335,7 +335,7 @@
                         <div class="home-hover mb-2">
                             <div style=" border-radius: 5px; border: 1px solid #CFCACA;  background-color: #EDF3FF;">
                                 <div style="color: black; padding:10px 15px;">
-                                    <p style="font-weight: normal;font-size:0.875rem;">{{$currentDate}}</p>
+                                    <p style="font-size:12px;">{{$currentDate}}</p>
                                     <p style="margin-top: 10px; color: #9E9696; font-size: 12px;">{{$currentDay}} | 10:00 AM to 07:00 PM</p>
                                     <div  style=" font-size: 14px;" id="current-time"></div>
                                     <script>
@@ -352,8 +352,8 @@
                                         setInterval(updateTime, 1000);
                                     </script>
                                     <div class="A" style="display: flex;flex-direction:row;justify-content:space-between; align-items:center;margin-top:10px;">
-                                        <a style="width:40%;font-size:0.855rem;cursor: pointer;color:blue" wire:click="open">View Swipes</a>
-                                        <button  id="signButton" style="color: white; width: 80px; height: 26px;font-size:0.795rem; background-color: rgb(2, 17, 79); border: 1px solid #CFCACA; border-radius: 5px; " wire:click="toggleSignState">
+                                        <a style="width:40%;font-size:12px;cursor: pointer;color:blue" wire:click="open">View Swipes</a>
+                                        <button  id="signButton" style="color: white; width: 80px; height: 26px;font-size:10px; background-color: rgb(2, 17, 79); border: 1px solid #CFCACA; border-radius: 5px; " wire:click="toggleSignState">
                                             @if($swipes)
                                             @if ($swipes->in_or_out=="OUT")
                                             Sign In
@@ -369,12 +369,11 @@
                             </div>
                         </div>
                         <div class="home-hover mb-2">
-
                         @if($salaryRevision->isEmpty())
                         <div style="border-radius: 5px; border: 1px solid #CFCACA;background-color:white;">
-                                            <div style="color: #677A8E; padding:10px 15px;">
-                                               <div style="color: #677A8E;  font-weight:500; display:flex;justify-content:space-between;font-size:0.825rem;">
-                                                Payslip
+                                            <div class="py-4 px-5">
+                                               <div class="d-flex justify-content-between">
+                                                  <p style="font-size:12px;color:#778899;font-weight:500;">Payslip</p>
                                                   <a href="/slip" style="font-size:16px; "><img src="/images/up-arrow.png" alt="" style="width:20px;height:27px;"></a>
                                                 </div>
 
@@ -387,8 +386,8 @@
                               @else
                             @foreach($salaryRevision as $salaries)
                              <div style="border-radius: 5px; border: 1px solid #CFCACA;background-color:white;padding:10px 15px;">
-                                            <div style="color: #677A8E;  font-weight:500; display:flex;justify-content:space-between;font-size:0.825rem;">
-                                                Payslip
+                                            <div  class="d-flex justify-content-between">
+                                                <p style="font-size:12px;color:#778899;font-weight:500;">Payslip</p>
                                                 <a href="/slip" style="font-size:16px; "><img src="/images/up-arrow.png" alt="" style="width:20px;height:27px;"></a>
                                             </div>
 
@@ -398,7 +397,7 @@
                                                               <canvas id="innerPieChart" width="60" height="60" style="position: absolute; top: 5px;"></canvas> --}} -->
                                                               <canvas id="combinedPieChart" width="100" height="100"></canvas>
                                                     </div>
-                                                <div class="c" style="font-size: 13px; font-weight: normal; font-weight: 500; color: #9E9696;display:flex; flex-direction:column;justify-content:flex-end;">
+                                                <div class="c" style="font-size: 12px; font-weight: normal; font-weight: 500; color: #9E9696;display:flex; flex-direction:column;justify-content:flex-end;">
                                                     <p style="color:#333;">{{ date('M Y', strtotime('-1 month')) }}</p>
                                                     <p style="display:flex;justify-content:end;flex-direction:column;align-items:end; color:#333;">{{ date('t', strtotime('-1 month')) }} <br>
                                                         <span style="color:#778899;">Paid days</span>
@@ -406,18 +405,18 @@
                                                 </div>
                                             </div>
 
-                                            <div style="display:flex ;color: #677A8E;  font-size:0.875rem;  font-weight:100px;flex-direction:column; margin-top:20px;  ">
+                                            <div style="display:flex ;flex-direction:column; margin-top:20px;  ">
                                                 <div class="net-salary">
                                                     <div style="display:flex;gap:10px;">
                                                         <div style="padding:2px;width:2px;height:17px;background:#000000;border-radius:2px;"></div>
-                                                        <p style="font-size:0.825rem;">Gross Pay</p>
+                                                        <p style="font-size:11px;">Gross Pay</p>
                                                     </div>
                                                     <p>{{ $showSalary ? '₹ ' . number_format($salaries->calculateTotalAllowance(), 2) : '*********' }}</p>
                                                 </div>
                                                 <div class="net-salary">
                                                     <div style="display:flex;gap:10px;">
                                                         <div style="padding:2px;width:2px;height:17px;background:#B9E3C6;border-radius:2px;"></div>
-                                                        <p style="font-size:0.825rem;">Deduction</p>
+                                                        <p style="font-size:11px;">Deduction</p>
                                                     </div>
                                                     <p>{{ $showSalary ? '₹ ' . number_format($salaries->calculateTotalDeductions() ?? 0, 2) : '*********' }}</p>
 
@@ -425,14 +424,14 @@
                                                 <div class="net-salary">
                                                     <div style="display:flex;gap:10px;">
                                                         <div style="padding:2px;width:2px;height:17px;background:#1C9372;border-radius:2px;"></div>
-                                                        <p style="font-size:0.825rem;">Net Pay</p>
+                                                        <p style="font-size:11px;">Net Pay</p>
                                                     </div>
                                                     @if ($salaries->calculateTotalAllowance() - $salaries->calculateTotalDeductions() > 0)
                                                     <p> {{ $showSalary ? '₹ ' .number_format(max($salaries->calculateTotalAllowance() - $salaries->calculateTotalDeductions(), 0), 2) : '*********' }}</p>
                                                     @endif
                                                 </div>
                                             </div>
-                                            <div class="show-salary" style="display: flex; color: #1090D8; justify-content:space-between;font-size: 14px;  margin-top: 20px; font-weight: 100;">
+                                            <div class="show-salary" style="display: flex; color: #1090D8; justify-content:space-between;font-size: 12px;  margin-top: 20px; font-weight: 100;">
                                                 <a href="/your-download-route" id="pdfLink2023_4" class="pdf-download" download >Download PDF</a>
                                                 <a wire:click="toggleSalary" class="showHideSalary">
                                                     {{ $showSalary ? 'Hide Salary' : 'Show Salary' }}
@@ -490,11 +489,11 @@
             <div class="home-hover mb-2">
                 <div style="border-radius: 5px; border: 1px solid #CFCACA; background-color: white;padding:10px 15px;">
                     <div style="display:flex; justify-content:space-between;">
-                        <p style="color: #677A8E;font-weight:500;font-size:0.825rem;">Upcoming Holidays</p>
+                        <p style="font-size:12px;color:#778899;font-weight:500;">Upcoming Holidays</p>
                         <a href="/holiday-calender" style="font-size:16px; "><img src="/images/up-arrow.png" alt="" style="width:20px;height:27px;"></a>
                     </div>
                     @if($calendarData->isEmpty())
-                    <p style="color:#778899;font-size:0.795rem;">Uh oh! No holidays to show.</p>
+                    <p style="color:#778899;font-size:10px;">Uh oh! No holidays to show.</p>
                     @else
                         @php
                             $count = 0;
@@ -503,10 +502,10 @@
                         @foreach($calendarData as $entry)
                             @if(!empty($entry->festivals))
                                 <div>
-                                    <p style="color: #677A8E; font-size: 0.805rem; ">
-                                        <span style="font-weight: 500;">{{ date('d M', strtotime($entry->date)) }}  <span style="font-size: 11px; font-weight: normal;">{{ date('l', strtotime($entry->date)) }}</span></span>
+                                    <p style="color: #677A8E; font-size: 11px; ">
+                                        <span style="font-weight: 500;">{{ date('d M', strtotime($entry->date)) }}  <span style="font-size: 10px; font-weight: normal;">{{ date('l', strtotime($entry->date)) }}</span></span>
                                         <br>
-                                        <span style="font-size: 11px; font-weight: normal;">{{ $entry->festivals }}</span>
+                                        <span style="font-size: 10px; font-weight: normal;">{{ $entry->festivals }}</span>
                                     </p>
                                 </div>
                                 @php
@@ -523,17 +522,17 @@
             </div>
             <div class="home-hover mb-2">
                 <div style="border-radius: 5px; border: 1px solid #CFCACA; background-color: white;">
-                    <div style="color: #677A8E; font-weight:500; margin-left: 10px; margin-top:10px;font-size:0.825rem;">
-                        Quick Access
+                    <div style="color: #677A8E; font-weight:500; margin-left: 10px; margin-top:10px;">
+                        <p style="font-size:12px;">Quick Access</p>
                     </div>
                     <div style="display: flex; justify-content: space-between; position: relative;">
-                        <div class="col-md-7" style="color: black;  font-size: 11px;font-family: montserrat; ">
+                        <div class="col-md-7" style="color: black;  font-size: 10px; ">
                             <br>Reimbursement</br>
                             <br>IT Statement</br>
                             <br>YTD Reports</br>
                             <br>Loan Statement</br>
                         </div>
-                        <div class="col-md-5" style="background-color: #FFF8F0; padding: 5px 10px; border-radius: 5px; font-size: 0.625rem; font-family: montserrat; position: absolute; bottom: 0; right: 0; height:120px;">
+                        <div class="col-md-5" style="background-color: #FFF8F0; padding: 5px 10px; border-radius: 5px; font-size: 8px; font-family: montserrat; position: absolute; bottom: 0; right: 0; height:120px;">
                             <p style="margin: 0;">Use quick access to view important salary details.</p>
                         </div>
                     </div>
@@ -541,8 +540,8 @@
             </div>
             <div class="home-hover mb-2">
                 <div style=" border-radius: 5px; border: 1px solid #CFCACA; background-color: white;">
-                    <div style="color: #677A8E;font-weight:500; margin-left: 20px;  margin-top: 20px;font-size:0.825rem;">
-                        Track
+                    <div style="color: #677A8E;font-weight:500; margin-left: 20px;  margin-top: 10px;">
+                       <p style="font-size:12px;">Track</p>
                     </div>
 
                     <div>

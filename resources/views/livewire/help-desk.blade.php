@@ -9,7 +9,7 @@
     </head>
 
     <body>
-        <div class="row">
+        <div class="row ">
             <div class="col" style="margin-left:20%">
                 <div class="card" style="width:400px;">
                     <div class="card-header">
