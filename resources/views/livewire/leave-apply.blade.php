@@ -1,7 +1,7 @@
 <div>
 <body>
 
-<div class="applyContainer ">
+<div class="applyContainer">
     <h6 class="pb-3">Applying for Leave</h6> 
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -14,7 +14,7 @@
     @endif
 
     <form wire:submit.prevent="leaveApply" enctype="multipart/form-data">
-        <div class="form-groups  mt-2">
+        <div class="form-group mt-2">
             <label for="leaveType">Leave type</label>
                 <select class="form-control" wire:model="leave_type" id="leaveType" name="leaveType" style="width: 50%; font-weight: 400; color: #778899;" onchange="toggleReporting()">
                     <option value="default">Select Type</option>
@@ -30,11 +30,11 @@
                   @error('leave_type') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
              <div class="form-row">
-            <div class="form-groups mt-2 col-md-6">
+            <div class="form-group mt-2 col-md-6">
                 <label for="fromDate" >From date</label>
                 <input type="date" wire:model="from_date" class="form-control" id="fromDate" name="fromDate" style="color: #778899;">
             </div>
-            <div class="form-groups mt-2 col-md-6">
+            <div class="form-group mt-2 col-md-6">
                 <label for="session" >Session</label>
                 <select class="form-control" wire:model="from_session" id="session" name="session" style="font-weight: 500; ">
                     <option value="default">Select session</option>
@@ -45,11 +45,11 @@
             @error('from_date') <span class="text-danger">{{ $message }}</span> @enderror
         </div>
         <div class="form-row">
-                <div class="form-groups mt-2 col-md-6">
+                <div class="form-group mt-2 col-md-6">
                     <label for="toDate" >To date</label>
                     <input type="date" wire:model="to_date" class="form-control" id="toDate" name="toDate" style="color: #778899;">
                 </div>
-                <div class="form-groups mt-2 col-md-6">
+                <div class="form-group mt-2 col-md-6">
                     <label for="session" >Session</label>
                     <select class="form-control" wire:model="to_session" id="session" name="session" style="font-weight: 500;">
                         <option value="default" style="font-size:12px;">Select session</option>
@@ -61,7 +61,7 @@
             </div>
        
             <div>
-                <div class="form-groups mt-2" style="margin-top: 10px;">
+                <div class="form-group mt-2" style="margin-top: 10px;">
                     <div style="display:flex; flex-direction:row;">
                         <label for="applyingToText" id="applyingToText" name="applyingTo" >
                             Applying To
@@ -112,7 +112,7 @@
                 </div>
                 @error('applying_to') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
-        <div class="form-groups mt-2">
+        <div class="form-group mt-2">
             <label for="ccToText" wire:model="from_date" id="applyingToText" name="applyingTo">
                 CC to
             </label>
@@ -155,12 +155,12 @@
                 </div>
                 @error('cc_to') <span class="text-danger">{{ $message }}</span> @enderror
         </div>
-            <div class="form-groups mt-2">
+            <div class="form-group mt-2">
                 <label for="contactDetails" >Contact Details</label>
                 <input type="text" wire:model="contact_details" class="form-control" id="contactDetails" name="contactDetails" style="color: #778899;width:50%;">
                 @error('contact_details') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
-            <div class="form-groups mt-2">
+            <div class="form-group mt-2">
                 <label for="reason" >Reason for Leave</label>
                 <textarea class="form-control" wire:model="reason" id="reason" name="reason" placeholder="Enter Reason" rows="4" ></textarea>
                 @error('reason') <span class="text-danger">{{ $message }}</span> @enderror

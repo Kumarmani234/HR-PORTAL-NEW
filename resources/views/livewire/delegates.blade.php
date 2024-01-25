@@ -4,55 +4,24 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
- .container,
-.delegate-form-container{
-  height: 500px;
-  background: white;
-  border-radius: 5px;
-  border: 1px solid silver;
-  box-sizing: border-box;
-
-}
 
 
-  /* Media query for smaller screens */
 
-  body {
-            margin: 0;
-            padding: 0;
-            font-family: "montserrat", sans-serif;
-            background-color: #f5f5f5;
-        }
-
-        .body {
-            font-family: 'Montserrat';
-            font-size:10px;
-            margin-left: 300px;
-        }
-        .btn {
-            font-family: 'Montserrat';
-        }
-          .header {
-            background-color: #3771C8;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
  
 </style>
 <div style="display: flex;">
-  <div class="container" style="width: 700px; margin-left:40px"> 
+  <div class="container-del mr-4"> 
   @foreach($employees as $employee)
 
     
 <h5 style="color:orange;margin-top:30px;margin-left:40px"><b>WorkFlow Delegates</b></h5>
 <button wire:click="submitForm" id="show-delegate-form-button" style=" width: 120px; height: 30px; border-radius:5px;border:1px solid silver;background:rgb(2, 17, 79);color:white;margin-left:500px;font-size:12px">Add Delegates</button>
-<div class="container" style="height:300px;width:640px;border-radius:5px;border:1px solid grey;margin-top:20px;margin-left:10px">
-<div class="row" style="height:20px;background:rgb(2, 17, 79);;margin-top:5px;width:100%;margin-left:1px ">
-<h6 style="color:white;font-size:10px">WorkFlow Delegates</h6>
+<div style="height:300px;width:640px;border-radius:5px;border:1px solid grey;margin-top:20px;margin-left:10px;background:white;">
+<div class="row " style="height:20px;background:rgb(2, 17, 79);width:100%;border-top-left-radius: 5px; border-top-right-radius: 5px; ">
+<h6 style="color:white;font-size:10px;">WorkFlow Delegates</h6>
 </div>
 
-<table style="width: 100%; border-collapse: collapse;">
+<table style="width: 100%; border-collapse: collapse; background:white;">
 
 <thead  style="background:#e0ffff ">
                     <tr>

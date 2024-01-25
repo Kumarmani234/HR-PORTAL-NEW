@@ -1,6 +1,6 @@
 <div style="font-size: 12px;">
 <div>
-  <div class="dropdown3" style="margin-left:700px">
+  <div class="dropdown3" >
     <button class="dropdown-button3" id="yearDropdown">
       2022 - 2023
       <span class="dropdown-icon3"></span>
@@ -14,7 +14,7 @@
 
 
   <!-- Content section -->
-  <div class="content">
+  <div class="content-2">
     <!-- Content for 2023-2024 -->
     <div class="gt-pb-4" id="content-2023-2024">
  

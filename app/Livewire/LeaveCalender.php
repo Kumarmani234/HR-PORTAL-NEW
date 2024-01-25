@@ -279,19 +279,7 @@ class LeaveCalender extends Component
         // Retrieve leave transactions for the selected date from the database
         $employeeId = auth()->guard('emp')->user()->emp_id;
         $companyId = auth()->guard('emp')->user()->company_id;
-        $dateFormatted = preg_replace('/[^\d-]/', '', $date); // Remove non-digit characters except hyphen
-        $dateFormatted = trim($dateFormatted); // Trim any leading or trailing spaces
-        
-        // Extract only the date part before the space
-        $dateParts = explode(' ', $dateFormatted);
-        $dateOnly = $dateParts[0]; // Take only the date part
-        
-        // Get only the first two characters for the date part
-        $dateFormatted = substr($dateOnly, 0, 10);
-    
-        // Parse the cleaned date
-        $dateFormatted = Carbon::parse($dateFormatted)->format('Y-m-d');
-        
+        $dateFormatted = Carbon::parse($date)->format('Y-m-d');
         $leaveCount = 0; // Initialize leave count variable
             // Filter data based on the selected filter type
         if ($this->filterCriteria === 'Me') {
@@ -300,15 +288,8 @@ class LeaveCalender extends Component
                 ->whereDate('from_date', '<=', $dateFormatted)
                 ->whereDate('to_date', '>=', $dateFormatted)
                 ->where('emp_id', $employeeId)
-                ->where('status', 'approved')
-                ->where(function ($query) {
-                    $query->whereHas('employee', function ($q) {
-                        $q->where('first_name', 'like', '%' . $this->searchTerm . '%')
-                            ->orWhere('last_name', 'like', '%' . $this->searchTerm . '%');
-                    });
-                })
+                ->where('status', 'approved')                
                 ->get();
-    
             $leaveCount = $leaveTransactions->count();
             $this->leaveTransactions = $leaveTransactions;
             
@@ -354,10 +335,11 @@ class LeaveCalender extends Component
 
     public function dateClicked($date)
     {
-        $date = trim($date);
-        $this->selectedDate = $this->year . '-' . $this->month . '-' . str_pad($date, 2, '0', STR_PAD_LEFT);  
+        $date = (int) $date;
+        $this->selectedDate = Carbon::createFromDate($this->year, $this->month, $date)->format('Y-m-d');
         $this->loadLeaveTransactions($this->selectedDate);  
     }
+    
 
 
     public function render()
